@@ -1,4 +1,4 @@
-function HiveLogo({ className }) {
+function HiveLogo({ className }: { className?: string }) {
   return (
     <svg
       version="1.1"

@@ -1,5 +1,7 @@
 import './globals.css';
 
+import { fontSans } from '@/lib/fonts';
+import { cn } from '@/lib/utils';
 import { Navbar } from '@/components/navbar';
 
 export const metadata = {
@@ -14,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={cn('font-sans antialiased', fontSans.variable)}>
         <Navbar />
         {children}
       </body>
