@@ -1,8 +1,12 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Icons } from '@/components/icons';
+
+import { fetchToken } from '@/lib/api';
 
 export default function Dev() {
   return (
@@ -45,6 +49,8 @@ export default function Dev() {
         <Icons.gitHub className="h-7 w-7" />
         <Icons.close className="h-7 w-7" />
       </div>
+
+      <Button onClick={() => fetchToken()}>API TEST</Button>
     </main>
   );
 }

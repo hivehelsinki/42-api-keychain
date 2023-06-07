@@ -13,11 +13,12 @@ function Navbar() {
             API Keychain
           </span>
         </div>
-        <div id="menu" className="flex items-center gap-5">
+        <div id="menu" className="flex items-center gap-3 md:gap-5">
           <Button>Sign in</Button>
-          <div className="flex gap-3">
-            <Icons.sun className="aspect-square h-5" />
-            <Icons.gitHub className="aspect-square h-5" />
+          <div className="flex gap-3 md:gap-5">
+            <div className="w-[1px] bg-gray-300/90"></div>
+            <Icons.moon className="aspect-square h-5" />
+            <Icons.gitHub className="aspect-square h-5 text-neutral-400 hover:text-neutral-600" />
           </div>
         </div>
       </div>
