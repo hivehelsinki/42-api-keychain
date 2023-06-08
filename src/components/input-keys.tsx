@@ -3,6 +3,7 @@
 import * as React from 'react';
 
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { Icons } from '@/components/icons';
 
 const InputKeys = () => {
@@ -18,7 +19,7 @@ const InputKeys = () => {
   };
 
   React.useEffect(() => {
-    if (uid.length > 30 && secret.length > 30) {
+    if (uid.length >= 64 && secret.length > 64) {
       const fetchData = async () => {
         try {
           const res = await fetch('/api/keys/check', {
@@ -44,9 +45,7 @@ const InputKeys = () => {
 
   return (
     <div className="flex w-full flex-col gap-2">
-      <label htmlFor="uid" className="font-bold">
-        Client ID
-      </label>
+      <Label htmlFor="uid">Client ID</Label>
       <Input
         id="uid"
         value={uid}
@@ -55,9 +54,7 @@ const InputKeys = () => {
         }
       />
 
-      <label htmlFor="secret" className="font-bold">
-        Client Secret
-      </label>
+      <Label htmlFor="secret">Client Secret</Label>
       <Input
         id="secret"
         value={secret}
@@ -68,12 +65,12 @@ const InputKeys = () => {
       {isValid !== null && (
         <div className="mt-4">
           {isValid ? (
-            <div className="inline-flex items-center justify-center gap-2 rounded-md bg-green-100 py-0.5 pl-2 pr-3 text-sm">
+            <div className="flex items-center gap-2 rounded-md bg-green-100 py-2 pl-2 text-sm md:inline-flex md:pr-3">
               <Icons.check className="h-4 w-4 text-green-600" />
               <p>Application found</p>
             </div>
           ) : (
-            <div className="inline-flex items-center justify-center gap-2 rounded-md bg-red-100 py-0.5 pl-2 pr-3 text-sm">
+            <div className="flex items-center gap-2 rounded-md bg-red-100 py-2 pl-2 text-sm md:inline-flex md:pr-3">
               <Icons.close className="h-4 w-4 text-red-600" />
               <p>Application not found or not valid</p>
             </div>

@@ -7,7 +7,7 @@ import { InputKeys } from '@/components/input-keys';
 
 export default function Dev() {
   return (
-    <main className="flex flex-col gap-6 p-4">
+    <main className="container flex flex-col gap-6 p-4">
       <div>
         <p className="mb-4 text-xl font-bold">Button</p>
         <div className="flex gap-2">
