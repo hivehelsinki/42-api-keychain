@@ -9,7 +9,7 @@ function Navbar() {
       <div className="container flex justify-between">
         <div className="flex items-center gap-2 text-gray-950">
           <HiveLogo className="h-6 w-auto dark:fill-gray-100" />
-          <span className="hidden font-bold tracking-tight md:inline-block">
+          <span className="hidden text-xl font-bold tracking-tight md:inline-block">
             API Keychain
           </span>
         </div>

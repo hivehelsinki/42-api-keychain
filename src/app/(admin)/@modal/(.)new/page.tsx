@@ -1,6 +1,6 @@
-import Modal from "@/components/modal";
-import { InputKeys } from "@/components/input-keys";
-import { Button } from "@/components/ui/button";
+import Modal from '@/components/modal';
+import { InputKeys } from '@/components/input-keys';
+import { Button } from '@/components/ui/button';
 
 export default function InterceptedSignInPage() {
   return (

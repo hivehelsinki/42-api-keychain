@@ -1,11 +1,13 @@
-import Link from 'next/link'
+import Link from 'next/link';
+
+import { Button } from '@/components/ui/button';
 
 export default function Dashboard() {
-    return (
-        <>
-        <p>
-        Pas hello</p>
-        <Link href="/new">new</Link>
-        </>
-    )
+  return (
+    <>
+      <Link href="/new">
+        <Button>Add new one</Button>
+      </Link>
+    </>
+  );
 }
