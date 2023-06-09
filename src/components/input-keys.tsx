@@ -9,6 +9,7 @@ const InputKeys = () => {
   const [uid, setUid] = React.useState<string>('');
   const [secret, setSecret] = React.useState<string>('');
   const [isValid, setIsValid] = React.useState<boolean | null>(null);
+  const [data, setData] = React.useState({});
 
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -29,7 +30,7 @@ const InputKeys = () => {
             },
           });
           const data = await res.json();
-          console.log(data);
+          setData(data);
           setIsValid(true);
         } catch (error) {
           console.error('Error checking inputs:', error);
@@ -67,7 +68,7 @@ const InputKeys = () => {
             <div className="flex items-center gap-2 rounded-md bg-green-100 py-2 pl-2 text-sm">
               <Icons.check className="h-4 w-4 text-green-600" />
               <p>
-                Application found under the name <b>HIVE - Bigbro</b>
+                Application found under the name <b>{data?.appName}</b>
               </p>
             </div>
           ) : (
