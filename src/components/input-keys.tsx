@@ -1,9 +1,8 @@
 'use client';
 
 import * as React from 'react';
-
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 import { Icons } from '@/components/icons';
 
 const InputKeys = () => {
@@ -19,7 +18,7 @@ const InputKeys = () => {
   };
 
   React.useEffect(() => {
-    if (uid.length >= 64 && secret.length > 64) {
+    if (uid.length >= 64 && secret.length >= 64) {
       const fetchData = async () => {
         try {
           const res = await fetch('/api/keys/check', {
@@ -67,7 +66,9 @@ const InputKeys = () => {
           {isValid ? (
             <div className="flex items-center gap-2 rounded-md bg-green-100 py-2 pl-2 text-sm">
               <Icons.check className="h-4 w-4 text-green-600" />
-              <p>Application found</p>
+              <p>
+                Application found under the name <b>HIVE - Bigbro</b>
+              </p>
             </div>
           ) : (
             <div className="flex items-center gap-2 rounded-md bg-red-100 py-2 pl-2 text-sm ">
