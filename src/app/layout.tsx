@@ -3,6 +3,7 @@ import './globals.css';
 import { fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import { Navbar } from '@/components/navbar';
+import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata = {
   title: 'API Keychain',
@@ -17,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn('font-sans antialiased', fontSans.variable)}>
-        <Navbar />
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
