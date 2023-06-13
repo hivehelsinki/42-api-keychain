@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { HiveLogo } from '@/components/ui/hivelogo';
 import { Icons } from '@/components/icons';
@@ -17,7 +18,12 @@ function Navbar() {
           <div className="flex gap-3 md:gap-5">
             <div className="w-[1px] bg-gray-300/90"></div>
             <Icons.moon />
-            <Icons.gitHub className="aspect-square h-5 text-neutral-400 hover:text-neutral-600" />
+            <Link
+              href="https://github.com/hivehelsinki/42-api-keychain"
+              target="_blank"
+            >
+              <Icons.gitHub className="aspect-square h-5 text-neutral-400 hover:text-neutral-600" />
+            </Link>
           </div>
         </div>
       </div>

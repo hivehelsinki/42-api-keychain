@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
 
@@ -15,7 +17,13 @@ export default function Home() {
         <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
           <Button>Get started</Button>
           <Button variant="outline">
-            <Icons.gitHub className="h-4 pr-2" /> Github
+            <Link
+              href="https://github.com/hivehelsinki/42-api-keychain"
+              target="_blank"
+              className="inline-flex items-center"
+            >
+              <Icons.gitHub className="h-4 pr-2" /> Github
+            </Link>
           </Button>
         </div>
       </section>
