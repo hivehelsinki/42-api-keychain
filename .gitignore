@@ -2,7 +2,8 @@
 
 
 # front ignores
-
+.next/
+next-env.d.ts
 front/.next/
 front/out/
 front/build
