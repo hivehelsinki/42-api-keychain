@@ -77,7 +77,7 @@ const InputKeys = () => {
           ) : (
             <div className="flex items-center gap-2 bg-red-100 py-2 pl-2 text-sm dark:bg-destructive dark:bg-red-500">
               <Icons.close className="h-4 w-4 text-red-600/80 dark:text-gray-200" />
-              <p className="text-gray-200">
+              <p className="dark:text-gray-200">
                 Application not found or not valid
               </p>
             </div>

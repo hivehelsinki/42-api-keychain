@@ -21,12 +21,12 @@ export default function Dashboard() {
       <Link href="/new">
         <Button>Add new one</Button>
       </Link>
-      <ul className='bg-red-300 mt-5'>
+      {/* <ul className='bg-red-300 mt-5'>
         hey
         {data.map(({ id, uid }) => (
           <li key={uid} className='text-xl text-white'>{uid}</li>
         ))}
-      </ul>
+      </ul> */}
 
     </>
   );
