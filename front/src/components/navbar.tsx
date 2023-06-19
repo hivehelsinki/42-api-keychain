@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { LoginButton } from '@/components/auth/login-button';
 import { HiveLogo } from '@/components/ui/hivelogo';
 import { Icons } from '@/components/icons';
 import { ModeToggle } from '@/components/moddle-toggle';
@@ -15,7 +15,7 @@ function Navbar() {
           </span>
         </div>
         <div id="menu" className="flex items-center gap-3 md:gap-5">
-          <Button>Sign in</Button>
+          <LoginButton />
           <div className="flex gap-3 md:gap-5">
             <div className="w-[1px] bg-gray-300/90 dark:bg-gray-600"></div>
             <ModeToggle />
