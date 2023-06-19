@@ -4,9 +4,9 @@
   "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
   "main": "index.js",
   "scripts": {
-    "start:front": "cd front && npm run dev",
-    "start:back": "cd back && npm run dev",
-    "start": "concurrently \"npm run start:front\" \"npm run start:back\"",
+    "dev:front": "cd front && npm run dev",
+    "dev:back": "cd back && npm run dev",
+    "dev": "concurrently \"npm run dev:front\" \"npm run dev:back\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
