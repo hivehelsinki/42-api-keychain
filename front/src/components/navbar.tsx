@@ -4,7 +4,7 @@ import { HiveLogo } from '@/components/ui/hivelogo';
 import { Icons } from '@/components/icons';
 import { ModeToggle } from '@/components/moddle-toggle';
 
-function Navbar() {
+function Navbar({user}) {
   return (
     <nav className="flex h-16 w-full border-b text-gray-950 dark:border-b-gray-600 dark:bg-gray-800 dark:text-gray-100">
       <div className="container flex justify-between">
@@ -15,7 +15,7 @@ function Navbar() {
           </span>
         </div>
         <div id="menu" className="flex items-center gap-3 md:gap-5">
-          <LoginButton />
+          <LoginButton user={user}/>
           <div className="flex gap-3 md:gap-5">
             <div className="w-[1px] bg-gray-300/90 dark:bg-gray-600"></div>
             <ModeToggle />

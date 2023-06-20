@@ -5,16 +5,19 @@ import { cn } from '@/lib/utils';
 import { Navbar } from '@/components/navbar';
 import { ThemeProvider } from '@/components/theme-provider';
 
+import { getCurrentUser } from '@/lib/session';
+
 export const metadata = {
   title: 'API Keychain',
   description: 'Manage smoothly your 42 API applications.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const user = await getCurrentUser();
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -24,7 +27,7 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar />
+          <Navbar user={user}/>
           {children}
         </ThemeProvider>
       </body>
