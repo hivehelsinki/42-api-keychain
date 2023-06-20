@@ -4,7 +4,7 @@ import { HiveLogo } from '@/components/ui/hivelogo';
 import { Icons } from '@/components/icons';
 import { ModeToggle } from '@/components/moddle-toggle';
 
-function Navbar({user}) {
+function Navbar({ user }) {
   return (
     <nav className="flex h-16 w-full border-b text-gray-950 dark:border-b-gray-600 dark:bg-gray-800 dark:text-gray-100">
       <div className="container flex justify-between">
@@ -15,15 +15,16 @@ function Navbar({user}) {
           </span>
         </div>
         <div id="menu" className="flex items-center gap-3 md:gap-5">
-          <LoginButton user={user}/>
+          <LoginButton user={user} />
           <div className="flex gap-3 md:gap-5">
             <div className="w-[1px] bg-gray-300/90 dark:bg-gray-600"></div>
             <ModeToggle />
             <Link
               href="https://github.com/hivehelsinki/42-api-keychain"
               target="_blank"
+              className="flex items-center"
             >
-              <Icons.gitHub className="aspect-square h-5 text-neutral-400 hover:text-neutral-600" />
+              <Icons.gitHub className="aspect-square h-6 text-neutral-400 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-200" />
             </Link>
           </div>
         </div>

@@ -23,7 +23,11 @@ export function ModeToggle() {
 
   return (
     <button onClick={handleClick}>
-      {theme === 'dark' ? <Icons.sun /> : <Icons.moon />}
+      {theme === 'dark' ? (
+        <Icons.sun className="h-6 text-neutral-400 hover:text-neutral-200" />
+      ) : (
+        <Icons.moon className="h-6 text-neutral-400 hover:text-neutral-600" />
+      )}
     </button>
   );
 }

@@ -14,7 +14,7 @@ const LoginButton = ({ user }) => {
           <AvatarFallback>HV</AvatarFallback>
         </Avatar>
         <a onClick={() => signOut()}>
-          <Icons.logout />
+          <Icons.logout className="h-6" />
         </a>
       </div>
     );

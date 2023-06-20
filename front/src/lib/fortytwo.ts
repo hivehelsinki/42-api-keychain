@@ -16,21 +16,30 @@ async function fetchToken(client_id: string, client_secret: string) {
     body: authForm(client_id, client_secret),
   });
   const data = await response.json();
-
-  return data.access_token;
+  return data;
 }
 
-async function fetchAppInfo(token: string) {
+async function fetchAppInfo({
+  access_token,
+  secret_valid_until,
+}: {
+  access_token: string;
+  secret_valid_until: number;
+}) {
   const restwo = await fetch(`${baseUrl}/v2/me`, {
     headers: {
-      Authorization: 'Bearer ' + token,
+      Authorization: 'Bearer ' + access_token,
     },
   });
+
+  console.log(access_token);
+  console.log(secret_valid_until);
 
   return {
     appId: restwo.headers.get('x-application-id'),
     appRoles: restwo.headers.get('x-application-roles'),
     appName: restwo.headers.get('x-application-name'),
+    secret_valid_until: secret_valid_until,
   };
 }
 
