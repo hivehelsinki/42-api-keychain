@@ -24,7 +24,7 @@ function Navbar({ user }) {
               target="_blank"
               className="flex items-center"
             >
-              <Icons.gitHub className="aspect-square h-6 text-neutral-400 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-200" />
+              <Icons.gitHub className="aspect-square h-6 text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-200" />
             </Link>
           </div>
         </div>
