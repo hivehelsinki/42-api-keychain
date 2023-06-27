@@ -6,6 +6,7 @@ import {
   Check,
   LogOut,
   RefreshCw,
+  Plus,
 } from 'lucide-react';
 
 export const Icons = {
@@ -15,6 +16,7 @@ export const Icons = {
   check: Check,
   logout: LogOut,
   refresh: RefreshCw,
+  plus: Plus,
   gitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
