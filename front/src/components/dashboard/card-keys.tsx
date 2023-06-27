@@ -33,7 +33,10 @@ const CardKeys = ({ data }) => {
       ))}
       <Link href="/new">
         <Button className="h-full w-full border-dashed" variant="outline">
-          <Icons.plus />
+          <span className="inline-flex items-center gap-2">
+            <Icons.plus className="h-4 w-4" />
+            Add a new key
+          </span>
         </Button>
       </Link>
     </div>
