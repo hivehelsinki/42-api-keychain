@@ -18,6 +18,38 @@ let keys = [
     end_at: "13/09/2024",
     owned_by: "titus",
   },
+  {
+    id: 3,
+    name: "API - TITUS",
+    uid: "u-s4t2af-a9ad7a9462d4ca4767c5c464ccae0e4527d7d311d77819c380339b1f33b804ec",
+    secret: "secret1",
+    end_at: "13/09/2024",
+    owned_by: "titus",
+  },
+  {
+    id: 4,
+    name: "HIVE - EXAM",
+    uid: "u-s4t2af-a9ad7a9462d4ca4767c5c464ccae0e4527d7d311d77819c380339b1f33b804ec",
+    secret: "secret1",
+    end_at: "13/09/2024",
+    owned_by: "titus",
+  },
+  {
+    id: 5,
+    name: "HIVE - MOULINETTE",
+    uid: "u-s4t2af-a9ad7a9462d4ca4767c5c464ccae0e4527d7d311d77819c380339b1f33b804ec",
+    secret: "secret1",
+    end_at: "13/09/2024",
+    owned_by: "titus",
+  },
+  {
+    id: 5,
+    name: "NIBBLER",
+    uid: "u-s4t2af-a9ad7a9462d4ca4767c5c464ccae0e4527d7d311d77819c380339b1f33b804ec",
+    secret: "secret1",
+    end_at: "13/09/2024",
+    owned_by: "titus",
+  },
 ];
 
 // Get all keys
