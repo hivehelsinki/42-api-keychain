@@ -29,11 +29,7 @@ const CardKeys = ({ data }) => {
   return (
     <div className="grid min-h-max grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2 lg:grid-cols-4">
       {data.map((datum) => (
-        <>
-          <RenderElem datum={datum} key={datum.id} />
-          <RenderElem datum={datum} key={datum.id} />
-          <RenderElem datum={datum} key={datum.id} />
-        </>
+        <RenderElem datum={datum} key={datum.id} />
       ))}
       <Link href="/new">
         <Button className="h-full w-full border-dashed" variant="outline">
