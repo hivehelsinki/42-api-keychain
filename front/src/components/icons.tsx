@@ -6,11 +6,13 @@ import {
   Check,
   LogOut,
   RefreshCw,
+  Trash,
   Plus,
 } from 'lucide-react';
 
 export const Icons = {
   close: X,
+  trash: Trash,
   sun: Sun,
   moon: Moon,
   check: Check,
