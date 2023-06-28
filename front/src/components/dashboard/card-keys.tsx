@@ -1,3 +1,7 @@
+import Link from 'next/link';
+
+import { cn } from '@/lib/utils';
+
 import {
   Card,
   CardContent,
@@ -7,21 +11,13 @@ import {
 } from '@/components/ui/card';
 
 import { Icons } from '@/components/icons';
+import { Ping } from '@/components/ping';
+import { Button } from '@/components/ui/button';
 
-import { cn } from '@/lib/utils';
-import { Button } from '../ui/button';
-import Link from 'next/link';
-
-const RenderElem = ({ className, datum, ...props }) => (
-  <Card className='group' {...props}>
+const RenderElem = ({ datum, ...props }) => (
+  <Card className="group" {...props}>
     <CardHeader className="relative">
-      <div className=''>
-        <span className="absolute -right-2 -top-2 h-4 w-4 animate-ping rounded-full bg-green-400"></span>
-        <span className="absolute -right-2 -top-2 h-4 w-4 rounded-full bg-green-400"></span>
-      </div>
-      <div className='absolute hidden group-hover:block bottom-6 right-6'>
-        <Icons.trash className="absolute text-red-400  h-4 w-4" />
-      </div>
+      <Ping className="absolute -right-2 -top-2" />
       <CardTitle>{datum.name}</CardTitle>
       <CardDescription>Expires in 30 days (20/06/2022)</CardDescription>
     </CardHeader>
