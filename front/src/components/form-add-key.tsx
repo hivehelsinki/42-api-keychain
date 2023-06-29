@@ -17,6 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 const formSchema = z.object({
+  id: z.number(),
   client_id: z
     .string()
     .trim()
@@ -25,36 +26,56 @@ const formSchema = z.object({
     .string()
     .trim()
     .min(64, { message: 'Secret must be at least 64 characters long' }),
-  secret_valid_until: z.date().optional(),
+  secret_valid_until: z.string().optional(),
   name: z.string().optional(),
 });
 
 const FormAddKey = () => {
   const [isValid, setIsValid] = React.useState(false);
-  const { watch, ...form } = useForm<z.infer<typeof formSchema>>({
+
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      id: 0,
       client_id: '',
       client_secret: '',
-      secret_valid_until: new Date(),
+      secret_valid_until: '',
       name: '',
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    fetch('/api/keys', {
-      method: 'POST',
-      body: JSON.stringify(values),
-    });
+    // fetch('/api/keys', {
+    //   method: 'POST',
+    //   body: JSON.stringify(values),
+    // });
   }
 
   React.useEffect(() => {
-    const subscription = watch((value, { name, type }) => {
+    const subscription = form.watch(async (_, { type }) => {
       if (type === 'change') {
         const { client_id, client_secret } = form.getValues();
         if (client_id.length >= 64 && client_secret.length >= 64) {
+          const res = await fetch('/api/keys/check', {
+            method: 'POST',
+            body: JSON.stringify({ client_id, client_secret }),
+          });
+          const keyInfo = await res.json();
+          console.log(keyInfo);
+
           setIsValid(true);
+          form.setValue('id', Number(keyInfo.appId), { shouldValidate: true });
+          form.setValue('name', keyInfo.appName, { shouldValidate: true });
+          form.setValue(
+            'secret_valid_until',
+            new Date(keyInfo.secret_valid_until * 1000)
+              .toISOString()
+              .split('T')[0],
+            {
+              shouldValidate: true,
+            }
+          );
         }
         if (isValid && (client_id.length < 64 || client_secret.length < 64)) {
           setIsValid(false);
@@ -62,8 +83,8 @@ const FormAddKey = () => {
       }
     });
 
-    return () => subscription.unsubscribe();
-  }, [watch]);
+    // return () => subscription.unsubscribe();
+  }, [form, form.watch, isValid]);
 
   return (
     <Form {...form}>
@@ -101,11 +122,24 @@ const FormAddKey = () => {
 
         <FormField
           control={form.control}
+          name="id"
+          render={({ field }) => (
+            <FormItem className="hidden">
+              <FormControl>
+                <Input type="hidden" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
           name="secret_valid_until"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="hidden">
               <FormControl>
-                <Input type="date" {...field} />
+                <Input type="hidden" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -116,9 +150,9 @@ const FormAddKey = () => {
           control={form.control}
           name="name"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="hidden">
               <FormControl>
-                <Input {...field} />
+                <Input type="hidden" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
