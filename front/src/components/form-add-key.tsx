@@ -2,7 +2,7 @@
 
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import React from 'react';
 
 import {
@@ -61,21 +61,28 @@ const FormAddKey = () => {
             method: 'POST',
             body: JSON.stringify({ client_id, client_secret }),
           });
-          const keyInfo = await res.json();
-          console.log(keyInfo);
-
-          setIsValid(true);
-          form.setValue('id', Number(keyInfo.appId), { shouldValidate: true });
-          form.setValue('name', keyInfo.appName, { shouldValidate: true });
-          form.setValue(
-            'secret_valid_until',
-            new Date(keyInfo.secret_valid_until * 1000)
-              .toISOString()
-              .split('T')[0],
-            {
+          try {
+            const keyInfo = await res.json();
+            console.log(keyInfo);
+            setIsValid(true);
+            // TODO: Add label success with info
+            form.setValue('id', Number(keyInfo.appId), {
               shouldValidate: true,
-            }
-          );
+            });
+            form.setValue('name', keyInfo.appName, { shouldValidate: true });
+            form.setValue(
+              'secret_valid_until',
+              new Date(keyInfo.secret_valid_until * 1000)
+                .toISOString()
+                .split('T')[0],
+              {
+                shouldValidate: true,
+              }
+            );
+          } catch (e) {
+            // TODO: Add error label
+            setIsValid(false);
+          }
         }
         if (isValid && (client_id.length < 64 || client_secret.length < 64)) {
           setIsValid(false);
