@@ -2,7 +2,7 @@
 
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { set, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import React from 'react';
 
 import {
@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Icons } from '@/components/icons';
 
 const formSchema = z.object({
   id: z.number(),
@@ -31,7 +32,8 @@ const formSchema = z.object({
 });
 
 const FormAddKey = () => {
-  const [isValid, setIsValid] = React.useState(false);
+  const [isValid, setIsValid] = React.useState<undefined | boolean>(undefined);
+  const [keyName, setKeyName] = React.useState<string>('');
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -53,7 +55,7 @@ const FormAddKey = () => {
   }
 
   React.useEffect(() => {
-    const subscription = form.watch(async (_, { type }) => {
+    form.watch(async (_, { type }) => {
       if (type === 'change') {
         const { client_id, client_secret } = form.getValues();
         if (client_id.length >= 64 && client_secret.length >= 64) {
@@ -63,9 +65,9 @@ const FormAddKey = () => {
           });
           try {
             const keyInfo = await res.json();
-            console.log(keyInfo);
+            // console.log(keyInfo);
             setIsValid(true);
-            // TODO: Add label success with info
+            setKeyName(keyInfo.appName);
             form.setValue('id', Number(keyInfo.appId), {
               shouldValidate: true,
             });
@@ -89,8 +91,6 @@ const FormAddKey = () => {
         }
       }
     });
-
-    // return () => subscription.unsubscribe();
   }, [form, form.watch, isValid]);
 
   return (
@@ -126,6 +126,24 @@ const FormAddKey = () => {
             </FormItem>
           )}
         />
+
+        {isValid && (
+          <div className="flex items-center gap-2 bg-green-100 py-2 pl-2 text-sm dark:bg-green-700">
+            <Icons.check className="h-4 w-4 text-green-600 dark:text-gray-200" />
+            <p className="dark:text-gray-200">
+              Application found under the name <b>{keyName}</b>
+            </p>
+          </div>
+        )}
+
+        {isValid === false && (
+          <div className="flex items-center gap-2 bg-red-100 py-2 pl-2 text-sm dark:bg-red-500">
+            <Icons.close className="h-4 w-4 text-red-600/80 dark:text-gray-200" />
+            <p className="dark:text-gray-200">
+              Application not found or not valid
+            </p>
+          </div>
+        )}
 
         <FormField
           control={form.control}
