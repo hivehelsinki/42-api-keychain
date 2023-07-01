@@ -1,6 +1,9 @@
+import { FC } from 'react';
 import { FormAddKey } from '@/components/form-add-key';
 
-export default function AdminNew() {
+interface pageProps {}
+
+const page: FC<pageProps> = ({}) => {
   return (
     <main className="container mt-4">
       <section className="flex max-w-[700px] flex-col gap-5">
@@ -13,4 +16,6 @@ export default function AdminNew() {
       </section>
     </main>
   );
-}
+};
+
+export default page;

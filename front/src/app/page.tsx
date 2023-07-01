@@ -1,10 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { FC } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
 
-export default function Home() {
+interface pageProps {}
+
+const page: FC<pageProps> = ({}) => {
   return (
     <main className="container mt-10">
       <section className="flex max-w-[980px] flex-col items-start gap-2 px-4 pt-8 md:pt-12">
@@ -110,4 +113,6 @@ export default function Home() {
       </section>
     </main>
   );
-}
+};
+
+export default page;
