@@ -1,11 +1,14 @@
-export default function AdminLayout(props: {
+export default function AdminLayout({
+  children,
+  modal,
+}: {
   children: React.ReactNode;
   modal: React.ReactNode;
 }) {
   return (
     <div className="container mt-10">
-      {props.modal}
-      {props.children}
+      {modal}
+      {children}
     </div>
   );
 }
