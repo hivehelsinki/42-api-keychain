@@ -1,7 +1,11 @@
+import { FC } from 'react';
+
 import Modal from '@/components/modal';
 import { FormAddKey } from '@/components/form-add-key';
 
-export default function InterceptedSignInPage() {
+interface pageProps {}
+
+const page: FC<pageProps> = ({}) => {
   return (
     <Modal>
       <section className="flex flex-col gap-5">
@@ -14,4 +18,6 @@ export default function InterceptedSignInPage() {
       </section>
     </Modal>
   );
-}
+};
+
+export default page;
