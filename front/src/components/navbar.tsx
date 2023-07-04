@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { LoginButton } from '@/components/auth/login-button';
-import { HiveLogo } from '@/components/ui/hivelogo';
 import { Icons } from '@/components/icons';
 import { ModeToggle } from '@/components/moddle-toggle';
 
@@ -9,7 +8,7 @@ function Navbar({ user }) {
     <nav className="flex h-16 w-full border-b text-gray-950 dark:border-b-gray-600 dark:bg-gray-800 dark:text-gray-100">
       <div className="container flex justify-between">
         <div className="flex items-center gap-10 text-gray-950">
-          <HiveLogo className="h-6 w-auto dark:fill-gray-100" />
+          <Icons.logo className="h-6 w-auto dark:fill-gray-100" />
           <span className="hidden text-lg font-bold tracking-tight dark:text-gray-200 md:inline-block">
             API Keychain
           </span>

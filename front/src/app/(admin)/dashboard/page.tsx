@@ -1,13 +1,15 @@
 'use client';
 
-import Link from 'next/link';
+import { FC } from 'react';
+
 import useSWR from 'swr';
 
-import { Button } from '@/components/ui/button';
 import { CardKeys } from '@/components/dashboard/card-keys';
 import { Input } from '@/components/ui/input';
 
-export default function Dashboard() {
+interface pageProps {}
+
+const page: FC<pageProps> = ({}) => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error } = useSWR('http://localhost:5001/keys', fetcher);
 
@@ -30,4 +32,6 @@ export default function Dashboard() {
       </section>
     </>
   );
-}
+};
+
+export default page;
