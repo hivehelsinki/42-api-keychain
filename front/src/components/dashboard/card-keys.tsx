@@ -12,7 +12,10 @@ import { Ping } from '@/components/ping';
 import { Button } from '@/components/ui/button';
 
 const RenderElem = ({ datum, ...props }) => (
-  <Card className="group hover:bg-gray-100" {...props}>
+  <Card
+    className="group hover:bg-accent hover:text-accent-foreground"
+    {...props}
+  >
     <CardHeader className="relative">
       <Ping className="absolute -right-2 -top-2" />
       <CardTitle>{datum.name}</CardTitle>
