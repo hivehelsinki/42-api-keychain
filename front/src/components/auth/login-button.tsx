@@ -20,7 +20,7 @@ const LoginButton = ({ user }) => {
     );
   }
   return (
-    <Button onClick={() => signIn('42-school', { callbackUrl: '/' })}>
+    <Button onClick={() => signIn('42-school', { callbackUrl: '/dashboard' })}>
       Sign in
     </Button>
   );
