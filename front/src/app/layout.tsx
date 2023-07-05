@@ -7,6 +7,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 
 import { getCurrentUser } from '@/lib/session';
 
+import User from '@/types/user';
+
 export const metadata = {
   title: 'API Keychain',
   description: 'Manage smoothly your 42 API applications.',
@@ -17,7 +19,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getCurrentUser();
+  const user: User | null = await getCurrentUser();
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -27,7 +29,7 @@ export default async function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navbar user={user}/>
+          <Navbar user={user} />
           {children}
         </ThemeProvider>
       </body>

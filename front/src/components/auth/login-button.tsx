@@ -5,7 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
-const LoginButton = ({ user }) => {
+import User from '@/types/user';
+
+const LoginButton = ({ user }: { user: User | null }) => {
   if (user) {
     return (
       <div className="flex items-center gap-3">
