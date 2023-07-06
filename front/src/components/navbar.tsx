@@ -1,11 +1,16 @@
 import Link from 'next/link';
+
 import { LoginButton } from '@/components/auth/login-button';
 import { Icons } from '@/components/icons';
 import { ModeToggle } from '@/components/moddle-toggle';
 
 import User from '@/types/user';
 
-function Navbar({ user }: { user: User | null }) {
+type NavbarProps = {
+  user: User | null;
+};
+
+function Navbar({ user }: NavbarProps) {
   return (
     <nav className="flex h-16 w-full border-b text-gray-950 dark:border-b-gray-600 dark:bg-gray-800 dark:text-gray-100">
       <div className="container flex justify-between">
