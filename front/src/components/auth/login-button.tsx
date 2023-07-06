@@ -1,17 +1,19 @@
 'use client';
 
+import { FC } from 'react';
 import { signIn, signOut } from 'next-auth/react';
+
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 import User from '@/types/user';
 
-type LoginButtonProps = {
+type loginButtonProps = {
   user: User | null;
 };
 
-const LoginButton = ({ user }: LoginButtonProps) => {
+const LoginButton: FC<loginButtonProps> = ({ user }) => {
   if (user) {
     return (
       <div className="flex items-center gap-3">

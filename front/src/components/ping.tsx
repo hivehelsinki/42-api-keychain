@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 
 import { cn } from '@/lib/utils';
@@ -18,7 +19,7 @@ const pingVariants = tv({
 
 export interface PingProps extends VariantProps<typeof pingVariants> {}
 
-const Ping = ({ className, variant }: PingProps) => {
+const Ping: FC<PingProps> = ({ className, variant }) => {
   return (
     <div>
       <span
