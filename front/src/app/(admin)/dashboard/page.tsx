@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 import useSWR from 'swr';
 
@@ -9,9 +9,14 @@ import { Input } from '@/components/ui/input';
 
 interface pageProps {}
 
-const page: FC<pageProps> = ({}) => {
+const Page: FC<pageProps> = ({}) => {
+  const [search, setSearch] = useState<string>('');
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error } = useSWR('http://localhost:5001/keys', fetcher);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
 
   if (error) {
     console.log(error);
@@ -27,11 +32,24 @@ const page: FC<pageProps> = ({}) => {
       </div>
 
       <section className="mt-10 flex flex-col gap-8">
-        <Input placeholder="Search by name or uid" autoFocus />
-        <CardKeys data={data} />
+        <Input
+          placeholder="Search by name or uid"
+          autoFocus
+          onChange={handleSearch}
+        />
+        <CardKeys
+          data={
+            search
+              ? data.filter(
+                  (app) =>
+                    app.name.includes(search) || app.client_id.includes(search)
+                )
+              : data
+          }
+        />
       </section>
     </>
   );
 };
 
-export default page;
+export default Page;
