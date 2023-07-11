@@ -35,7 +35,9 @@ interface cardKeysProps {
   data: CardKeyProps[];
 }
 
-const CardKeys: FC<cardKeysProps[]> = ({ data }) => {
+interface cardKeysProps extends Array<CardKeyProps> {}
+
+const CardKeys: FC<cardKeysProps> = ({ data }) => {
   console.log(data);
   return (
     <div className="grid min-h-max grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2 lg:grid-cols-4">
