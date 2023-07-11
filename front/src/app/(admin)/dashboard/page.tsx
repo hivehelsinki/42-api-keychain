@@ -33,7 +33,7 @@ const Page: FC<pageProps> = ({}) => {
 
       <section className="mt-10 flex flex-col gap-8">
         <Input
-          placeholder="Search by name or uid"
+          placeholder="Search by name or client_id"
           autoFocus
           onChange={handleSearch}
         />

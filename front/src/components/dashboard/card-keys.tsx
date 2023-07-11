@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FC } from 'react';
 
 import {
   Card,
@@ -11,7 +12,13 @@ import { Icons } from '@/components/icons';
 import { Ping } from '@/components/ping';
 import { Button } from '@/components/ui/button';
 
-const RenderElem = ({ datum, ...props }) => (
+import CardKeyProps from '@/types/card-key';
+
+interface renderElemProps {
+  datum: CardKeyProps;
+}
+
+const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
   <Card
     className="group hover:bg-accent hover:text-accent-foreground"
     {...props}
@@ -24,10 +31,15 @@ const RenderElem = ({ datum, ...props }) => (
   </Card>
 );
 
-const CardKeys = ({ data }) => {
+interface cardKeysProps {
+  data: CardKeyProps[];
+}
+
+const CardKeys: FC<cardKeysProps[]> = ({ data }) => {
+  console.log(data);
   return (
     <div className="grid min-h-max grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2 lg:grid-cols-4">
-      {data.map((datum) => (
+      {data.map((datum: CardKeyProps) => (
         <RenderElem datum={datum} key={datum.id} />
       ))}
       <Link href="/new">
