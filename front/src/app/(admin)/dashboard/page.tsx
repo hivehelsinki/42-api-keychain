@@ -7,6 +7,8 @@ import useSWR from 'swr';
 import { CardKeys } from '@/components/dashboard/card-keys';
 import { Input } from '@/components/ui/input';
 
+import CardKeyProps from '@/types/card-key';
+
 interface pageProps {}
 
 const Page: FC<pageProps> = ({}) => {
@@ -41,7 +43,7 @@ const Page: FC<pageProps> = ({}) => {
           data={
             search
               ? data.filter(
-                  (app) =>
+                  (app: CardKeyProps) =>
                     app.name.includes(search) || app.client_id.includes(search)
                 )
               : data
