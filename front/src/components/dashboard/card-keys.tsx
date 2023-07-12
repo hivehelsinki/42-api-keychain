@@ -21,7 +21,7 @@ interface renderElemProps {
 
 const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
   <Card
-    className="group rounded-md hover:bg-accent hover:text-accent-foreground"
+    className="group rounded-md transition-colors duration-200 ease-in-out hover:bg-accent hover:text-accent-foreground"
     {...props}
   >
     <CardHeader className="relative">
@@ -50,7 +50,7 @@ const CardKeys: FC<cardKeysProps> = ({ data, className }) => {
       ))}
       <Link href="/new">
         <Button className="h-full w-full border-dashed" variant="outline">
-          <span className="inline-flex min-h-[75px] items-center gap-2">
+          <span className="inline-flex min-h-[75px] items-center gap-2 transition-colors duration-200 ease-in-out">
             <Icons.plus className="h-4 w-4" />
             Add a new key
           </span>
