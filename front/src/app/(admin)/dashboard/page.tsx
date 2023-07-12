@@ -28,7 +28,7 @@ const Page: FC<pageProps> = ({}) => {
   if (!data) return <div>loading...</div>;
 
   return (
-    <>
+    <div className="pb-6 md:pb-0">
       <div id="header" className="flex items-center justify-between">
         <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
       </div>
@@ -50,7 +50,7 @@ const Page: FC<pageProps> = ({}) => {
           }
         />
       </section>
-    </>
+    </div>
   );
 };
 

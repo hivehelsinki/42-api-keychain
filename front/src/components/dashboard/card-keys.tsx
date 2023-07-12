@@ -43,7 +43,7 @@ const CardKeys: FC<cardKeysProps> = ({ data }) => {
       ))}
       <Link href="/new">
         <Button className="h-full w-full border-dashed" variant="outline">
-          <span className="inline-flex items-center gap-2">
+          <span className="inline-flex min-h-[75px] items-center gap-2">
             <Icons.plus className="h-4 w-4" />
             Add a new key
           </span>
