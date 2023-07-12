@@ -5,7 +5,6 @@ import { signIn, signOut } from 'next-auth/react';
 
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 import User from '@/types/user';
 
