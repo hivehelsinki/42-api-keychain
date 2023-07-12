@@ -8,6 +8,7 @@ import { CardKeys } from '@/components/dashboard/card-keys';
 import { Input } from '@/components/ui/input';
 
 import CardKeyProps from '@/types/card-key';
+import { Label } from '@/components/ui/label';
 
 interface pageProps {}
 
@@ -29,17 +30,24 @@ const Page: FC<pageProps> = ({}) => {
 
   return (
     <div className="pb-6 md:pb-0">
-      <div id="header" className="flex items-center justify-between">
+      <div id="header">
         <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+        <p className="mt-3">
+          Welcome to your dashboard where you can manage your keys and overwatch
+          their validity
+        </p>
       </div>
 
-      <section className="mt-10 flex flex-col gap-8">
+      <section className="mt-5 flex flex-col gap-3 md:mt-10">
+        <Label className="font-bold">Search</Label>
         <Input
           placeholder="Search by name or client id"
           autoFocus
           onChange={handleSearch}
         />
+
         <CardKeys
+          className="mt-5"
           data={
             search
               ? data.filter(

@@ -13,6 +13,7 @@ import { Ping } from '@/components/ping';
 import { Button } from '@/components/ui/button';
 
 import CardKeyProps from '@/types/card-key';
+import { cn } from '@/lib/utils';
 
 interface renderElemProps {
   datum: CardKeyProps;
@@ -20,7 +21,7 @@ interface renderElemProps {
 
 const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
   <Card
-    className="group hover:bg-accent hover:text-accent-foreground"
+    className="group rounded-md hover:bg-accent hover:text-accent-foreground"
     {...props}
   >
     <CardHeader className="relative">
@@ -33,11 +34,17 @@ const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
 
 interface cardKeysProps {
   data: CardKeyProps[];
+  className: string;
 }
 
-const CardKeys: FC<cardKeysProps> = ({ data }) => {
+const CardKeys: FC<cardKeysProps> = ({ data, className }) => {
   return (
-    <div className="grid min-h-max grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2 lg:grid-cols-4">
+    <div
+      className={cn(
+        'grid min-h-max grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2 lg:grid-cols-4',
+        className
+      )}
+    >
       {data.map((datum: CardKeyProps) => (
         <RenderElem datum={datum} key={datum.id} />
       ))}
