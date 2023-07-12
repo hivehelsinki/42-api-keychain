@@ -14,7 +14,7 @@ export function ModeToggle() {
   }, []);
 
   if (!mounted) {
-    return <div className='h-6 w-6'></div>;
+    return <div className="h-6 w-6"></div>;
   }
 
   const handleClick = () => {
@@ -24,9 +24,9 @@ export function ModeToggle() {
   return (
     <button onClick={handleClick}>
       {theme === 'dark' ? (
-        <Icons.sun className="h-6 text-neutral-300 hover:text-neutral-200" />
+        <Icons.sun className="h-5 text-neutral-300 hover:text-neutral-200 md:h-6" />
       ) : (
-        <Icons.moon className="h-6 text-neutral-500 hover:text-neutral-600" />
+        <Icons.moon className="h-5 text-neutral-500 hover:text-neutral-600 md:h-6" />
       )}
     </button>
   );

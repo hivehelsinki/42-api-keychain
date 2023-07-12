@@ -16,7 +16,9 @@ const Navbar: FC<navbarProps> = ({ user }) => {
     <nav className="flex h-16 w-full border-b text-gray-950 dark:border-b-gray-600 dark:bg-gray-800 dark:text-gray-100">
       <div className="container flex justify-between">
         <div className="flex items-center gap-10 text-gray-950">
-          <Icons.logo className="h-6 w-auto dark:fill-gray-100" />
+          <a href="/">
+            <Icons.logo className="h-6 w-auto dark:fill-gray-100" />
+          </a>
           <span className="hidden text-lg font-bold tracking-tight dark:text-gray-200 md:inline-block">
             API Keychain
           </span>
@@ -31,7 +33,7 @@ const Navbar: FC<navbarProps> = ({ user }) => {
               target="_blank"
               className="flex items-center"
             >
-              <Icons.gitHub className="aspect-square h-6 text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-200" />
+              <Icons.gitHub className="aspect-square h-5 text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-200 md:h-6" />
             </Link>
           </div>
         </div>

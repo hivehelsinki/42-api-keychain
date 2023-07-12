@@ -17,12 +17,11 @@ const LoginButton: FC<loginButtonProps> = ({ user }) => {
   if (user) {
     return (
       <div className="flex items-center gap-3">
-        <Avatar>
-          <AvatarImage src={user.image_url} />
-          <AvatarFallback>HV</AvatarFallback>
-        </Avatar>
+        <a href="/dashboard">
+          <Icons.key className="h-5 md:h-6" />
+        </a>
         <a onClick={() => signOut()}>
-          <Icons.logout className="h-6" />
+          <Icons.logout className="h-5 md:h-6" />
         </a>
       </div>
     );
