@@ -47,7 +47,6 @@ const FormAddKey = () => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     fetch('/api/keys', {
       method: 'POST',
       body: JSON.stringify(values),

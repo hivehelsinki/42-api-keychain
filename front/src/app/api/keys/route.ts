@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       owned_by: user.login,
     }),
   });
-  console.log(res);
+
   return new Response('ok', { status: 201 });
 }
 
