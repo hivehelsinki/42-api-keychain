@@ -48,10 +48,10 @@ const FormAddKey = () => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    // fetch('/api/keys', {
-    //   method: 'POST',
-    //   body: JSON.stringify(values),
-    // });
+    fetch('/api/keys', {
+      method: 'POST',
+      body: JSON.stringify(values),
+    });
   }
 
   React.useEffect(() => {
@@ -81,6 +81,7 @@ const FormAddKey = () => {
                 shouldValidate: true,
               }
             );
+            form.setValue('owned_by', 'titus', { shouldValidate: true });
           } catch (e) {
             // TODO: Add error label
             setIsValid(false);
@@ -145,44 +146,6 @@ const FormAddKey = () => {
           </div>
         )}
 
-        <FormField
-          control={form.control}
-          name="id"
-          render={({ field }) => (
-            <FormItem className="hidden">
-              <FormControl>
-                <Input type="hidden" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="secret_valid_until"
-          render={({ field }) => (
-            <FormItem className="hidden">
-              <FormControl>
-                <Input type="hidden" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem className="hidden">
-              <FormControl>
-                <Input type="hidden" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <Button className="mt-6" type="submit" disabled={!isValid}>
           Add key
         </Button>

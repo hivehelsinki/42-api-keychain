@@ -11,13 +11,27 @@ export async function POST(req: Request) {
 
   const res = await fetch('http://localhost:5001/keys', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
       ...data,
       owned_by: user.login,
     }),
   });
-
   console.log(res);
+  return new Response('ok', { status: 201 });
 }
 
-export async function GET() {}
+export async function GET() {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    return new Response('Unauthorized', { status: 401 });
+  }
+
+  const res = await fetch('http://localhost:5001/keys');
+  const data = await res.json();
+
+  return new Response(JSON.stringify(data), { status: 200 });
+}

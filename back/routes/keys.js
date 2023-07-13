@@ -76,9 +76,19 @@ router.get("/", (req, res) => {
 
 // Create a new key
 router.post("/", (req, res) => {
-  const { client_id, client_secret, secret_valid_until, owned_by } = req.body;
-  const id = keys.length + 1;
-  const newKey = { id, client_id, client_secret, secret_valid_until, owned_by };
+  console.log(JSON.stringify(req.body));
+  const { id, name, client_id, client_secret, secret_valid_until, owned_by } =
+    req.body;
+  const newKey = {
+    id,
+    name,
+    client_id,
+    client_secret,
+    secret_valid_until,
+    owned_by,
+  };
+
+  console.log(`iciii ${JSON.stringify(newKey)}`);
   keys.push(newKey);
   res.status(201).json(newKey);
 });
