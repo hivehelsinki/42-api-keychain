@@ -21,7 +21,7 @@ interface renderElemProps {
 
 const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
   <Card
-    className="group rounded-md transition-colors duration-200 ease-in-out hover:bg-accent hover:text-accent-foreground"
+    className="group rounded-md transition-colors duration-200 ease-in-out hover:border-primary hover:bg-primary/10 hover:text-accent-foreground"
     {...props}
   >
     <CardHeader className="relative">
