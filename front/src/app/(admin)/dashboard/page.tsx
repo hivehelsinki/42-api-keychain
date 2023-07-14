@@ -23,7 +23,28 @@ const Page: FC<pageProps> = ({}) => {
 
   if (error) {
     console.log(error);
-    return <div>failed to load</div>;
+    return (
+      <div className="pb-6 md:pb-0">
+        <div id="header">
+          <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+          <p className="mt-3">
+            Welcome to your dashboard where you can manage your keys and
+            overwatch their validity
+          </p>
+        </div>
+
+        <section className="mt-5 flex flex-col gap-3 md:mt-10">
+          <Label className="font-bold">Search</Label>
+          <Input
+            placeholder="Search by name or client id"
+            autoFocus
+            onChange={handleSearch}
+          />
+
+          <p className="mt-5">Failed to connect with the server</p>
+        </section>
+      </div>
+    );
   }
 
   if (!data)
