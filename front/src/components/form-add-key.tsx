@@ -80,9 +80,7 @@ const FormAddKey = () => {
                 shouldValidate: true,
               }
             );
-            form.setValue('owned_by', 'titus', { shouldValidate: true });
           } catch (e) {
-            // TODO: Add error label
             setIsValid(false);
           }
         }
@@ -128,16 +126,16 @@ const FormAddKey = () => {
         />
 
         {isValid && (
-          <div className="flex items-center gap-2 bg-green-100 py-2 pl-2 text-sm dark:bg-green-700">
+          <div className="mt-3 flex items-center gap-2 bg-green-100 py-4 pl-4 text-sm dark:bg-green-700">
             <Icons.check className="h-4 w-4 text-green-600 dark:text-gray-200" />
             <p className="dark:text-gray-200">
-              Application found under the name <b>{keyName}</b>
+              Application found under the name <b>{keyName}</b>.
             </p>
           </div>
         )}
 
         {isValid === false && (
-          <div className="flex items-center gap-2 bg-red-100 py-2 pl-2 text-sm dark:bg-red-500">
+          <div className="mt-3 flex items-center gap-2 bg-red-100 py-4 pl-4 text-sm dark:bg-red-500">
             <Icons.close className="h-4 w-4 text-red-600/80 dark:text-gray-200" />
             <p className="dark:text-gray-200">
               Application not found or not valid
@@ -145,7 +143,7 @@ const FormAddKey = () => {
           </div>
         )}
 
-        <Button className="mt-6" type="submit" disabled={!isValid}>
+        <Button className="mt-4" type="submit" disabled={!isValid}>
           Add key
         </Button>
       </form>

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
+import moment from 'moment';
+
 import {
   Card,
   CardDescription,
@@ -25,9 +27,11 @@ const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
     {...props}
   >
     <CardHeader className="relative">
-      <Ping className="absolute -right-2 -top-2" />
-      <CardTitle>{datum.name}</CardTitle>
-      <CardDescription>Expires in 30 days (20/06/2022)</CardDescription>
+      <Ping className="absolute right-3 top-3" />
+      <CardTitle className="text-md">{datum.name}</CardTitle>
+      <CardDescription>
+        Rotation {moment(datum.secret_valid_until, 'DD/MM/YYYY').fromNow()}
+      </CardDescription>
     </CardHeader>
   </Card>
 );

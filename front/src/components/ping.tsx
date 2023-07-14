@@ -4,7 +4,7 @@ import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '@/lib/utils';
 
 const pingVariants = tv({
-  base: 'rounded-full h-4 w-4',
+  base: 'rounded-full h-3 w-3',
   variants: {
     variant: {
       default: 'bg-green-400',
