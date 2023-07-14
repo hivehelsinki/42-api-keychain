@@ -9,7 +9,7 @@ const pingVariants = tv({
     variant: {
       default: 'bg-green-400',
       warning: 'bg-orange-400',
-      danger: 'bg-red-400',
+      danger: 'bg-red-600',
     },
   },
   defaultVariants: {

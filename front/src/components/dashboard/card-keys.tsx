@@ -15,7 +15,7 @@ import { Ping } from '@/components/ping';
 import { Button } from '@/components/ui/button';
 
 import CardKeyProps from '@/types/card-key';
-import { cn } from '@/lib/utils';
+import { cn, dateVariant } from '@/lib/utils';
 
 interface renderElemProps {
   datum: CardKeyProps;
@@ -27,7 +27,10 @@ const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
     {...props}
   >
     <CardHeader className="relative">
-      <Ping className="absolute right-3 top-3" />
+      <Ping
+        className="absolute right-3 top-3"
+        variant={dateVariant(datum.secret_valid_until)}
+      />
       <CardTitle className="text-md">{datum.name}</CardTitle>
       <CardDescription>
         Rotation {moment(datum.secret_valid_until, 'YYYY-MM-DD').fromNow()}

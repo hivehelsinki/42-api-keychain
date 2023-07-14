@@ -8,7 +8,7 @@ let keys = [
     client_id:
       "u-s4t2af-a9ad7a9462d4ca4767c5c464ccae0e4527d7d311d77819c380339b1f33b804ec",
     client_secret: "client_secret1",
-    secret_valid_until: "2023-09-13",
+    secret_valid_until: "2023-08-13",
     owned_by: "titus",
   },
   {
