@@ -30,7 +30,7 @@ const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
       <Ping className="absolute right-3 top-3" />
       <CardTitle className="text-md">{datum.name}</CardTitle>
       <CardDescription>
-        Rotation {moment(datum.secret_valid_until, 'DD/MM/YYYY').fromNow()}
+        Rotation {moment(datum.secret_valid_until, 'YYYY-MM-DD').fromNow()}
       </CardDescription>
     </CardHeader>
   </Card>
