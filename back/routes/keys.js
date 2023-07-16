@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var { pool } = require("../config/database");
+const database = require("../config/database");
 
 let keys = [
   {
@@ -59,46 +59,37 @@ let keys = [
   },
 ];
 
-// Get all keys
+// INDEX
 router.get("/", (req, res) => {
-  pool.query("SELECT * FROM keys", (error, results) => {
-    if (error) {
-      throw error;
+  database.query(
+    "SELECT * FROM keys ORDER BY secret_valid_until",
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      res.status(200).json(results.rows);
     }
-    res.status(200).json(results.rows);
-  });
-  // res.json(keys);
+  );
 });
 
-// Get a specific key
-// router.get("/:id", (req, res) => {
-//   const id = parseInt(req.params.id);
-//   const key = keys.find((k) => k.id === id);
-//   if (key) {
-//     res.json(key);
-//   } else {
-//     res.status(404).json({ error: "Key not found" });
-//   }
-// });
-
-// Create a new key
+// CREATE
 router.post("/", (req, res) => {
   const { id, name, client_id, client_secret, secret_valid_until, owned_by } =
     req.body;
-  const newKey = {
-    id,
-    name,
-    client_id,
-    client_secret,
-    secret_valid_until,
-    owned_by,
-  };
 
-  keys.push(newKey);
-  res.status(201).json(newKey);
+  database.query(
+    "INSERT INTO keys (id, name, client_id, client_secret, secret_valid_until, owned_by) VALUES ($1, $2, $3, $4, $5, $6) returning *",
+    [id, name, client_id, client_secret, secret_valid_until, owned_by],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      res.status(201).json(results.rows);
+    }
+  );
 });
 
-// Update a key
+// UPDATE
 router.patch("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const key = keys.find((k) => k.id === id);
@@ -114,7 +105,7 @@ router.patch("/:id", (req, res) => {
   }
 });
 
-// Delete a key
+// DESTROY/DELETE
 router.delete("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const index = keys.findIndex((k) => k.id === id);

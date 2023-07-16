@@ -8,7 +8,7 @@ module.exports = {
                 name TEXT NOT NULL,
                 client_id TEXT NOT NULL,
                 client_secret TEXT NOT NULL,
-                secret_valid_until TEXT NOT NULL,
+                secret_valid_until TIMESTAMP NOT NULL,
                 owned_by TEXT NOT NULL,
                 created_at TIMESTAMP NOT NULL DEFAULT NOW()
             );

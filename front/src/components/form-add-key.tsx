@@ -64,7 +64,7 @@ const FormAddKey = () => {
           });
           try {
             const keyInfo = await res.json();
-            // console.log(keyInfo);
+            console.log(keyInfo);
             setIsValid(true);
             setKeyName(keyInfo.appName);
             form.setValue('id', Number(keyInfo.appId), {
@@ -73,9 +73,7 @@ const FormAddKey = () => {
             form.setValue('name', keyInfo.appName, { shouldValidate: true });
             form.setValue(
               'secret_valid_until',
-              new Date(keyInfo.secret_valid_until * 1000)
-                .toISOString()
-                .split('T')[0],
+              new Date(keyInfo.secret_valid_until * 1000).toISOString(),
               {
                 shouldValidate: true,
               }
