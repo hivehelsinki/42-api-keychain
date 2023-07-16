@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var { pool } = require("../config/database");
 
 let keys = [
   {
@@ -60,7 +61,13 @@ let keys = [
 
 // Get all keys
 router.get("/", (req, res) => {
-  res.json(keys);
+  pool.query("SELECT * FROM keys", (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.status(200).json(results.rows);
+  });
+  // res.json(keys);
 });
 
 // Get a specific key

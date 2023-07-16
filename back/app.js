@@ -5,6 +5,9 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
 
+const database = require("./config/database");
+const init = require("./config/init");
+
 var indexRouter = require("./routes/index");
 var healthRouter = require("./routes/health");
 var keysRouter = require("./routes/keys");
@@ -25,5 +28,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/health", healthRouter);
 app.use("/keys", keysRouter);
+
+database.connect();
+init.initialize();
 
 module.exports = app;
