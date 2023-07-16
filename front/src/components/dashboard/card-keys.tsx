@@ -31,7 +31,7 @@ const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
         className="absolute right-3 top-3"
         variant={dateVariant(datum.secret_valid_until)}
       />
-      <CardTitle className="text-md">{datum.name}</CardTitle>
+      <CardTitle className="text-md uppercase">{datum.name}</CardTitle>
       <CardDescription>
         Rotation {moment(datum.secret_valid_until, 'YYYY-MM-DD').fromNow()}
       </CardDescription>

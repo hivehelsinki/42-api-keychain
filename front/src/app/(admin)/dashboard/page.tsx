@@ -95,7 +95,12 @@ const Page: FC<pageProps> = ({}) => {
             search
               ? data.filter(
                   (app: CardKeyProps) =>
-                    app.name.includes(search) || app.client_id.includes(search)
+                    app.name
+                      .toLowerCase()
+                      .includes(search.toLocaleLowerCase()) ||
+                    app.client_id
+                      .toLocaleLowerCase()
+                      .includes(search.toLocaleLowerCase())
                 )
               : data
           }
