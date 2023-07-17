@@ -55,7 +55,7 @@ const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
           </DropdownMenuContent>
         </DropdownMenu>
       </CardTitle>
-      <CardDescription>
+      <CardDescription className="mt-1.5">
         Rotation {moment(datum.secret_valid_until, 'YYYY-MM-DD').fromNow()}
       </CardDescription>
     </CardHeader>
