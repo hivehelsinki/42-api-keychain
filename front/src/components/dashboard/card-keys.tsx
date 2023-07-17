@@ -10,6 +10,13 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from '@/components/ui/dropdown-menu';
+
 import { Icons } from '@/components/icons';
 import { Ping } from '@/components/ping';
 import { Button } from '@/components/ui/button';
@@ -23,7 +30,7 @@ interface renderElemProps {
 
 const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
   <Card
-    className="group rounded-md transition-transform delay-150 ease-in-out hover:scale-[1.01] hover:border-primary hover:text-accent-foreground"
+    className="group rounded-md transition-transform delay-150 ease-in-out  hover:border-primary hover:text-accent-foreground"
     {...props}
   >
     <CardHeader className="relative">
@@ -31,7 +38,23 @@ const RenderElem: FC<renderElemProps> = ({ datum, ...props }) => (
         className="absolute right-3 top-3"
         variant={dateVariant(datum.secret_valid_until)}
       />
-      <CardTitle className="text-md uppercase">{datum.name}</CardTitle>
+
+      <CardTitle className="text-md">
+        <DropdownMenu>
+          <DropdownMenuTrigger className="flex items-center gap-1 uppercase focus-visible:outline-none">
+            {datum.name}
+            <span className="hidden cursor-pointer border-gray-800 group-hover:inline-flex">
+              <Icons.down className="h-5 w-5" />
+            </span>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-40 translate-x-20 transform">
+            <DropdownMenuItem>Update secret</DropdownMenuItem>
+            <DropdownMenuItem className="text-red-600 hover:text-red-600">
+              Remove
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </CardTitle>
       <CardDescription>
         Rotation {moment(datum.secret_valid_until, 'YYYY-MM-DD').fromNow()}
       </CardDescription>
