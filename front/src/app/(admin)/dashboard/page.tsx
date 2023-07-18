@@ -15,7 +15,9 @@ interface pageProps {}
 const Page: FC<pageProps> = ({}) => {
   const [search, setSearch] = useState<string>('');
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error } = useSWR('http://localhost:5001/keys', fetcher);
+  const { data, error } = useSWR('http://localhost:5001/keys', fetcher, {
+    refreshInterval: 1000,
+  });
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
