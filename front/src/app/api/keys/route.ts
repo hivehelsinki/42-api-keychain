@@ -38,6 +38,12 @@ export async function POST(req: Request) {
       }),
     });
 
+    if (!key?.ok) {
+      const error = await key.json();
+      console.error(error);
+      return new Response(null, { status: 500 });
+    }
+
     return new Response(JSON.stringify(key));
   } catch (error) {
     return new Response(null, { status: 500 });

@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
     [id, name, client_id, client_secret, secret_valid_until, owned_by],
     (error, results) => {
       if (error) {
-        return res.status(422).json({ error: error.message });
+        return res.status(500).json({ error: error.message });
       }
       res.status(201).json(results.rows);
     }

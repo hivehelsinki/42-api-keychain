@@ -118,7 +118,7 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
                   router.refresh();
                 }
               }}
-              className="bg-red-600 focus:ring-red-600"
+              className="bg-destructive/80 focus:ring-destructive"
             >
               {isDeleteLoading ? (
                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

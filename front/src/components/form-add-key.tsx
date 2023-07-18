@@ -58,10 +58,10 @@ const FormAddKey = () => {
     if (!res?.ok) {
       console.log('Something went wrong');
       // TODO: add toast
+    } else {
+      router.refresh();
+      router.back();
     }
-
-    router.refresh();
-    router.back();
   }
 
   React.useEffect(() => {
