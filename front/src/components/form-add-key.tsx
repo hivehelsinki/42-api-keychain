@@ -1,9 +1,10 @@
 'use client';
 
+import React from 'react';
+import { useRouter } from 'next/navigation';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import React from 'react';
 
 import {
   Form,
@@ -35,6 +36,8 @@ const FormAddKey = () => {
   const [isValid, setIsValid] = React.useState<undefined | boolean>(undefined);
   const [keyName, setKeyName] = React.useState<string>('');
 
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,11 +49,19 @@ const FormAddKey = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    fetch('/api/keys', {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const res = await fetch('/api/keys', {
       method: 'POST',
       body: JSON.stringify(values),
     });
+
+    if (!res?.ok) {
+      console.log('Something went wrong');
+      // TODO: add toast
+    }
+
+    router.refresh();
+    router.back();
   }
 
   React.useEffect(() => {

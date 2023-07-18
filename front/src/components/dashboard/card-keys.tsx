@@ -72,9 +72,9 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
 
         <CardTitle className="text-md">
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 uppercase focus-visible:outline-none">
+            <DropdownMenuTrigger className="relative uppercase focus-visible:outline-none">
               {datum.name}
-              <span className="hidden cursor-pointer border-gray-800 group-hover:inline-flex">
+              <span className="absolute -right-6 top-0.5 hidden cursor-pointer border-gray-800 group-hover:block">
                 <Icons.down className="h-5 w-5" />
               </span>
             </DropdownMenuTrigger>
@@ -143,7 +143,7 @@ const CardKeys: FC<cardKeysProps> = ({ data, className }) => {
   return (
     <div
       className={cn(
-        'grid min-h-max grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2 lg:grid-cols-4',
+        'grid min-h-max grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2 lg:grid-cols-3',
         className
       )}
     >
