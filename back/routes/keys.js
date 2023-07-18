@@ -108,13 +108,13 @@ router.patch("/:id", (req, res) => {
 // DESTROY/DELETE
 router.delete("/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  const index = keys.findIndex((k) => k.id === id);
-  if (index !== -1) {
-    const deletedKey = keys.splice(index, 1)[0];
-    res.json(deletedKey);
-  } else {
-    res.status(404).json({ error: "Key not found" });
-  }
+
+  database.query("DELETE FROM keys WHERE id = $1", [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.status(200).json(results.rows);
+  });
 });
 
 module.exports = router;

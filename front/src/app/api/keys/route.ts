@@ -1,5 +1,18 @@
 import { getCurrentUser } from '@/lib/session';
 
+export async function GET() {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    return new Response('Unauthorized', { status: 401 });
+  }
+
+  const res = await fetch('http://localhost:5001/keys');
+  const data = await res.json();
+
+  return new Response(JSON.stringify(data), { status: 200 });
+}
+
 export async function POST(req: Request) {
   const user = await getCurrentUser();
 
@@ -20,18 +33,7 @@ export async function POST(req: Request) {
     }),
   });
 
+  // TODO: check if key was created
+
   return new Response('ok', { status: 201 });
-}
-
-export async function GET() {
-  const user = await getCurrentUser();
-
-  if (!user) {
-    return new Response('Unauthorized', { status: 401 });
-  }
-
-  const res = await fetch('http://localhost:5001/keys');
-  const data = await res.json();
-
-  return new Response(JSON.stringify(data), { status: 200 });
 }

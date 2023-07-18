@@ -11,6 +11,7 @@ import {
   BookKey,
   ChevronDown,
   MoreHorizontal,
+  Loader2,
 } from 'lucide-react';
 
 export const Icons = {
@@ -25,6 +26,7 @@ export const Icons = {
   plus: Plus,
   down: ChevronDown,
   more: MoreHorizontal,
+  spinner: Loader2,
   gitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path

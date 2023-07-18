@@ -64,7 +64,7 @@ const FormAddKey = () => {
           });
           try {
             const keyInfo = await res.json();
-            console.log(keyInfo);
+
             setIsValid(true);
             setKeyName(keyInfo.appName);
             form.setValue('id', Number(keyInfo.appId), {

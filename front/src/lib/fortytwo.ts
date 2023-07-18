@@ -32,9 +32,6 @@ async function fetchAppInfo({
     },
   });
 
-  console.log(access_token);
-  console.log(secret_valid_until);
-
   return {
     appId: restwo.headers.get('x-application-id'),
     appRoles: restwo.headers.get('x-application-roles'),
