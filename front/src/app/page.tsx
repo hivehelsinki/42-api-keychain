@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { signIn } from 'next-auth/react';
 import { FC } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
+import { LoginButton } from '@/components/auth/login-button';
 
 interface pageProps {}
 
@@ -19,7 +21,7 @@ const page: FC<pageProps> = ({}) => {
           - the ultimate solution designed for hassle-free control.
         </div>
         <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
-          <Button>Get started</Button>
+          <LoginButton>Get started</LoginButton>
           <Button variant="outline">
             <Link
               href="https://github.com/hivehelsinki/42-api-keychain"

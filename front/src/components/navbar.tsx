@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
-import { LoginButton } from '@/components/auth/login-button';
+import { LoginToggle } from '@/components/auth/login-toggle';
 import { Icons } from '@/components/icons';
 import { ModeToggle } from '@/components/moddle-toggle';
 
@@ -24,7 +24,7 @@ const Navbar: FC<navbarProps> = ({ user }) => {
           </span>
         </div>
         <div id="menu" className="flex items-center gap-3 md:gap-5">
-          <LoginButton user={user} />
+          <LoginToggle user={user} />
           <div className="flex gap-3 md:gap-5">
             <div className="w-[1px] bg-gray-300/90 dark:bg-gray-600"></div>
             <ModeToggle />
