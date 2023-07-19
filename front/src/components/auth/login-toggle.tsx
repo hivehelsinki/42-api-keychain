@@ -20,13 +20,13 @@ const LoginToggle: FC<loginButtonProps> = ({ user }) => {
           href="/dashboard"
           className="flex h-9 w-9 items-center justify-center rounded-md px-0 py-2 text-sm font-medium transition-colors hover:bg-accent"
         >
-          <Icons.key className="h-5" />
+          <Icons.key className="h-5" strokeWidth={1.4} />
         </a>
         <a
           onClick={() => signOut()}
           className="flex h-9 w-9 items-center justify-center rounded-md px-0 py-2 text-sm font-medium transition-colors hover:bg-accent"
         >
-          <Icons.logout className="h-5" />
+          <Icons.logout className="h-5" strokeWidth={1.4} />
         </a>
       </div>
     );
