@@ -1,36 +1,53 @@
 const database = require("./database");
 
+async function createSettingsTable() {
+  try {
+    database.query(`
+      CREATE TABLE IF NOT EXISTS settings (
+        id SERIAL PRIMARY KEY,
+        setting_key VARCHAR(255) NOT NULL,
+        setting_value VARCHAR(255) NOT NULL
+      );`);
+  } catch (err) {
+    console.error("Error creating table settings: ", err);
+  }
+}
+
+async function populateSettingsTable() {
+  try {
+    database.query(`
+      INSERT INTO settings (setting_key, setting_value)
+      VALUES
+        ('slack_enabled', 'false'),
+        ('slack_webhook_url', '')
+      ON CONFLICT DO NOTHING;
+    `);
+  } catch (err) {
+    console.error("Error inserting default settings: ", err);
+  }
+}
+
+async function createKeysTable() {
+  try {
+    database.query(`
+      CREATE TABLE IF NOT EXISTS keys (
+        id TEXT PRIMARY KEY,
+        name TEXT NOT NULL,
+        client_id TEXT NOT NULL,
+        client_secret TEXT NOT NULL,
+        secret_valid_until TIMESTAMP NOT NULL,
+        owned_by TEXT NOT NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT NOW()
+      );`);
+  } catch (err) {
+    console.error("Error creating table settings: ", err);
+  }
+}
+
 module.exports = {
   initialize: () => {
-    let query = `
-            create table if not exists settings (
-                id TEXT PRIMARY KEY,
-                campus_id integer,
-                slack BOOLEAN,
-                slack_webhook TEXT,
-                created_at TIMESTAMP NOT NULL DEFAULT NOW()
-            );
-    `;
-
-    database.query(query, (err) => {
-      if (err) console.error(err);
-      else console.log("settings table created");
-    });
-
-    query = `
-            create table if not exists keys (
-                id TEXT PRIMARY KEY,
-                name TEXT NOT NULL,
-                client_id TEXT NOT NULL,
-                client_secret TEXT NOT NULL,
-                secret_valid_until TIMESTAMP NOT NULL,
-                owned_by TEXT NOT NULL,
-                created_at TIMESTAMP NOT NULL DEFAULT NOW()
-            );
-        `;
-    database.query(query, (err) => {
-      if (err) console.error(err);
-      else console.log("keys table created");
-    });
+    createSettingsTable();
+    populateSettingsTable();
+    createKeysTable();
   },
 };

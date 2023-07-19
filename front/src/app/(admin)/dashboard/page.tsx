@@ -6,6 +6,7 @@ import useSWR from 'swr';
 
 import { CardKeys } from '@/components/dashboard/card-keys';
 import { Input } from '@/components/ui/input';
+import { Icons } from '@/components/icons';
 
 import CardKeyProps from '@/types/card-key';
 import { Label } from '@/components/ui/label';
@@ -68,7 +69,10 @@ const Page: FC<pageProps> = ({}) => {
             onChange={handleSearch}
           />
 
-          <p className="mt-5">Loading</p>
+          <div className="mt-5 inline-flex items-center gap-2">
+            <Icons.spinner className="h-4 w-4 animate-spin " />
+            Loading
+          </div>
         </section>
       </div>
     );
