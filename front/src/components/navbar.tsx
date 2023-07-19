@@ -13,27 +13,27 @@ type navbarProps = {
 
 const Navbar: FC<navbarProps> = ({ user }) => {
   return (
-    <nav className="flex h-16 w-full border-b text-gray-950 dark:border-b-gray-600 dark:bg-gray-800 dark:text-gray-100">
+    <nav className="supports-backdrop-blur:bg-background/60 sticky top-0 z-40 flex h-14 w-full border-b bg-background/95 text-gray-950 backdrop-blur dark:border-b-gray-600 dark:bg-gray-800 dark:text-gray-100">
       <div className="container flex justify-between">
-        <div className="flex items-center gap-10 text-gray-950">
+        <div className="flex items-center gap-2 text-gray-950">
           <a href="/">
-            <Icons.logo className="h-6 w-auto dark:fill-gray-100" />
+            <Icons.logo className="h-4 w-auto dark:fill-gray-100" />
           </a>
           <span className="hidden text-lg font-bold tracking-tight dark:text-gray-200 md:inline-block">
-            API Keychain
+            Keychain
           </span>
         </div>
         <div id="menu" className="flex items-center gap-3 md:gap-5">
           <LoginToggle user={user} />
-          <div className="flex gap-3 md:gap-5">
+          <div className="flex space-x-2">
             <div className="w-[1px] bg-gray-300/90 dark:bg-gray-600"></div>
             <ModeToggle />
             <Link
               href="https://github.com/hivehelsinki/42-api-keychain"
               target="_blank"
-              className="flex items-center"
+              className="flex h-9 w-9 items-center justify-center rounded-md px-0 py-2 text-sm font-medium transition-colors hover:bg-accent"
             >
-              <Icons.gitHub className="aspect-square h-5 text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-200 md:h-6" />
+              <Icons.gitHub className="aspect-square h-5 text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-200" />
             </Link>
           </div>
         </div>

@@ -1,13 +1,12 @@
 'use client';
 
 import { FC } from 'react';
-import { signIn, signOut } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 
-import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
+import { LoginButton } from './login-button';
 
 import User from '@/types/user';
-import { LoginButton } from './login-button';
 
 type loginButtonProps = {
   user: User | null;
@@ -16,12 +15,18 @@ type loginButtonProps = {
 const LoginToggle: FC<loginButtonProps> = ({ user }) => {
   if (user) {
     return (
-      <div className="flex items-center gap-3">
-        <a href="/dashboard">
-          <Icons.key className="h-5 md:h-6" />
+      <div className="flex items-center gap-2">
+        <a
+          href="/dashboard"
+          className="flex h-9 w-9 items-center justify-center rounded-md px-0 py-2 text-sm font-medium transition-colors hover:bg-accent"
+        >
+          <Icons.key className="h-5" />
         </a>
-        <a onClick={() => signOut()}>
-          <Icons.logout className="h-5 md:h-6" />
+        <a
+          onClick={() => signOut()}
+          className="flex h-9 w-9 items-center justify-center rounded-md px-0 py-2 text-sm font-medium transition-colors hover:bg-accent"
+        >
+          <Icons.logout className="h-5" />
         </a>
       </div>
     );

@@ -17,7 +17,7 @@ const page: FC<pageProps> = ({}) => {
           Manage smoothly your 42 API applications.
         </h1>
         <div className="max-w-[780px] text-lg text-muted-foreground sm:text-xl">
-          Experience seamless managuement of your 42 API Keys with Hive Keychain
+          Experience seamless management of your 42 API Keys with Hive Keychain
           - the ultimate solution designed for hassle-free control.
         </div>
         <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
@@ -33,15 +33,15 @@ const page: FC<pageProps> = ({}) => {
           </Button>
         </div>
       </section>
-      <section className="mt-20 flex items-center justify-center">
+      <section className="mt-14 flex items-center justify-center">
         <Image
           src="https://picsum.photos/1024/600"
-          width={1024}
+          width={800}
           height={600}
           alt="placeholder"
         />
       </section>
-      <section className="mt-20 space-y-16 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-16 md:space-y-0 lg:gap-x-10">
+      <section className="mt-14 space-y-16 pb-10 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-16 md:space-y-0 lg:gap-x-10">
         <article>
           <h2 className="text-lg font-semibold leading-7">
             Why would I need this?
@@ -55,17 +55,11 @@ const page: FC<pageProps> = ({}) => {
         </article>
         <article>
           <h2 className="text-lg font-semibold leading-7">
-            What is lorem ipsum?
+            Do I get notification when an app is about to expire?
           </h2>
           <p>
-            Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Ex, quisquam repudiandae? Deleniti repellat porro ad sapiente
-            eum quis sint laborum eveniet et excepturi accusamus dolor
-            molestiae, mollitia voluptatum culpa? Aperiam! Lorem ipsum is Lorem
-            ipsum dolor sit, amet consectetur adipisicing elit. Ex, quisquam
-            repudiandae? Deleniti repellat porro ad sapiente eum quis sint
-            laborum eveniet et excepturi accusamus dolor molestiae, mollitia
-            voluptatum culpa? Aperiam!
+            Yes! You will receive a notification 7 days, 14 and 30 days before
+            the expiration via Slack and email.
           </p>
         </article>
         <article>
