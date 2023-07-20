@@ -8,10 +8,11 @@ import {
   RefreshCw,
   Trash,
   Plus,
-  BookKey,
   ChevronDown,
   MoreHorizontal,
   Loader2,
+  Settings,
+  Menu,
 } from 'lucide-react';
 
 export const Icons = {
@@ -22,11 +23,12 @@ export const Icons = {
   check: Check,
   logout: LogOut,
   refresh: RefreshCw,
-  key: BookKey,
   plus: Plus,
   down: ChevronDown,
   more: MoreHorizontal,
   spinner: Loader2,
+  menu: Menu,
+  settings: Settings,
   gitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
