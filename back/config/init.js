@@ -2,7 +2,7 @@ const database = require("./database");
 
 async function createSettingsTable() {
   try {
-    database.query(`
+    await database.query(`
       CREATE TABLE IF NOT EXISTS settings (
         id SERIAL PRIMARY KEY,
         setting_key VARCHAR(255) NOT NULL,
@@ -11,9 +11,7 @@ async function createSettingsTable() {
   } catch (err) {
     console.error("Error creating table settings: ", err);
   }
-}
 
-async function populateSettingsTable() {
   try {
     database.query(`
       INSERT INTO settings (setting_key, setting_value)
@@ -22,8 +20,8 @@ async function populateSettingsTable() {
         ('slack_webhook_url', '')
       ON CONFLICT DO NOTHING;
     `);
-  } catch (err) {
-    console.error("Error inserting default settings: ", err);
+  } catch (error) {
+    console.error("Error inserting default settings: ", error);
   }
 }
 
@@ -47,7 +45,6 @@ async function createKeysTable() {
 module.exports = {
   initialize: () => {
     createSettingsTable();
-    populateSettingsTable();
     createKeysTable();
   },
 };
