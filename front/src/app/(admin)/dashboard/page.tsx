@@ -4,7 +4,7 @@ import React, { FC, useState } from 'react';
 
 import useSWR from 'swr';
 
-import { CardKeys } from '@/components/dashboard/card-keys';
+import { CardKeys } from '@/components/card-keys';
 import { Input } from '@/components/ui/input';
 import { Icons } from '@/components/icons';
 
