@@ -6,7 +6,7 @@
   "scripts": {
     "dev:front": "cd front && npm run dev",
     "dev:back": "cd back && npm run dev",
-    "dev": "concurrently \"npm run dev:front\" \"npm run dev:back\"",
+    "dev": "concurrently --names \"front,back\" -c \"green,blue\" \"npm:dev:front\" \"npm:dev:back\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
