@@ -10,6 +10,7 @@ import { Icons } from '@/components/icons';
 
 import CardKeyProps from '@/types/card-key';
 import { Label } from '@/components/ui/label';
+import Header from '@/components/header';
 
 interface pageProps {}
 
@@ -28,13 +29,10 @@ const Page: FC<pageProps> = ({}) => {
     console.log(error);
     return (
       <div className="pb-6 md:pb-0">
-        <div id="header">
-          <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-          <p className="mt-3">
-            Welcome to your dashboard where you can manage your keys and
-            overwatch their validity
-          </p>
-        </div>
+        <Header
+          heading="Dashboard"
+          text="Welcome to your dashboard where you can manage your keys and overwatch their validity"
+        />
 
         <section className="mt-5 flex flex-col gap-3 md:mt-10">
           <Label className="font-bold">Search</Label>
@@ -53,13 +51,10 @@ const Page: FC<pageProps> = ({}) => {
   if (!data)
     return (
       <div className="pb-6 md:pb-0">
-        <div id="header">
-          <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-          <p className="mt-3">
-            Welcome to your dashboard where you can manage your keys and
-            overwatch their validity
-          </p>
-        </div>
+        <Header
+          heading="Dashboard"
+          text="Welcome to your dashboard where you can manage your keys and overwatch their validity"
+        />
 
         <section className="mt-5 flex flex-col gap-3 md:mt-10">
           <Label className="font-bold">Search</Label>
@@ -79,13 +74,10 @@ const Page: FC<pageProps> = ({}) => {
 
   return (
     <div className="pb-6 md:pb-0">
-      <div id="header">
-        <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-        <p className="mt-3">
-          Welcome to your dashboard where you can manage your keys and overwatch
-          their validity
-        </p>
-      </div>
+      <Header
+        heading="Dashboard"
+        text="Welcome to your dashboard where you can manage your keys and overwatch their validity"
+      />
 
       <section className="mt-5 flex flex-col gap-3 md:mt-10">
         <Label className="font-bold">Search</Label>
