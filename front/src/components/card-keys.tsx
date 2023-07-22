@@ -91,10 +91,11 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
         </CardTitle>
         <CardDescription className="mt-1.5 space-y-1 pl-2">
           <div className="flex items-center gap-2">
-            <Icons.user strokeWidth={1} className="h-4 w-4" /> {datum.owned_by}
+            <Icons.user strokeWidth={1.5} className="h-4 w-4" />{' '}
+            {datum.owned_by}
           </div>
           <div className="flex items-center gap-2">
-            <Icons.clock strokeWidth={1} className="h-4 w-4" />{' '}
+            <Icons.clock strokeWidth={1.5} className="h-4 w-4" />{' '}
             {moment(datum.secret_valid_until, 'YYYY-MM-DD').fromNow()}
           </div>
         </CardDescription>
