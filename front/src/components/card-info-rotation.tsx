@@ -45,7 +45,7 @@ const CardInfoRotation: FC<cardInfoRotationProps> = ({
             ).fromNow()}
           </TooltipTrigger>
           <TooltipContent side={'right'} sideOffset={10}>
-            <p>{datum.secret_valid_until}</p>
+            <p>{moment(datum.secret_valid_until).format('LLL')}</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
