@@ -89,7 +89,7 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
             </DropdownMenuContent>
           </DropdownMenu>
         </CardTitle>
-        <CardDescription className="mt-1.5 space-y-1 pl-2">
+        <CardDescription className="mt-1.5 space-y-1">
           <div className="flex items-center gap-2">
             <Icons.user strokeWidth={1.5} className="h-4 w-4" />{' '}
             {datum.owned_by}
