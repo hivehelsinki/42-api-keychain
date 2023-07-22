@@ -12,6 +12,8 @@ import {
   MoreHorizontal,
   Loader2,
   Settings,
+  User,
+  TimerReset,
   Menu,
 } from 'lucide-react';
 
@@ -25,8 +27,10 @@ export const Icons = {
   refresh: RefreshCw,
   plus: Plus,
   down: ChevronDown,
+  clock: TimerReset,
   more: MoreHorizontal,
   spinner: Loader2,
+  user: User,
   menu: Menu,
   settings: Settings,
   gitHub: (props: LucideProps) => (
