@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 
-import moment from 'moment';
 import { cn, dateVariant } from '@/lib/utils';
 import { Icons } from '@/components/icons';
 import { Ping } from '@/components/ping';
@@ -32,6 +31,7 @@ import {
 
 import CardKeyProps from '@/types/card-key';
 import { useRouter } from 'next/navigation';
+import CardInfoRotation from './card-info-rotation';
 
 interface keyProps {
   datum: CardKeyProps;
@@ -59,12 +59,14 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
   const [showDeleteAlert, setShowDeleteAlert] = React.useState<boolean>(false);
   const [isDeleteLoading, setIsDeleteLoading] = React.useState<boolean>(false);
 
+  console.log(datum.secret_valid_until);
+
   return (
     <Card
       className="group rounded-md transition-transform delay-150 ease-in-out hover:border-primary hover:text-accent-foreground"
       {...props}
     >
-      <CardHeader className="relative px-6 py-3">
+      <CardHeader className="relative px-6 py-4">
         <Ping
           className="absolute right-3 top-3"
           variant={dateVariant(datum.secret_valid_until)}
@@ -89,15 +91,15 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
             </DropdownMenuContent>
           </DropdownMenu>
         </CardTitle>
-        <CardDescription className="mt-1.5 space-y-1">
+        <CardDescription className="mt-1.5 flex gap-5">
           <div className="flex items-center gap-2">
             <Icons.user strokeWidth={1.5} className="h-4 w-4" />{' '}
             {datum.owned_by}
           </div>
-          <div className="flex items-center gap-2">
-            <Icons.clock strokeWidth={1.5} className="h-4 w-4" />{' '}
-            {moment(datum.secret_valid_until, 'YYYY-MM-DD').fromNow()}
-          </div>
+          <CardInfoRotation
+            datum={datum}
+            variant={dateVariant(datum.secret_valid_until)}
+          />
         </CardDescription>
       </CardHeader>
       <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
