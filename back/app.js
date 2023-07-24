@@ -5,7 +5,6 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
 
-const database = require("./config/database");
 const init = require("./config/init");
 
 var indexRouter = require("./routes/index");
@@ -31,7 +30,6 @@ app.use("/health", healthRouter);
 app.use("/keys", keysRouter);
 app.use("/settings", settingsRouter);
 
-// database.connect();
 init.initialize();
 
 module.exports = app;
