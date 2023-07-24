@@ -1,12 +1,14 @@
 var express = require("express");
 var router = express.Router();
-const database = require("../config/database");
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
 
 // INDEX
 router.get("/", async (req, res) => {
   try {
-    const result = await database.query("SELECT * FROM settings");
-    const settings = result.rows.reduce((acc, row) => {
+    const result = await prisma.settings.findMany();
+    const settings = result.reduce((acc, row) => {
       acc[row.setting_key] = row.setting_value;
       return acc;
     }, {});
@@ -14,7 +16,7 @@ router.get("/", async (req, res) => {
     res.json(settings);
   } catch (error) {
     console.error("Error fetching settings:", error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -23,16 +25,14 @@ router.patch("/:key", async (req, res) => {
   const { value } = req.body;
 
   try {
-    const result = await database.query(
-      "UPDATE settings SET setting_value = $1 WHERE setting_key = $2",
-      [value, key]
-    );
-
-    if (result.rowCount > 0) {
-      res.json({ message: "Setting updated successfully" });
-    } else {
-      res.status(404).json({ error: `Setting not found` });
-    }
+    await prisma.settings.update({
+      where: {
+        setting_key: key,
+      },
+      data: {
+        setting_value: String(value),
+      },
+    });
   } catch (error) {
     console.error("Error updating setting:", error);
     res.status(500).json({ error: "Internal server error" });

@@ -31,7 +31,7 @@ app.use("/health", healthRouter);
 app.use("/keys", keysRouter);
 app.use("/settings", settingsRouter);
 
-database.connect();
+// database.connect();
 init.initialize();
 
 module.exports = app;

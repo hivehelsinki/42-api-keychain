@@ -1,8 +1,8 @@
-const { PrismaClient } = require("@prisma/client");
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-async function initSettings() {
+async function main() {
   const defaultSettings = [
     { key: "slack_enabled", value: "false" },
     { key: "slack_webhook_url", value: "" },
@@ -21,8 +21,12 @@ async function initSettings() {
   }
 }
 
-module.exports = {
-  initialize: () => {
-    initSettings();
-  },
-};
+main()
+  .then(async () => {
+    await prisma.$disconnect();
+  })
+  .catch(async (e) => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  });
