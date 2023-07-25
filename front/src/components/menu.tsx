@@ -12,7 +12,6 @@ import { Button } from './ui/button';
 import { Icons } from './icons';
 import { DropdownMenuGroup } from '@radix-ui/react-dropdown-menu';
 import { signOut } from 'next-auth/react';
-import Link from 'next/link';
 
 interface menuProps {}
 
@@ -20,7 +19,7 @@ const menu: FC<menuProps> = ({}) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="flex h-9 w-9 items-center justify-center rounded-md bg-background/95 px-0 py-2 text-sm font-medium text-gray-950 transition-colors hover:bg-accent">
+        <Button className="flex h-9 w-9 items-center justify-center rounded-md bg-background/95 px-0 py-2 text-sm font-medium text-gray-950 transition-colors hover:bg-accent dark:bg-gray-800">
           <Icons.menu className="h-5" strokeWidth={1.4} />
         </Button>
       </DropdownMenuTrigger>
