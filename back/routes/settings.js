@@ -25,7 +25,7 @@ router.patch("/:key", async (req, res) => {
   const { value } = req.body;
 
   try {
-    await prisma.settings.update({
+    const resp = await prisma.settings.update({
       where: {
         setting_key: key,
       },
@@ -33,6 +33,8 @@ router.patch("/:key", async (req, res) => {
         setting_value: String(value),
       },
     });
+
+    res.status(200).json(resp);
   } catch (error) {
     console.error("Error updating setting:", error);
     res.status(500).json({ error: "Internal server error" });
