@@ -1,4 +1,5 @@
 import { getCurrentUser } from '@/lib/session';
+import { prisma } from '@/lib/db';
 import * as z from 'zod';
 
 const routeContextSchema = z.object({
@@ -20,8 +21,14 @@ export async function DELETE(
   try {
     const { params } = routeContextSchema.parse(context);
 
-    const res = await fetch(`http://localhost:5001/keys/${params.id}`, {
-      method: 'DELETE',
+    // const res = await fetch(`http://localhost:5001/keys/${params.id}`, {
+    //   method: 'DELETE',
+    // });
+
+    await prisma.keys.delete({
+      where: {
+        id: parseInt(params.id),
+      },
     });
 
     return new Response(null, { status: 204 });

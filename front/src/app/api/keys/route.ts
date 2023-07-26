@@ -1,4 +1,5 @@
 import { getCurrentUser } from '@/lib/session';
+import { prisma } from '@/lib/db';
 
 export async function GET() {
   try {
@@ -8,8 +9,9 @@ export async function GET() {
       return new Response(null, { status: 403 });
     }
 
-    const res = await fetch('http://localhost:5001/keys');
-    const keys = await res.json();
+    const keys = await prisma.keys.findMany({
+      orderBy: { secret_valid_until: 'asc' },
+    });
 
     return new Response(JSON.stringify(keys));
   } catch (error) {
@@ -27,25 +29,20 @@ export async function POST(req: Request) {
 
     const data = await req.json();
 
-    const key = await fetch('http://localhost:5001/keys', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+    const key = await prisma.keys.create({
+      data: {
         ...data,
         owned_by: user.login,
-      }),
+      },
     });
 
-    if (!key?.ok) {
-      const error = await key.json();
-      console.error(error);
+    if (!key?.id) {
       return new Response(null, { status: 500 });
     }
 
     return new Response(JSON.stringify(key));
   } catch (error) {
+    console.log(error);
     return new Response(null, { status: 500 });
   }
 }
