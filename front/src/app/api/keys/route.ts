@@ -63,13 +63,12 @@ export async function POST(req: Request) {
       },
     });
 
-    if (!key?.id) {
-      return new Response(null, { status: 500 });
-    }
-
     return new Response(JSON.stringify(key));
   } catch (error) {
-    console.log(error);
+    if (error instanceof z.ZodError) {
+      return new Response(JSON.stringify(error.issues), { status: 422 });
+    }
+
     return new Response(null, { status: 500 });
   }
 }
