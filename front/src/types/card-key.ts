@@ -1,10 +1,10 @@
 interface CardKeyProps {
-  client_id: string;
-  client_secret: string;
+  clientId: string;
+  clientSecret: string;
   id: number;
   name: string;
-  owned_by: string;
-  secret_valid_until: string;
+  ownedBy: string;
+  secretValidUntil: string;
 }
 
 export default CardKeyProps;

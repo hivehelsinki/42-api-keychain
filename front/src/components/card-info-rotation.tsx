@@ -40,7 +40,7 @@ const CardInfoRotation: FC<cardInfoRotationProps> = ({
         <Tooltip>
           <TooltipTrigger>
             {moment(
-              datum.secret_valid_until,
+              datum.secretValidUntil,
               'YYYY-MM-DDThh:mm:ss.000Z'
             ).fromNow()}
           </TooltipTrigger>

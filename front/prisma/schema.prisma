@@ -10,18 +10,18 @@ datasource db {
 model Key {
   id                Int      @id
   name              String
-  ClientId          String                        @map("client_id")
-  ClientSecret      String                        @map("client_secret")
-  OwnedBy           String                        @map("owned_by")
-  SecretValidUntil  DateTime @db.Timestamptz(3)   @map("secret_valid_until")
+  clientId          String                        @map("client_id")
+  clientSecret      String                        @map("client_secret")
+  ownedBy           String                        @map("owned_by")
+  secretValidUntil  DateTime @db.Timestamptz(3)   @map("secret_valid_until")
   createdAt         DateTime @default(now())      @map("created_at")
 
   @@map("keys")
 }
 
 model Setting {
-  SettingKey   String @unique @map("setting_key")
-  SettingValue String         @map("setting_value")
+  settingKey   String @unique @map("setting_key")
+  settingValue String         @map("setting_value")
 
   @@map("settings")
 }

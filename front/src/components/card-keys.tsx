@@ -59,7 +59,7 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
   const [showDeleteAlert, setShowDeleteAlert] = React.useState<boolean>(false);
   const [isDeleteLoading, setIsDeleteLoading] = React.useState<boolean>(false);
 
-  console.log(datum.secret_valid_until);
+  console.log(datum.secretValidUntil);
 
   return (
     <Card
@@ -69,7 +69,7 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
       <CardHeader className="relative px-6 py-4">
         <Ping
           className="absolute right-3 top-3"
-          variant={dateVariant(datum.secret_valid_until)}
+          variant={dateVariant(datum.secretValidUntil)}
         />
 
         <CardTitle className="text-md">
@@ -93,12 +93,11 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
         </CardTitle>
         <CardDescription className="mt-1.5 flex gap-5">
           <div className="flex items-center gap-2">
-            <Icons.user strokeWidth={1.5} className="h-4 w-4" />{' '}
-            {datum.owned_by}
+            <Icons.user strokeWidth={1.5} className="h-4 w-4" /> {datum.ownedBy}
           </div>
           <CardInfoRotation
             datum={datum}
-            variant={dateVariant(datum.secret_valid_until)}
+            variant={dateVariant(datum.secretValidUntil)}
           />
         </CardDescription>
       </CardHeader>

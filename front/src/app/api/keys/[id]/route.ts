@@ -21,11 +21,7 @@ export async function DELETE(
   try {
     const { params } = routeContextSchema.parse(context);
 
-    // const res = await fetch(`http://localhost:5001/keys/${params.id}`, {
-    //   method: 'DELETE',
-    // });
-
-    await prisma.keys.delete({
+    await prisma.Key.delete({
       where: {
         id: parseInt(params.id),
       },
@@ -34,6 +30,7 @@ export async function DELETE(
     return new Response(null, { status: 204 });
   } catch (error) {
     if (error instanceof z.ZodError) {
+      console.error(error);
       return new Response(JSON.stringify(error.issues), { status: 422 });
     }
 
