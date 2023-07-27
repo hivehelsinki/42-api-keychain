@@ -94,7 +94,7 @@ const Page: FC<pageProps> = ({}) => {
                     app.name
                       .toLowerCase()
                       .includes(search.toLocaleLowerCase()) ||
-                    app.client_id
+                    app.clientId
                       .toLocaleLowerCase()
                       .includes(search.toLocaleLowerCase())
                 )
