@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useSWRConfig } from 'swr';
 
 import {
   Form,
@@ -37,6 +38,7 @@ const FormAddKey = () => {
   const [keyName, setKeyName] = React.useState<string>('');
 
   const router = useRouter();
+  const { mutate } = useSWRConfig();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -61,6 +63,7 @@ const FormAddKey = () => {
     } else {
       router.refresh();
       router.back();
+      mutate('/api/keys');
     }
   }
 

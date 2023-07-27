@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
+import { useSWRConfig } from 'swr';
 
 import { cn, dateVariant } from '@/lib/utils';
 import { Icons } from '@/components/icons';
@@ -30,7 +31,6 @@ import {
 } from '@/components/ui/alert-dialog';
 
 import CardKeyProps from '@/types/card-key';
-import { useRouter } from 'next/navigation';
 import CardInfoRotation from './card-info-rotation';
 
 interface keyProps {
@@ -55,11 +55,9 @@ async function deleteApp(appId: number) {
 }
 
 const Key: FC<keyProps> = ({ datum, ...props }) => {
-  const router = useRouter();
+  const { mutate } = useSWRConfig();
   const [showDeleteAlert, setShowDeleteAlert] = React.useState<boolean>(false);
   const [isDeleteLoading, setIsDeleteLoading] = React.useState<boolean>(false);
-
-  console.log(datum.secretValidUntil);
 
   return (
     <Card
@@ -123,7 +121,7 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
                 if (deleted) {
                   setIsDeleteLoading(false);
                   setShowDeleteAlert(false);
-                  router.refresh();
+                  mutate('/api/keys');
                 }
               }}
               className="bg-destructive/80 focus:ring-destructive"
