@@ -1,6 +1,7 @@
 'use client';
 
 import * as z from 'zod';
+import useSWR from 'swr';
 
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
@@ -9,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 
 import {
   Form,
@@ -27,11 +29,13 @@ const formSchema = z.object({
 interface formSettingsProps {}
 
 const FormSettings: FC<formSettingsProps> = ({}) => {
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data, error, isLoading } = useSWR('/api/settings', fetcher);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      slack_enabled: false,
-      slack_webhook_url: '',
+      slack_enabled: data?.slack_enabled === 'true' ? true : false,
+      slack_webhook_url: data?.slack_webhook_url ?? '',
     },
   });
 
@@ -40,6 +44,32 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
     // POST logic here
     // handle errors
     // handle success
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex max-w-[700px] flex-col gap-2">
+        <div className="flex flex-col">
+          <Skeleton className="h-4 w-40 bg-gray-200" />
+          <Skeleton className="my-2 h-4 w-80 bg-gray-200" />
+          <Skeleton className="h-6 w-10 bg-gray-200" />
+        </div>
+        <div className="mt-10 flex flex-col">
+          <Skeleton className="h-4 w-40 bg-gray-200" />
+          <Skeleton className="my-2 h-4 w-80 bg-gray-200" />
+          <Skeleton className="h-6 w-80 bg-gray-200" />
+        </div>
+        <Skeleton className="mt-4 h-12 w-full bg-gray-200" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex max-w-[700px] flex-col gap-2">
+        Failed to fetch settings from database.
+      </div>
+    );
   }
 
   return (
