@@ -1,4 +1,4 @@
-import SlackConfig from '@/components/slack-config';
+import FormSettings from '@/components/form-settings';
 import { FC } from 'react';
 
 interface pageProps {}
@@ -6,7 +6,7 @@ interface pageProps {}
 const page: FC<pageProps> = ({}) => {
   return (
     <section className="mt-10">
-      <SlackConfig />
+      <FormSettings />
     </section>
   );
 };
