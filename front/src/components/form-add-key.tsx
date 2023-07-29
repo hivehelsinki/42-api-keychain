@@ -33,9 +33,15 @@ const formSchema = z.object({
   name: z.string().optional(),
 });
 
+const errorMessageByStatus: { [key: number]: string } = {
+  409: 'Key already exist in database',
+  404: 'Application not found or not valid',
+};
+
 const FormAddKey = () => {
   const [isValid, setIsValid] = React.useState<undefined | boolean>(undefined);
   const [keyName, setKeyName] = React.useState<string>('');
+  const [httpCode, setHttpCode] = React.useState<number>(0);
 
   const router = useRouter();
   const { mutate } = useSWRConfig();
@@ -70,15 +76,23 @@ const FormAddKey = () => {
   React.useEffect(() => {
     form.watch(async (_, { type }) => {
       if (type === 'change') {
+        console.log(type);
         const { client_id, client_secret } = form.getValues();
+
         if (client_id.length >= 64 && client_secret.length >= 64) {
           const res = await fetch('/api/keys/check', {
             method: 'POST',
             body: JSON.stringify({ client_id, client_secret }),
           });
+
+          if (!res?.ok) {
+            setHttpCode(res.status);
+            setIsValid(false);
+            return;
+          }
+
           try {
             const keyInfo = await res.json();
-
             setIsValid(true);
             setKeyName(keyInfo.appName);
             form.setValue('id', Number(keyInfo.appId), {
@@ -93,6 +107,7 @@ const FormAddKey = () => {
               }
             );
           } catch (e) {
+            console.log(e);
             setIsValid(false);
           }
         }
@@ -150,7 +165,7 @@ const FormAddKey = () => {
           <div className="mt-3 flex items-center gap-2 bg-red-100 py-4 pl-4 text-sm dark:bg-red-500">
             <Icons.close className="h-4 w-4 text-red-600/80 dark:text-gray-200" />
             <p className="dark:text-gray-200">
-              Application not found or not valid
+              {errorMessageByStatus[httpCode] || 'Something went wrong'}
             </p>
           </div>
         )}
