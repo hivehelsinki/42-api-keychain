@@ -49,6 +49,7 @@ export default function Modal({ children }: ModalProps) {
       ref={overlay}
       className="fixed bottom-0 left-0 right-0 top-0 z-10 mx-auto bg-black/40"
       onClick={onClick}
+      onKeyDown={onKeyDown}
     >
       <div
         ref={wrapper}

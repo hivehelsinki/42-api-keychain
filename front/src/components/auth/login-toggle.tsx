@@ -2,7 +2,6 @@
 
 import { FC } from 'react';
 
-import { Icons } from '@/components/icons';
 import { LoginButton } from './login-button';
 import Menu from '@/components/menu';
 
