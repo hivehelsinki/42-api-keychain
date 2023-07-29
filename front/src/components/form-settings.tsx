@@ -7,7 +7,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Switch } from '@/components/ui/switch';
-import { Input } from './ui/input';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 import {
   Form,
@@ -35,6 +36,7 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
     // POST logic here
     // handle errors
     // handle success
@@ -59,7 +61,10 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
               </p>
 
               <FormControl>
-                <Switch {...field} />
+                <Switch
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -87,6 +92,9 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
             </FormItem>
           )}
         />
+        <Button className="mt-4" type="submit">
+          Update
+        </Button>
       </form>
     </Form>
   );
