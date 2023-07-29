@@ -24,7 +24,6 @@ const Page: FC<pageProps> = ({}) => {
   };
 
   if (error) {
-    console.log(error);
     return (
       <div className="pb-6 md:pb-0">
         <Header

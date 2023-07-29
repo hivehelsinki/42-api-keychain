@@ -17,9 +17,6 @@ export async function POST(req: Request) {
   });
 
   if (key.length > 0) {
-    console.log(client_id);
-    console.log('==============================key already exists');
-    console.log(key);
     return new Response(null, {
       status: 409,
     });

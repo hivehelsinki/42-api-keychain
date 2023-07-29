@@ -76,7 +76,6 @@ const FormAddKey = () => {
   React.useEffect(() => {
     form.watch(async (_, { type }) => {
       if (type === 'change') {
-        console.log(type);
         const { client_id, client_secret } = form.getValues();
 
         if (client_id.length >= 64 && client_secret.length >= 64) {
@@ -107,7 +106,7 @@ const FormAddKey = () => {
               }
             );
           } catch (e) {
-            console.log(e);
+            console.error(e);
             setIsValid(false);
           }
         }
