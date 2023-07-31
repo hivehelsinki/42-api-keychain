@@ -29,9 +29,20 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 import CardKeyProps from '@/types/card-key';
 import CardInfoRotation from './card-info-rotation';
+import { Label } from './ui/label';
+import { Input } from './ui/input';
 
 interface keyProps {
   datum: CardKeyProps;
@@ -57,6 +68,8 @@ async function deleteApp(appId: number) {
 const Key: FC<keyProps> = ({ datum, ...props }) => {
   const { mutate } = useSWRConfig();
   const [showDeleteAlert, setShowDeleteAlert] = React.useState<boolean>(false);
+  const [showUpdateDialog, setShowUpdateDialog] =
+    React.useState<boolean>(false);
   const [isDeleteLoading, setIsDeleteLoading] = React.useState<boolean>(false);
 
   return (
@@ -79,7 +92,9 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
               </span>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-40 translate-x-20 transform">
-              <DropdownMenuItem>Update secret</DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => setShowUpdateDialog(true)}>
+                Update secret
+              </DropdownMenuItem>
               <DropdownMenuItem
                 className="text-destructive focus:text-destructive"
                 onSelect={() => setShowDeleteAlert(true)}
@@ -99,6 +114,67 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
           />
         </CardDescription>
       </CardHeader>
+
+      <Dialog open={showUpdateDialog} onOpenChange={setShowUpdateDialog}>
+        <DialogContent className="sm:max-w-[425px]">
+          <div className="flex flex-col">
+            <Label htmlFor="name" className="text-base font-bold uppercase">
+              new secret for {datum.name}
+            </Label>
+            <p className="my-2 text-sm leading-7 text-muted-foreground">
+              Make changes to your app secret here. Click save when you&apos;re
+              done.
+            </p>
+            <Input id="name" className="col-span-3" />
+          </div>
+
+          <DialogFooter>
+            <Button type="submit">Save</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* <AlertDialog open={showUpdateDialog} onOpenChange={setShowUpdateDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Update secret</AlertDialogTitle>
+          </AlertDialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                Name
+              </Label>
+              <Input id="name" value="Pedro Duarte" className="col-span-3" />
+            </div>
+          </div>
+
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={async (event) => {
+                event.preventDefault();
+                setIsDeleteLoading(true);
+
+                const deleted = await deleteApp(datum.id);
+
+                if (deleted) {
+                  setIsDeleteLoading(false);
+                  setShowDeleteAlert(false);
+                  mutate('/api/keys');
+                }
+              }}
+              className="bg-destructive/80 focus:ring-destructive"
+            >
+              {isDeleteLoading ? (
+                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <Icons.trash className="mr-2 h-4 w-4" />
+              )}
+              <span>Delete</span>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog> */}
       <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
         <AlertDialogContent>
           <AlertDialogHeader>
