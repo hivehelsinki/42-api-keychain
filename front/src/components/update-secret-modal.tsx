@@ -88,8 +88,10 @@ const UpdateSecretModal: FC<modalUpdateSecretProps> = ({
                 )}
               />
               {/* <DialogFooter> */}
-              <div className="mt-5 flex justify-end">
-                <Button type="submit">Save</Button>
+              <div className="mt-5">
+                <Button type="submit" className="w-full">
+                  Save
+                </Button>
               </div>
 
               {/* </DialogFooter> */}
