@@ -29,20 +29,20 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+// import {
+//   Dialog,
+//   DialogContent,
+//   DialogDescription,
+//   DialogFooter,
+//   DialogHeader,
+//   DialogTitle,
+//   DialogTrigger,
+// } from '@/components/ui/dialog';
 
 import CardKeyProps from '@/types/card-key';
-import CardInfoRotation from './card-info-rotation';
-import { Label } from './ui/label';
-import { Input } from './ui/input';
+import CardInfoRotation from '@/components/card-info-rotation';
+
+import ModalUpdateSecret from '@/components/modal-update-secret';
 
 interface keyProps {
   datum: CardKeyProps;
@@ -115,7 +115,13 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
         </CardDescription>
       </CardHeader>
 
-      <Dialog open={showUpdateDialog} onOpenChange={setShowUpdateDialog}>
+      <ModalUpdateSecret
+        open={showUpdateDialog}
+        onOpenChange={setShowUpdateDialog}
+        data={datum}
+      />
+
+      {/* <Dialog open={showUpdateDialog} onOpenChange={setShowUpdateDialog}>
         <DialogContent className="sm:max-w-[425px]">
           <div className="flex flex-col">
             <Label htmlFor="name" className="text-base font-bold uppercase">
@@ -132,7 +138,7 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
             <Button type="submit">Save</Button>
           </DialogFooter>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
 
       {/* <AlertDialog open={showUpdateDialog} onOpenChange={setShowUpdateDialog}>
         <AlertDialogContent>
