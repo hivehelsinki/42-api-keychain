@@ -174,7 +174,7 @@ const CardKeys: FC<cardKeysProps> = ({ data, className }) => {
           className="h-full w-full border-dashed  dark:border-gray-600"
           variant="outline"
         >
-          <span className="inline-flex min-h-[75px] items-center gap-2 transition-colors duration-200 ease-in-out">
+          <span className="inline-flex min-h-[65px] items-center gap-2 transition-colors duration-200 ease-in-out">
             <Icons.plus className="h-4 w-4" />
             Add a new key
           </span>
