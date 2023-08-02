@@ -2,10 +2,15 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import { useSWRConfig } from 'swr';
 
+import CardKeyProps from '@/types/card-key';
+
 import { cn, dateVariant } from '@/lib/utils';
 import { Icons } from '@/components/icons';
 import { Ping } from '@/components/ping';
 import { Button } from '@/components/ui/button';
+import CardInfoRotation from '@/components/card-info-rotation';
+import UpdateSecretModal from '@/components/update-secret-modal';
+
 import {
   Card,
   CardDescription,
@@ -29,20 +34,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
-// import {
-//   Dialog,
-//   DialogContent,
-//   DialogDescription,
-//   DialogFooter,
-//   DialogHeader,
-//   DialogTitle,
-//   DialogTrigger,
-// } from '@/components/ui/dialog';
-
-import CardKeyProps from '@/types/card-key';
-import CardInfoRotation from '@/components/card-info-rotation';
-
-import ModalUpdateSecret from '@/components/modal-update-secret';
 
 interface keyProps {
   datum: CardKeyProps;
@@ -115,72 +106,12 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
         </CardDescription>
       </CardHeader>
 
-      <ModalUpdateSecret
+      <UpdateSecretModal
         open={showUpdateDialog}
         onOpenChange={setShowUpdateDialog}
         data={datum}
       />
 
-      {/* <Dialog open={showUpdateDialog} onOpenChange={setShowUpdateDialog}>
-        <DialogContent className="sm:max-w-[425px]">
-          <div className="flex flex-col">
-            <Label htmlFor="name" className="text-base font-bold uppercase">
-              new secret for {datum.name}
-            </Label>
-            <p className="my-2 text-sm leading-7 text-muted-foreground">
-              Make changes to your app secret here. Click save when you&apos;re
-              done.
-            </p>
-            <Input id="name" className="col-span-3" />
-          </div>
-
-          <DialogFooter>
-            <Button type="submit">Save</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog> */}
-
-      {/* <AlertDialog open={showUpdateDialog} onOpenChange={setShowUpdateDialog}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Update secret</AlertDialogTitle>
-          </AlertDialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="name" className="text-right">
-                Name
-              </Label>
-              <Input id="name" value="Pedro Duarte" className="col-span-3" />
-            </div>
-          </div>
-
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction
-              onClick={async (event) => {
-                event.preventDefault();
-                setIsDeleteLoading(true);
-
-                const deleted = await deleteApp(datum.id);
-
-                if (deleted) {
-                  setIsDeleteLoading(false);
-                  setShowDeleteAlert(false);
-                  mutate('/api/keys');
-                }
-              }}
-              className="bg-destructive/80 focus:ring-destructive"
-            >
-              {isDeleteLoading ? (
-                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-              ) : (
-                <Icons.trash className="mr-2 h-4 w-4" />
-              )}
-              <span>Delete</span>
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog> */}
       <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
         <AlertDialogContent>
           <AlertDialogHeader>
