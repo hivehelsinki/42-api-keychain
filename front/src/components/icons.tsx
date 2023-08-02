@@ -15,6 +15,7 @@ import {
   User,
   TimerReset,
   Menu,
+  LayoutDashboard,
 } from 'lucide-react';
 
 export const Icons = {
@@ -31,6 +32,7 @@ export const Icons = {
   more: MoreHorizontal,
   spinner: Loader2,
   user: User,
+  dashboard: LayoutDashboard,
   menu: Menu,
   settings: Settings,
   gitHub: (props: LucideProps) => (

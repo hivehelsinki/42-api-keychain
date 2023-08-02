@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuLabel,
 } from '@/components/ui/dropdown-menu';
 import { FC } from 'react';
 import { Button } from './ui/button';
@@ -25,6 +26,10 @@ const menu: FC<menuProps> = ({}) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-44">
         <DropdownMenuGroup>
+          <DropdownMenuItem className="md:hidden">
+            <Icons.dashboard className="mr-2 h-4 w-4" strokeWidth={1.4} />
+            <a href="/dashboard">Dashboard</a>
+          </DropdownMenuItem>
           <DropdownMenuItem>
             <Icons.settings className="mr-2 h-4 w-4" strokeWidth={1.4} />
             <a href="/settings">Settings</a>
