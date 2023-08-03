@@ -11,7 +11,7 @@ interface pageProps {}
 const page: FC<pageProps> = ({}) => {
   return (
     <main className="container mt-10">
-      <section className="px-4 pt-8 md:pt-12">
+      <section className="px-4 pt-5">
         <div className="mx-auto max-w-screen-xl gap-8 px-4 py-8 sm:py-16 md:grid md:grid-cols-3 lg:px-6">
           <div className="col-span-2 ">
             <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">
@@ -47,7 +47,7 @@ const page: FC<pageProps> = ({}) => {
       </section>
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 sm:py-16 md:grid md:grid-cols-3 lg:px-6">
+        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 md:grid md:grid-cols-3 lg:px-6">
           <Image
             src="/notif_3.png"
             alt=""
@@ -70,7 +70,7 @@ const page: FC<pageProps> = ({}) => {
       </section>
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl gap-8 px-4 py-8 sm:py-16 md:grid md:grid-cols-3 lg:px-6">
+        <div className="mx-auto max-w-screen-xl gap-8 px-4 py-8 md:grid md:grid-cols-3 lg:px-6">
           <Image
             src="/alarm_2.png"
             alt=""
@@ -93,7 +93,7 @@ const page: FC<pageProps> = ({}) => {
       </section>
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 sm:py-16 md:grid md:grid-cols-3 lg:px-6">
+        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 md:grid md:grid-cols-3 lg:px-6">
           <Image
             src="/server_1.png"
             alt=""
@@ -115,71 +115,79 @@ const page: FC<pageProps> = ({}) => {
         </div>
       </section>
 
-      <section className="mt-14 space-y-16 pb-10 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-16 md:space-y-0 lg:gap-x-10">
-        <article>
-          <h2 className="text-lg font-semibold leading-7">
-            Why would I need this?
+      <section className="mt-14">
+        <div className="flex items-center gap-3">
+          <Image src="/speech.png" alt="" width={50} height={50} />
+          <h2 className="text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl lg:leading-[1.1]">
+            FAQ
           </h2>
-          <p>
-            42 API apps are linked to an individual account, it can become
-            challenging to manage and keep track of them. API Keychain would
-            like to help team to overwatch all their API apps and their rotation
-            deadlines to avoid disruption of their services.
-          </p>
-        </article>
-        <article>
-          <h2 className="text-lg font-semibold leading-7">
-            Do I get notification when an app is about to expire?
-          </h2>
-          <p>
-            Yes! You will receive a notification 7 days, 14 and 30 days before
-            the expiration via Slack and email.
-          </p>
-        </article>
-        <article>
-          <h2 className="text-lg font-semibold leading-7">
-            What is lorem ipsum?
-          </h2>
-          <p>
-            Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Ex, quisquam repudiandae? Deleniti repellat porro ad sapiente
-            eum quis sint laborum eveniet et excepturi accusamus dolor
-            molestiae, mollitia voluptatum culpa? Aperiam!
-          </p>
-        </article>
-        <article>
-          <h2 className="text-lg font-semibold leading-7">
-            What is lorem ipsum?
-          </h2>
-          <p>
-            Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Ex, quisquam repudiandae? Deleniti repellat porro ad sapiente
-            eum quis sint laborum eveniet et excepturi accusamus dolor
-            molestiae, mollitia voluptatum culpa? Aperiam!
-          </p>
-        </article>
-        <article>
-          <h2 className="text-lg font-semibold leading-7">
-            What is lorem ipsum?
-          </h2>
-          <p>
-            Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Ex, quisquam repudiandae? Deleniti repellat porro ad sapiente
-            eum quis sint laborum eveniet et excepturi accusamus dolor
-            molestiae, mollitia voluptatum culpa? Aperiam!
-          </p>
-        </article>
-        <article>
-          <h2 className="text-lg font-semibold leading-7">
-            What is lorem ipsum?
-          </h2>
-          <p>
-            Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Ex, quisquam repudiandae? Deleniti repellat porro ad sapiente
-            eum quis sint laborum eveniet et excepturi accusamus dolor
-            molestiae, mollitia voluptatum culpa? Aperiam!
-          </p>
-        </article>
+        </div>
+        <div className="mt-6 space-y-16 pb-10 md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-16 md:space-y-0 lg:gap-x-10">
+          <article>
+            <h2 className="text-lg font-semibold leading-7">
+              Why would I need this?
+            </h2>
+            <p>
+              42 API apps are linked to an individual account, it can become
+              challenging to manage and keep track of them. API Keychain would
+              like to help team to overwatch all their API apps and their
+              rotation deadlines to avoid disruption of their services.
+            </p>
+          </article>
+          <article>
+            <h2 className="text-lg font-semibold leading-7">
+              Do I get notification when an app is about to expire?
+            </h2>
+            <p>
+              Yes! You will receive a notification 7 days, 14 and 30 days before
+              the expiration via Slack and email.
+            </p>
+          </article>
+          <article>
+            <h2 className="text-lg font-semibold leading-7">
+              What is lorem ipsum?
+            </h2>
+            <p>
+              Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Ex, quisquam repudiandae? Deleniti repellat porro ad
+              sapiente eum quis sint laborum eveniet et excepturi accusamus
+              dolor molestiae, mollitia voluptatum culpa? Aperiam!
+            </p>
+          </article>
+          <article>
+            <h2 className="text-lg font-semibold leading-7">
+              What is lorem ipsum?
+            </h2>
+            <p>
+              Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Ex, quisquam repudiandae? Deleniti repellat porro ad
+              sapiente eum quis sint laborum eveniet et excepturi accusamus
+              dolor molestiae, mollitia voluptatum culpa? Aperiam!
+            </p>
+          </article>
+          <article>
+            <h2 className="text-lg font-semibold leading-7">
+              What is lorem ipsum?
+            </h2>
+            <p>
+              Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Ex, quisquam repudiandae? Deleniti repellat porro ad
+              sapiente eum quis sint laborum eveniet et excepturi accusamus
+              dolor molestiae, mollitia voluptatum culpa? Aperiam!
+            </p>
+          </article>
+          <article>
+            <h2 className="text-lg font-semibold leading-7">
+              What is lorem ipsum?
+            </h2>
+            <p>
+              Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Ex, quisquam repudiandae? Deleniti repellat porro ad
+              sapiente eum quis sint laborum eveniet et excepturi accusamus
+              dolor molestiae, mollitia voluptatum culpa? Aperiam!
+            </p>
+          </article>
+        </div>
       </section>
     </main>
   );
