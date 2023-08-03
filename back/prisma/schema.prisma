@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Key {
+  id                Int      @id
+  name              String
+  clientId          String                        @map("client_id")
+  clientSecret      String                        @map("client_secret")
+  ownedBy           String                        @map("owned_by")
+  secretValidUntil  DateTime @db.Timestamptz(3)   @map("secret_valid_until")
+  createdAt         DateTime @default(now())      @map("created_at")
+
+  @@map("keys")
+}
+
+model Setting {
+  settingKey   String @unique @map("setting_key")
+  settingValue String         @map("setting_value")
+
+  @@map("settings")
+}
