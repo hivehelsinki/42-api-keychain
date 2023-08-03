@@ -6,7 +6,6 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuLabel,
 } from '@/components/ui/dropdown-menu';
 import { FC } from 'react';
 import { Button } from './ui/button';
