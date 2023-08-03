@@ -8,6 +8,55 @@ const routeContextSchema = z.object({
   }),
 });
 
+const keyPatchSchema = z.object({
+  id: z.number(),
+  client_secret: z
+    .string()
+    .min(64, { message: 'Secret must be at least 64 characters long' }),
+});
+
+export async function PATCH(
+  req: Request,
+  context: z.infer<typeof routeContextSchema>
+) {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    return new Response(null, { status: 401 });
+  }
+
+  try {
+    const { params } = routeContextSchema.parse(context);
+    const json = await req.json();
+    const body = keyPatchSchema.parse(json);
+
+    const data = await prisma.Key.findMany({
+      where: {
+        id: Number(params.id),
+      },
+    });
+
+    await prisma.Key.update({
+      where: {
+        id: Number(params.id),
+      },
+      data: {
+        ...data[0],
+        clientSecret: body.client_secret,
+      },
+    });
+
+    return new Response(null, { status: 200 });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      console.error(error);
+      return new Response(JSON.stringify(error.issues), { status: 422 });
+    }
+    console.log(error);
+    return new Response(null, { status: 500 });
+  }
+}
+
 export async function DELETE(
   req: Request,
   context: z.infer<typeof routeContextSchema>

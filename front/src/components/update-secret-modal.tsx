@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import * as z from 'zod';
 
-import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import { Dialog, DialogContent, DialogFooter } from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
@@ -15,7 +14,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
 
@@ -39,7 +37,6 @@ const UpdateSecretModal: FC<modalUpdateSecretProps> = ({
   onOpenChange,
   data,
 }) => {
-  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -50,15 +47,14 @@ const UpdateSecretModal: FC<modalUpdateSecretProps> = ({
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const res = await fetch(`/api/keys/${data.id}`, {
-      method: 'PUT',
+      method: 'PATCH',
       body: JSON.stringify(values),
     });
 
     if (!res?.ok) {
       console.log('Something went wrong');
     } else {
-      router.refresh();
-      router.back();
+      onOpenChange(false);
     }
   }
 
@@ -87,18 +83,13 @@ const UpdateSecretModal: FC<modalUpdateSecretProps> = ({
                   </FormItem>
                 )}
               />
-              {/* <DialogFooter> */}
               <div className="mt-5">
                 <Button type="submit" className="w-full">
                   Save
                 </Button>
               </div>
-
-              {/* </DialogFooter> */}
             </form>
           </Form>
-
-          {/* <Input id="name" className="col-span-3" /> */}
         </div>
       </DialogContent>
     </Dialog>
