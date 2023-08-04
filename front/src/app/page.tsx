@@ -36,24 +36,24 @@ const page: FC<pageProps> = ({}) => {
           </div>
           <div>
             <Image
-              src="/key_1.png"
+              src="/key.png"
               alt=""
-              width={230}
-              height={230}
-              className="mx-auto hidden -translate-y-10 rotate-45 hover:animate-pulse md:block"
+              width={200}
+              height={200}
+              className="mx-auto hidden hover:animate-pulse md:block"
             />
           </div>
         </div>
       </section>
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 md:grid md:grid-cols-3 lg:px-6">
+        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-2 md:grid md:grid-cols-3 lg:px-6">
           <Image
-            src="/notif_3.png"
+            src="/notification.png"
             alt=""
-            width={200}
-            height={200}
-            className="mx-auto"
+            width={150}
+            height={150}
+            className="mx-auto -translate-y-3"
           />
           <div className="col-span-2 mt-4 md:mt-0	">
             <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl lg:leading-[1.1]">
@@ -70,12 +70,12 @@ const page: FC<pageProps> = ({}) => {
       </section>
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl gap-8 px-4 py-8 md:grid md:grid-cols-3 lg:px-6">
+        <div className="mx-auto max-w-screen-xl gap-8 px-4 py-2 md:grid md:grid-cols-3 lg:px-6">
           <Image
-            src="/alarm_2.png"
+            src="/alarm.png"
             alt=""
-            width={230}
-            height={230}
+            width={175}
+            height={175}
             className="col-start-3 row-start-1 mx-auto "
           />
           <div className="col-span-2 col-start-1  row-start-1 mt-4 md:mt-0	">
@@ -93,12 +93,12 @@ const page: FC<pageProps> = ({}) => {
       </section>
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 md:grid md:grid-cols-3 lg:px-6">
+        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-2 md:grid md:grid-cols-3 lg:px-6">
           <Image
-            src="/server_1.png"
+            src="/server.png"
             alt=""
-            width={200}
-            height={200}
+            width={160}
+            height={160}
             className="mx-auto"
           />
           <div className="col-span-2 mt-4 md:mt-0	">
