@@ -46,76 +46,72 @@ const page: FC<pageProps> = ({}) => {
         </div>
       </section>
 
-      <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-2 md:grid md:grid-cols-3 lg:px-6">
+      <section className="mt-14 bg-white dark:bg-gray-900">
+        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-6 md:grid md:grid-cols-3 lg:px-6">
           <Image
             src="/notification.png"
             alt=""
-            width={150}
-            height={150}
+            width={130}
+            height={130}
             className="mx-auto -translate-y-3"
           />
-          <div className="col-span-2 mt-4 md:mt-0	">
-            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl lg:leading-[1.1]">
+          <div className="col-span-2 mt-4 md:mt-0">
+            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left lg:leading-[1.1]">
               Notification
             </h2>
             <p className="mb-6 text-center font-light text-muted-foreground sm:text-xl md:text-left md:text-lg">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut id
-              dolores officia eius eos et error vitae nihil hic, dolorum
-              explicabo sapiente harum eligendi ipsum perspiciatis nulla
-              praesentium, exercitationem porro.
+              You will receive notification when one of your app is about to
+              expires 24 hours, 7 days and 30 days before the expiration via
+              Slack and email.
             </p>
           </div>
         </div>
       </section>
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl gap-8 px-4 py-2 md:grid md:grid-cols-3 lg:px-6">
+        <div className="mx-auto max-w-screen-xl gap-8 px-4 py-6 md:grid md:grid-cols-3 lg:px-6">
           <Image
             src="/alarm.png"
             alt=""
-            width={175}
-            height={175}
+            width={130}
+            height={130}
             className="col-start-3 row-start-1 mx-auto "
           />
-          <div className="col-span-2 col-start-1  row-start-1 mt-4 md:mt-0	">
-            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl lg:leading-[1.1]">
+          <div className="col-span-2 col-start-1  row-start-1 mt-4 md:mt-0">
+            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left lg:leading-[1.1]">
               Report
             </h2>
             <p className="mb-6 text-center font-light text-gray-500 dark:text-gray-400 md:text-left md:text-lg">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut id
-              dolores officia eius eos et error vitae nihil hic, dolorum
-              explicabo sapiente harum eligendi ipsum perspiciatis nulla
-              praesentium, exercitationem porro.
+              Every day, Keychain goes through all your app making sure they are
+              still valid. If not, it will send you a report with the list of
+              the apps that are not responding.
             </p>
           </div>
         </div>
       </section>
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-2 md:grid md:grid-cols-3 lg:px-6">
+        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-6 md:grid md:grid-cols-3 lg:px-6">
           <Image
             src="/server.png"
             alt=""
-            width={160}
-            height={160}
+            width={130}
+            height={130}
             className="mx-auto"
           />
           <div className="col-span-2 mt-4 md:mt-0	">
-            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl lg:leading-[1.1]">
+            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left lg:leading-[1.1]">
               Self-hosted
             </h2>
             <p className="mb-6 text-center font-light text-gray-500 dark:text-gray-400 md:text-left md:text-lg">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut id
-              dolores officia eius eos et error vitae nihil hic, dolorum
-              explicabo sapiente harum eligendi ipsum perspiciatis nulla
-              praesentium, exercitationem porro.
+              Keychain is open-source and designed to be self-hosted within your
+              internal network. You are free to customize it to your needs.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="mt-14">
+      <section className="mt-20">
         <div className="flex items-center gap-3">
           <Image src="/speech.png" alt="" width={50} height={50} />
           <h2 className="text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl lg:leading-[1.1]">
