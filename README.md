@@ -10,7 +10,7 @@
 
 ## About Hive Keychain
 
-`Hive Keychain` has been meticulously crafted for schools within the 42network, but its benefits extend to students developing tools with the 42API.
+`Hive Keychain` has been crafted for schools within the 42network, but its benefits extend to students developing tools with the 42API.
 
 Since July 2022, 42 implemented a rotation of API application secrets, enhancing security. However, this enhancement also poses a potential pitfall for your services. To ensure streamlined management of your applications, we introduce this monitoring and alerting tool. By adding your keys, you'll receive notifications and reports regarding key expiration or malfunction.
 
@@ -24,8 +24,7 @@ Moreover, this app addresses another common challenge: the ownership of keys by 
 
 ## Requirements
 
-This app is developed to run with the 42 OAuth.
-You will first need to create a 42 API app in the intranet.
+This app is developed to run with the 42 OAuth. You will first need to create a 42 API app in the intranet.
 
 **Instructions**
 
