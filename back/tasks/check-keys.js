@@ -16,6 +16,7 @@ async function checkKey(key) {
   const isValid = new Date(res.secret_valid_until * 1000) > Date.now();
   if (!isValid) {
     // TODO: key X is  not valid anymore.
+    // slackService.reminder(key, "24 hours");
     console.log("invalid key");
     return;
   }
