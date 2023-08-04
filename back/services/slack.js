@@ -1,9 +1,27 @@
 const { IncomingWebhook } = require("@slack/webhook");
+const { PrismaClient } = require("@prisma/client");
 
-const URI = process.env.SLACK_WEBHOOK_URL;
-const webhook = new IncomingWebhook(URI);
+async function getSettings() {
+  const prisma = new PrismaClient();
+  const data = await prisma.Setting.findMany();
+
+  const settings = data.reduce((acc, row) => {
+    acc[row.settingKey] = row.settingValue;
+    return acc;
+  }, {});
+
+  return settings;
+}
 
 async function send(message) {
+  const settings = await getSettings();
+
+  if (settings.slack_enabled !== "true") {
+    return;
+  }
+
+  const URI = settings.slack_webhook_url;
+  const webhook = new IncomingWebhook(URI);
   try {
     await webhook.send(message);
   } catch (error) {

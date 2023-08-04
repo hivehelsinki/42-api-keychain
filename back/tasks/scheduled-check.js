@@ -9,8 +9,8 @@ async function runApiKeyValidationTask() {
 module.exports = {
   schedule: () => {
     // schedule the task to run ...
-    // CheckKeys();
-    cron.schedule("*/1 * * * *", CheckKeys);
+    CheckKeys();
+    // cron.schedule("*/1 * * * *", CheckKeys);
     // cron.schedule("0 10 */1 * *", runApiKeyValidationTask); # every day at 10:00
   },
 };
