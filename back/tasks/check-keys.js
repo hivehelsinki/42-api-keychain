@@ -1,16 +1,15 @@
 const { PrismaClient } = require("@prisma/client");
-const { sendSlackMessage } = require("../services/slack");
+const slackService = require("../services/slack");
 const fortyTwoService = require("../services/fortytwo");
 
 async function checkKey(key) {
   const res = await fortyTwoService.check(key.clientId, key.clientSecret);
 
   if (!res) {
-    // TODO: give more information to the user -- maybe the key credentials are not valid anymore? the app might have been deleted, please take a look at this page and potentially update the keys if needed (oauth app id)
-    sendSlackMessage(
-      `:warning: Failed to fetch information for the key \`${key.name}\``
+    slackService.error(key);
+    console.error(
+      `Failed to fetch a token for the key: name=${key.name} id=${key.id}`
     );
-    console.log("invalid key");
     return;
   }
 
@@ -24,14 +23,13 @@ async function checkKey(key) {
 
 async function CheckKeys() {
   console.log("running key validity check...");
-
   const prisma = new PrismaClient();
-
   const keys = await prisma.Key.findMany();
 
   for (const key of keys) {
     await checkKey(key);
   }
+  console.log(`${keys.length} keys checked`);
 }
 
 module.exports = {

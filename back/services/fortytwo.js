@@ -44,5 +44,3 @@ module.exports = {
     return appInfo;
   },
 };
-
-// export { fetchToken, fetchAppInfo };

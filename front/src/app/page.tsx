@@ -29,7 +29,8 @@ const page: FC<pageProps> = ({}) => {
                   target="_blank"
                   className="inline-flex items-center"
                 >
-                  <Icons.gitHub className="h-4 pr-2" /> Github
+                  <Icons.gitHub className="h-4 pr-2" />
+                  Github
                 </Link>
               </Button>
             </div>
@@ -60,9 +61,11 @@ const page: FC<pageProps> = ({}) => {
               Notification
             </h2>
             <p className="mb-6 text-center font-light text-muted-foreground sm:text-xl md:text-left md:text-lg">
-              You will receive notification when one of your app is about to
-              expires 24 hours, 7 days and 30 days before the expiration via
-              Slack and email.
+              Stay ahead of any potential disruptions in your app ecosystem with
+              Keychain&apos;s cutting-edge monitoring solution. Experience the
+              ease of real-time alerts that notify you 24 hours, 7 days, and 30
+              days before any app expiration. Your workflow is about to get
+              smoother than ever before!
             </p>
           </div>
         </div>
@@ -75,16 +78,18 @@ const page: FC<pageProps> = ({}) => {
             alt=""
             width={130}
             height={130}
-            className="col-start-3 row-start-1 mx-auto "
+            className="col-start-3 row-start-1 mx-auto"
           />
           <div className="col-span-2 col-start-1  row-start-1 mt-4 md:mt-0">
             <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left lg:leading-[1.1]">
               Report
             </h2>
             <p className="mb-6 text-center font-light text-gray-500 dark:text-gray-400 md:text-left md:text-lg">
-              Every day, Keychain goes through all your app making sure they are
-              still valid. If not, it will send you a report with the list of
-              the apps that are not responding.
+              Say goodbye to app expiration surprises! Keychain takes the
+              guesswork out of app management by diligently checking your
+              apps&apos; validity every day. If an app is not responsive,
+              Keychain promptly sends you a comprehensive report so you can take
+              action without missing a beat.
             </p>
           </div>
         </div>
@@ -104,8 +109,11 @@ const page: FC<pageProps> = ({}) => {
               Self-hosted
             </h2>
             <p className="mb-6 text-center font-light text-gray-500 dark:text-gray-400 md:text-left md:text-lg">
-              Keychain is open-source and designed to be self-hosted within your
-              internal network. You are free to customize it to your needs.
+              Unleash the full potential of your internal network with
+              Keychain&apos;s open-source tool. Tailor it to your unique needs
+              and seamlessly integrate it within your network. Enjoy the
+              benefits of complete control and customization as you harness the
+              power of Keychain for your organization.
             </p>
           </div>
         </div>
