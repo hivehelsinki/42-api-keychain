@@ -1,34 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+    <a href="https://www.hive.fi/" target="_blank">
+        <img src="https://github.com/hivehelsinki/.github/blob/main/assets/logo.png?raw=true" width="128" alt="Hive logo" />
+    </a>
+</p>
+
+<p align="center">
+  <sub>Created by <a href="https://github.com/titus">Jordane Gengo (titus)</a></sub>
+</p>
+
+## About Hive Keychain
+
+`Hive Keychain` has been crafted for schools within the 42network, but its benefits extend to students developing tools with the 42API.
+
+Since July 2022, 42 implemented a rotation of API application secrets, enhancing security. However, this enhancement also poses a potential pitfall for your services. To ensure streamlined management of your applications, we introduce this monitoring and alerting tool. By adding your keys, you'll receive notifications and reports regarding key expiration or malfunction.
+
+Moreover, this app addresses another common challenge: the ownership of keys by individual team members. By consolidating all your team's keys in one accessible platform, you can avoid the surprise of an imminent key expiration while a team member is on vacation.
+
+**Screenshots:**
+
+<div align='center'>
+
+</div>
+
+## Requirements
+
+This app is developed to run with the 42 OAuth. You will first need to create a 42 API app in the intranet.
+
+**Instructions**
+
+1. Create a new API application on the [42 intranet](https://profile.intra.42.fr/oauth/applications/new)
+2. In the field Redirect URI add: http://localhost:4001/api/auth/callback/42-school
+3. In the scopes select "Access the user public data" and submit.
+4. Save the credentials you will need them later.
+
+<br/><br/>
 
 ## Getting Started
 
-First, run the development server:
+Clone the repository locally
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+```sh
+git clone git@github.com:hivehelsinki/42-api-keychain keychain
+cd keychain
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[...] #TODO
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Now you can access you application on [localhost:3000](http://localhost:4001)
 
-## Learn More
+<br/><br/>
 
-To learn more about Next.js, take a look at the following resources:
+## GDPR
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The application doesn't store any information that falls under GDPR regulations.

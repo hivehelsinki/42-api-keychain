@@ -29,93 +29,97 @@ const page: FC<pageProps> = ({}) => {
                   target="_blank"
                   className="inline-flex items-center"
                 >
-                  <Icons.gitHub className="h-4 pr-2" /> Github
+                  <Icons.gitHub className="h-4 pr-2" />
+                  Github
                 </Link>
               </Button>
             </div>
           </div>
           <div>
             <Image
-              src="/key_1.png"
+              src="/key.png"
               alt=""
-              width={230}
-              height={230}
-              className="mx-auto hidden -translate-y-10 rotate-45 hover:animate-pulse md:block"
+              width={200}
+              height={200}
+              className="mx-auto hidden hover:animate-pulse md:block"
             />
           </div>
         </div>
       </section>
 
-      <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 md:grid md:grid-cols-3 lg:px-6">
+      <section className="mt-14 bg-white dark:bg-gray-900">
+        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-6 md:grid md:grid-cols-3 lg:px-6">
           <Image
-            src="/notif_3.png"
+            src="/notification.png"
             alt=""
-            width={200}
-            height={200}
-            className="mx-auto"
+            width={130}
+            height={130}
+            className="mx-auto -translate-y-3"
           />
-          <div className="col-span-2 mt-4 md:mt-0	">
-            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl lg:leading-[1.1]">
+          <div className="col-span-2 mt-4 md:mt-0">
+            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left lg:leading-[1.1]">
               Notification
             </h2>
             <p className="mb-6 text-center font-light text-muted-foreground sm:text-xl md:text-left md:text-lg">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut id
-              dolores officia eius eos et error vitae nihil hic, dolorum
-              explicabo sapiente harum eligendi ipsum perspiciatis nulla
-              praesentium, exercitationem porro.
+              Stay ahead of any potential disruptions in your app ecosystem with
+              Keychain&apos;s cutting-edge monitoring solution. Experience the
+              ease of real-time alerts that notify you 24 hours, 7 days, and 30
+              days before any app expiration. Your workflow is about to get
+              smoother than ever before!
             </p>
           </div>
         </div>
       </section>
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl gap-8 px-4 py-8 md:grid md:grid-cols-3 lg:px-6">
+        <div className="mx-auto max-w-screen-xl gap-8 px-4 py-6 md:grid md:grid-cols-3 lg:px-6">
           <Image
-            src="/alarm_2.png"
+            src="/alarm.png"
             alt=""
-            width={230}
-            height={230}
-            className="col-start-3 row-start-1 mx-auto "
+            width={130}
+            height={130}
+            className="col-start-3 row-start-1 mx-auto"
           />
-          <div className="col-span-2 col-start-1  row-start-1 mt-4 md:mt-0	">
-            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl lg:leading-[1.1]">
+          <div className="col-span-2 col-start-1  row-start-1 mt-4 md:mt-0">
+            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left lg:leading-[1.1]">
               Report
             </h2>
             <p className="mb-6 text-center font-light text-gray-500 dark:text-gray-400 md:text-left md:text-lg">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut id
-              dolores officia eius eos et error vitae nihil hic, dolorum
-              explicabo sapiente harum eligendi ipsum perspiciatis nulla
-              praesentium, exercitationem porro.
+              Say goodbye to app expiration surprises! Keychain takes the
+              guesswork out of app management by diligently checking your
+              apps&apos; validity every day. If an app is not responsive,
+              Keychain promptly sends you a comprehensive report so you can take
+              action without missing a beat.
             </p>
           </div>
         </div>
       </section>
 
       <section className="bg-white dark:bg-gray-900">
-        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-8 md:grid md:grid-cols-3 lg:px-6">
+        <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-6 md:grid md:grid-cols-3 lg:px-6">
           <Image
-            src="/server_1.png"
+            src="/server.png"
             alt=""
-            width={200}
-            height={200}
+            width={130}
+            height={130}
             className="mx-auto"
           />
           <div className="col-span-2 mt-4 md:mt-0	">
-            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl lg:leading-[1.1]">
+            <h2 className="mb-4 text-center text-3xl font-bold leading-tight tracking-tighter md:text-left lg:leading-[1.1]">
               Self-hosted
             </h2>
             <p className="mb-6 text-center font-light text-gray-500 dark:text-gray-400 md:text-left md:text-lg">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut id
-              dolores officia eius eos et error vitae nihil hic, dolorum
-              explicabo sapiente harum eligendi ipsum perspiciatis nulla
-              praesentium, exercitationem porro.
+              Unleash the full potential of your internal network with
+              Keychain&apos;s open-source tool. Tailor it to your unique needs
+              and seamlessly integrate it within your network. Enjoy the
+              benefits of complete control and customization as you harness the
+              power of Keychain for your organization.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="mt-14">
+      <section className="mt-20">
         <div className="flex items-center gap-3">
           <Image src="/speech.png" alt="" width={50} height={50} />
           <h2 className="text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl lg:leading-[1.1]">

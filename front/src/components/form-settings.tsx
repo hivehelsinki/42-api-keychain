@@ -22,10 +22,20 @@ import {
 } from '@/components/ui/form';
 import { Label } from './ui/label';
 
-const formSchema = z.object({
-  slack_enabled: z.boolean(),
-  slack_webhook_url: z.string().optional(),
-});
+const formSchema = z
+  .object({
+    slack_enabled: z.boolean(),
+    slack_webhook_url: z.string().optional(),
+  })
+  .refine(
+    (schema) =>
+      schema.slack_enabled === false || schema.slack_webhook_url !== '',
+    {
+      message:
+        'Slack webhook url is required when slack notification is enabled',
+      path: ['slack_webhook_url'],
+    }
+  );
 
 interface formSettingsProps {}
 
