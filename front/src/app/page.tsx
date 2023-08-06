@@ -38,7 +38,7 @@ const page: FC<pageProps> = ({}) => {
           <div>
             <Image
               src="/key.png"
-              alt=""
+              alt="key illustration"
               width={200}
               height={200}
               className="mx-auto hidden hover:animate-pulse md:block"
@@ -51,7 +51,7 @@ const page: FC<pageProps> = ({}) => {
         <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-6 md:grid md:grid-cols-3 lg:px-6">
           <Image
             src="/notification.png"
-            alt=""
+            alt="notification illustration"
             width={130}
             height={130}
             className="mx-auto -translate-y-3"
@@ -75,7 +75,7 @@ const page: FC<pageProps> = ({}) => {
         <div className="mx-auto max-w-screen-xl gap-8 px-4 py-6 md:grid md:grid-cols-3 lg:px-6">
           <Image
             src="/alarm.png"
-            alt=""
+            alt="alarm illustration"
             width={130}
             height={130}
             className="col-start-3 row-start-1 mx-auto"
@@ -99,7 +99,7 @@ const page: FC<pageProps> = ({}) => {
         <div className="mx-auto max-w-screen-xl items-center gap-8 px-4 py-6 md:grid md:grid-cols-3 lg:px-6">
           <Image
             src="/server.png"
-            alt=""
+            alt="server illustration"
             width={130}
             height={130}
             className="mx-auto"
@@ -121,7 +121,12 @@ const page: FC<pageProps> = ({}) => {
 
       <section className="mt-20">
         <div className="flex items-center gap-3">
-          <Image src="/speech.png" alt="" width={50} height={50} />
+          <Image
+            src="/speech.png"
+            alt="speech illustration"
+            width={50}
+            height={50}
+          />
           <h2 className="text-center text-3xl font-bold leading-tight tracking-tighter md:text-left md:text-4xl lg:leading-[1.1]">
             FAQ
           </h2>
