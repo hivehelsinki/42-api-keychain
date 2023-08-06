@@ -20,6 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { Label } from './ui/label';
 
 const formSchema = z.object({
   slack_enabled: z.boolean(),
@@ -50,14 +51,18 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
     return (
       <div className="flex max-w-[700px] flex-col gap-2">
         <div className="flex flex-col">
-          <Skeleton className="h-4 w-40 bg-gray-200" />
-          <Skeleton className="my-2 h-4 w-80 bg-gray-200" />
+          <Label className="font-bold uppercase">Slack notification</Label>
+          <p className="my-2 leading-7 text-muted-foreground">
+            Receive notification on Slack when an app is about to be expired
+          </p>
           <Skeleton className="h-6 w-10 bg-gray-200" />
         </div>
         <div className="mt-10 flex flex-col">
-          <Skeleton className="h-4 w-40 bg-gray-200" />
-          <Skeleton className="my-2 h-4 w-80 bg-gray-200" />
-          <Skeleton className="h-6 w-80 bg-gray-200" />
+          <Label className="font-bold uppercase">Slack Webhook</Label>
+          <p className="my-2 leading-7 text-muted-foreground">
+            Your webhook url to send notification to slack
+          </p>
+          <Skeleton className="h-10 w-full bg-gray-200" />
         </div>
         <Skeleton className="mt-4 h-12 w-full bg-gray-200" />
       </div>
