@@ -67,13 +67,7 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
           </p>
           <Skeleton className="h-6 w-10 bg-gray-200" />
         </div>
-        <div className="mt-10 flex flex-col">
-          <Label className="font-bold uppercase">Slack Webhook</Label>
-          <p className="my-2 leading-7 text-muted-foreground">
-            Your webhook url to send notification to slack
-          </p>
-          <Skeleton className="h-10 w-full bg-gray-200" />
-        </div>
+
         <Skeleton className="mt-4 h-12 w-full bg-gray-200" />
       </div>
     );
@@ -116,27 +110,29 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
           )}
         />
 
-        <FormField
-          control={form.control}
-          name="slack_webhook_url"
-          render={({ field }) => (
-            <FormItem className="mt-10 flex flex-col">
-              <FormLabel className="font-bold uppercase">
-                Slack Webhook
-              </FormLabel>
-              <p className="my-2 leading-7 text-muted-foreground">
-                Your webhook url to send notification to slack
-              </p>
-              <FormControl>
-                <Input
-                  {...field}
-                  placeholder="https://hooks.slack.com/services/..."
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        {form.watch('slack_enabled') && (
+          <FormField
+            control={form.control}
+            name="slack_webhook_url"
+            render={({ field }) => (
+              <FormItem className="mt-10 flex flex-col">
+                <FormLabel className="font-bold uppercase">
+                  Slack Webhook
+                </FormLabel>
+                <p className="my-2 leading-7 text-muted-foreground">
+                  Your webhook url to send notification to slack
+                </p>
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder="https://hooks.slack.com/services/..."
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        )}
         <Button className="mt-4" type="submit">
           Update
         </Button>
