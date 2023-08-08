@@ -20,14 +20,10 @@ const formSchema = z
     slack_enabled: z.boolean(),
     slack_webhook_url: z.string().optional(),
   })
-  .refine(
-    (sch) => sch.slack_enabled === false || sch.slack_webhook_url !== '',
-    {
-      path: ['slack_webhook_url'],
-      message:
-        'Slack webhook url is required when slack notification is enabled',
-    }
-  );
+  .refine((sch) => sch.slack_enabled === false || sch.slack_webhook_url !== '', {
+    path: ['slack_webhook_url'],
+    message: 'Slack webhook url is required when slack notification is enabled',
+  });
 
 type ApiResp = z.infer<typeof formSchema>;
 
@@ -84,27 +80,18 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
   }
 
   if (error) {
-    return (
-      <div className="flex max-w-[700px] flex-col gap-2">
-        Failed to fetch settings from database.
-      </div>
-    );
+    return <div className="flex max-w-[700px] flex-col gap-2">Failed to fetch settings from database.</div>;
   }
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex max-w-[700px] flex-col gap-2"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex max-w-[700px] flex-col gap-2">
         <FormField
           control={form.control}
           name="slack_enabled"
           render={({ field }) => (
             <div className="flex flex-col">
-              <FormLabel className="font-bold uppercase">
-                Slack notification
-              </FormLabel>
+              <FormLabel className="font-bold uppercase">Slack notification</FormLabel>
               <p className="my-2 leading-7 text-muted-foreground">
                 Receive notification on Slack when an app is about to be expired
               </p>
@@ -120,16 +107,9 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
             name="slack_webhook_url"
             render={({ field }) => (
               <div className="mt-10 flex flex-col">
-                <FormLabel className="font-bold uppercase">
-                  Slack Webhook
-                </FormLabel>
-                <p className="my-2 leading-7 text-muted-foreground">
-                  Your webhook url to send notification to Slack
-                </p>
-                <Input
-                  {...field}
-                  placeholder="https://hooks.slack.com/services/..."
-                />
+                <FormLabel className="font-bold uppercase">Slack Webhook</FormLabel>
+                <p className="my-2 leading-7 text-muted-foreground">Your webhook url to send notification to Slack</p>
+                <Input {...field} placeholder="https://hooks.slack.com/services/..." />
                 <FormMessage />
               </div>
             )}
