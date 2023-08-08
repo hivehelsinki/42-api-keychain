@@ -55,7 +55,7 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
     fetcher
   );
 
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<ApiResponse>({
     resolver: zodResolver(formSchema),
   });
 
