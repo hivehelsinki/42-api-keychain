@@ -13,14 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Label } from '@/components/ui/label';
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { Form, FormField, FormLabel, FormMessage } from '@/components/ui/form';
 
 const formSchema = z
   .object({
@@ -28,49 +21,38 @@ const formSchema = z
     slack_webhook_url: z.string().optional(),
   })
   .refine(
-    (schema) =>
-      schema.slack_enabled === false || schema.slack_webhook_url !== '',
+    (sch) => sch.slack_enabled === false || sch.slack_webhook_url !== '',
     {
+      path: ['slack_webhook_url'],
       message:
         'Slack webhook url is required when slack notification is enabled',
-      path: ['slack_webhook_url'],
     }
   );
 
-type ApiResponse = z.infer<typeof formSchema>;
+type ApiResp = z.infer<typeof formSchema>;
+
+const fetcher = async (...args: Parameters<typeof fetch>) => {
+  const res = await fetch(...args);
+  return (await res.json()) as ApiResp;
+};
 
 interface formSettingsProps {}
 const FormSettings: FC<formSettingsProps> = ({}) => {
-  const fetcher = async (...args: Parameters<typeof fetch>) => {
-    const res = await fetch(...args);
-    if (!res.ok) {
-      // throw new Error('Network res was not ok');
-    }
+  const { data, error, isLoading } = useSWR<ApiResp>('/api/settings', fetcher);
 
-    return (await res.json()) as ApiResponse;
-  };
-
-  const { data, error, isLoading } = useSWR<ApiResponse>(
-    '/api/settings',
-    fetcher
-  );
-
-  const form = useForm<ApiResponse>({
+  const form = useForm<ApiResp>({
     resolver: zodResolver(formSchema),
   });
 
+  // set default values from API.
   useEffect(() => {
     if (data) {
-      for (const [name, value] of Object.entries(data)) {
-        form.setValue(
-          name as 'slack_enabled' | 'slack_webhook_url',
-          value as any
-        );
-      }
+      form.reset(data);
     }
   }, [form, data]);
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  // handler for form submit
+  const onSubmit = async (values: ApiResp) => {
     try {
       await fetch('/api/settings', {
         method: 'PATCH',
@@ -84,7 +66,7 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   if (isLoading) {
     return (
@@ -119,22 +101,16 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
           control={form.control}
           name="slack_enabled"
           render={({ field }) => (
-            <FormItem className="flex flex-col">
+            <div className="flex flex-col">
               <FormLabel className="font-bold uppercase">
                 Slack notification
               </FormLabel>
               <p className="my-2 leading-7 text-muted-foreground">
                 Receive notification on Slack when an app is about to be expired
               </p>
-
-              <FormControl>
-                <Switch
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
+              <Switch checked={field.value} onCheckedChange={field.onChange} />
               <FormMessage />
-            </FormItem>
+            </div>
           )}
         />
 
@@ -143,24 +119,23 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
             control={form.control}
             name="slack_webhook_url"
             render={({ field }) => (
-              <FormItem className="mt-10 flex flex-col">
+              <div className="mt-10 flex flex-col">
                 <FormLabel className="font-bold uppercase">
                   Slack Webhook
                 </FormLabel>
                 <p className="my-2 leading-7 text-muted-foreground">
-                  Your webhook url to send notification to slack
+                  Your webhook url to send notification to Slack
                 </p>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="https://hooks.slack.com/services/..."
-                  />
-                </FormControl>
+                <Input
+                  {...field}
+                  placeholder="https://hooks.slack.com/services/..."
+                />
                 <FormMessage />
-              </FormItem>
+              </div>
             )}
           />
         )}
+
         <Button className="mt-4" type="submit">
           Update
         </Button>
