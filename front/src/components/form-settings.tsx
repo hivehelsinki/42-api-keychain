@@ -3,7 +3,7 @@
 import * as z from 'zod';
 import useSWR from 'swr';
 
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -11,6 +11,7 @@ import { Switch } from '@/components/ui/switch';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Label } from '@/components/ui/label';
 
 import {
   Form,
@@ -20,7 +21,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Label } from './ui/label';
 
 const formSchema = z
   .object({
@@ -37,24 +37,53 @@ const formSchema = z
     }
   );
 
-interface formSettingsProps {}
+type ApiResponse = z.infer<typeof formSchema>;
 
+interface formSettingsProps {}
 const FormSettings: FC<formSettingsProps> = ({}) => {
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error, isLoading } = useSWR('/api/settings', fetcher);
+  const fetcher = async (...args: Parameters<typeof fetch>) => {
+    const res = await fetch(...args);
+    if (!res.ok) {
+      // throw new Error('Network res was not ok');
+    }
+
+    return (await res.json()) as ApiResponse;
+  };
+
+  const { data, error, isLoading } = useSWR<ApiResponse>(
+    '/api/settings',
+    fetcher
+  );
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      slack_enabled: data?.slack_enabled === 'true' ? true : false,
-      slack_webhook_url: data?.slack_webhook_url ?? '',
-    },
   });
 
+  useEffect(() => {
+    if (data) {
+      for (const [name, value] of Object.entries(data)) {
+        form.setValue(
+          name as 'slack_enabled' | 'slack_webhook_url',
+          value as any
+        );
+      }
+    }
+  }, [form, data]);
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // POST logic here
-    // handle errors
-    // handle success
+    try {
+      await fetch('/api/settings', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      // TODO: toaster success
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   if (isLoading) {
@@ -67,7 +96,6 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
           </p>
           <Skeleton className="h-6 w-10 bg-gray-200" />
         </div>
-
         <Skeleton className="mt-4 h-12 w-full bg-gray-200" />
       </div>
     );
