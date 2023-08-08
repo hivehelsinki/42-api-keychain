@@ -22,6 +22,13 @@ Moreover, this app addresses another common challenge: the ownership of keys by 
 
 </div>
 
+## Features
+
+- [x] Send Slack notifications when an app is not valid.
+- [ ] Send Slack notifications when an app is about to expire.
+- [ ] Update expiration date if it changed.
+- [ ] Allows to send notifications on Discord instead of Slack
+
 ## Requirements
 
 This app is developed to run with the 42 OAuth. You will first need to create a 42 API app in the intranet.
