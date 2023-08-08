@@ -4,6 +4,7 @@ import { fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import { Navbar } from '@/components/navbar';
 import { ThemeProvider } from '@/components/theme-provider';
+import { Toaster } from '@/components/ui/toaster';
 
 import { getCurrentUser } from '@/lib/session';
 
@@ -22,6 +23,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar user={user} />
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

@@ -2,7 +2,6 @@
 
 import * as z from 'zod';
 import useSWR from 'swr';
-
 import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -12,8 +11,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Label } from '@/components/ui/label';
-
 import { Form, FormField, FormLabel, FormMessage } from '@/components/ui/form';
+import { useToast } from '@/components/ui/use-toast';
 
 const formSchema = z
   .object({
@@ -34,6 +33,7 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
 
 interface formSettingsProps {}
 const FormSettings: FC<formSettingsProps> = ({}) => {
+  const { toast } = useToast();
   const { data, error, isLoading } = useSWR<ApiResp>('/api/settings', fetcher);
 
   const form = useForm<ApiResp>({
@@ -58,7 +58,10 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
         body: JSON.stringify(values),
       });
 
-      // TODO: toaster success
+      toast({
+        title: 'Settings updated',
+        description: 'Your settings have been updated successfully.',
+      });
     } catch (error) {
       console.log(error);
     }
