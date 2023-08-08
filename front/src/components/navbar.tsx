@@ -19,9 +19,7 @@ const Navbar: FC<navbarProps> = ({ user }) => {
           <a href="/">
             <Icons.logo className="h-4 w-auto dark:fill-gray-100" />
           </a>
-          <span className="hidden text-lg font-bold tracking-tight dark:text-gray-200 md:inline-block">
-            Keychain
-          </span>
+          <span className="hidden text-lg font-bold tracking-tight dark:text-gray-200 md:inline-block">Keychain</span>
         </div>
         <div id="menu" className="flex items-center gap-3 md:gap-5">
           <LoginToggle user={user} />

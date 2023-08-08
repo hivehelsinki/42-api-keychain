@@ -19,9 +19,7 @@ export const authOptions = {
       if (!profile['staff?']) return false;
 
       // check user is from your campus
-      const campusId = profile.campus_users.find(
-        (cu) => cu.is_primary
-      )?.campus_id;
+      const campusId = profile.campus_users.find((cu) => cu.is_primary)?.campus_id;
 
       if (campusId.toString() !== process.env.CAMPUS_ID) return false;
 

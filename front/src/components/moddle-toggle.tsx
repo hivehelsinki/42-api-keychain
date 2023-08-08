@@ -14,9 +14,7 @@ export function ModeToggle() {
   }, []);
 
   if (!mounted) {
-    return (
-      <div className="h-9 w-9 px-0 py-2 text-sm font-medium transition-colors"></div>
-    );
+    return <div className="h-9 w-9 px-0 py-2 text-sm font-medium transition-colors"></div>;
   }
 
   const handleClick = () => {
@@ -27,17 +25,11 @@ export function ModeToggle() {
     <button onClick={handleClick}>
       {theme === 'dark' ? (
         <div className="flex h-9 w-9 items-center justify-center rounded-md px-0 py-2 text-sm font-medium transition-colors hover:bg-accent">
-          <Icons.moon
-            className="h-5 text-neutral-300 hover:text-neutral-200"
-            strokeWidth={1.4}
-          />
+          <Icons.moon className="h-5 text-neutral-300 hover:text-neutral-200" strokeWidth={1.4} />
         </div>
       ) : (
         <div className="flex h-9 w-9 items-center justify-center rounded-md px-0 py-2 text-sm font-medium transition-colors hover:bg-accent">
-          <Icons.sun
-            className="h-5 text-neutral-600 hover:text-neutral-700"
-            strokeWidth={1.4}
-          />
+          <Icons.sun className="h-5 text-neutral-600 hover:text-neutral-700" strokeWidth={1.4} />
         </div>
       )}
     </button>

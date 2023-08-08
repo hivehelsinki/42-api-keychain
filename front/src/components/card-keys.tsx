@@ -11,12 +11,7 @@ import { Button } from '@/components/ui/button';
 import CardInfoRotation from '@/components/card-info-rotation';
 import UpdateSecretModal from '@/components/update-secret-modal';
 
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 import {
   DropdownMenu,
@@ -59,8 +54,7 @@ async function deleteApp(appId: number) {
 const Key: FC<keyProps> = ({ datum, ...props }) => {
   const { mutate } = useSWRConfig();
   const [showDeleteAlert, setShowDeleteAlert] = React.useState<boolean>(false);
-  const [showUpdateDialog, setShowUpdateDialog] =
-    React.useState<boolean>(false);
+  const [showUpdateDialog, setShowUpdateDialog] = React.useState<boolean>(false);
   const [isDeleteLoading, setIsDeleteLoading] = React.useState<boolean>(false);
 
   return (
@@ -69,10 +63,7 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
       {...props}
     >
       <CardHeader className="relative px-6 py-4">
-        <Ping
-          className="absolute right-3 top-3"
-          variant={dateVariant(datum.secretValidUntil)}
-        />
+        <Ping className="absolute right-3 top-3" variant={dateVariant(datum.secretValidUntil)} />
 
         <CardTitle className="text-md">
           <DropdownMenu>
@@ -83,9 +74,7 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
               </span>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-40 translate-x-20 transform">
-              <DropdownMenuItem onSelect={() => setShowUpdateDialog(true)}>
-                Update secret
-              </DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => setShowUpdateDialog(true)}>Update secret</DropdownMenuItem>
               <DropdownMenuItem
                 className="text-destructive focus:text-destructive"
                 onSelect={() => setShowDeleteAlert(true)}
@@ -99,28 +88,17 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
           <div className="flex items-center gap-2">
             <Icons.user strokeWidth={1.5} className="h-4 w-4" /> {datum.ownedBy}
           </div>
-          <CardInfoRotation
-            datum={datum}
-            variant={dateVariant(datum.secretValidUntil)}
-          />
+          <CardInfoRotation datum={datum} variant={dateVariant(datum.secretValidUntil)} />
         </CardDescription>
       </CardHeader>
 
-      <UpdateSecretModal
-        open={showUpdateDialog}
-        onOpenChange={setShowUpdateDialog}
-        data={datum}
-      />
+      <UpdateSecretModal open={showUpdateDialog} onOpenChange={setShowUpdateDialog} data={datum} />
 
       <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>
-              Are you sure you want to delete this app?
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone.
-            </AlertDialogDescription>
+            <AlertDialogTitle>Are you sure you want to delete this app?</AlertDialogTitle>
+            <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
@@ -160,20 +138,12 @@ interface cardKeysProps {
 
 const CardKeys: FC<cardKeysProps> = ({ data, className }) => {
   return (
-    <div
-      className={cn(
-        'grid min-h-max grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2 lg:grid-cols-3',
-        className
-      )}
-    >
+    <div className={cn('grid min-h-max grid-cols-1 gap-x-4 gap-y-5 md:grid-cols-2 lg:grid-cols-3', className)}>
       {data.map((datum: CardKeyProps) => (
         <Key datum={datum} key={datum.id} />
       ))}
       <Link href="/new">
-        <Button
-          className="h-full w-full border-dashed  dark:border-gray-600"
-          variant="outline"
-        >
+        <Button className="h-full w-full border-dashed  dark:border-gray-600" variant="outline">
           <span className="inline-flex min-h-[65px] items-center gap-2 transition-colors duration-200 ease-in-out">
             <Icons.plus className="h-4 w-4" />
             Add a new key

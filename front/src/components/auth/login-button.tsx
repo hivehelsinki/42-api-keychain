@@ -10,11 +10,7 @@ type loginButtonProps = {
 };
 
 const LoginButton: FC<loginButtonProps> = ({ children }) => {
-  return (
-    <Button onClick={() => signIn('42-school', { callbackUrl: '/dashboard' })}>
-      {children}
-    </Button>
-  );
+  return <Button onClick={() => signIn('42-school', { callbackUrl: '/dashboard' })}>{children}</Button>;
 };
 
 export { LoginButton };

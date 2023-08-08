@@ -33,11 +33,7 @@ const Page: FC<pageProps> = ({}) => {
 
         <section className="mt-5 flex flex-col gap-3 md:mt-10">
           <Label className="font-bold">Search</Label>
-          <Input
-            placeholder="Search by name or client id"
-            autoFocus
-            onChange={handleSearch}
-          />
+          <Input placeholder="Search by name or client id" autoFocus onChange={handleSearch} />
 
           <p className="mt-5">Failed to connect with the server</p>
         </section>
@@ -55,11 +51,7 @@ const Page: FC<pageProps> = ({}) => {
 
         <section className="mt-5 flex flex-col gap-3 md:mt-10">
           <Label className="font-bold">Search</Label>
-          <Input
-            placeholder="Search by name or client id"
-            autoFocus
-            onChange={handleSearch}
-          />
+          <Input placeholder="Search by name or client id" autoFocus onChange={handleSearch} />
 
           <div className="mt-5 inline-flex items-center gap-2">
             <Icons.spinner className="h-4 w-4 animate-spin " />
@@ -78,11 +70,7 @@ const Page: FC<pageProps> = ({}) => {
 
       <section className="mt-5 flex flex-col gap-3 md:mt-10">
         <Label className="font-bold">Search</Label>
-        <Input
-          placeholder="Search by name or client id"
-          autoFocus
-          onChange={handleSearch}
-        />
+        <Input placeholder="Search by name or client id" autoFocus onChange={handleSearch} />
 
         <CardKeys
           className="mt-5"
@@ -90,12 +78,8 @@ const Page: FC<pageProps> = ({}) => {
             search
               ? data.filter(
                   (app: CardKeyProps) =>
-                    app.name
-                      .toLowerCase()
-                      .includes(search.toLocaleLowerCase()) ||
-                    app.clientId
-                      .toLocaleLowerCase()
-                      .includes(search.toLocaleLowerCase())
+                    app.name.toLowerCase().includes(search.toLocaleLowerCase()) ||
+                    app.clientId.toLocaleLowerCase().includes(search.toLocaleLowerCase())
                 )
               : data
           }

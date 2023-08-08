@@ -40,8 +40,7 @@ export async function PATCH(request: Request) {
     const data = await request.json();
 
     for (const key in data) {
-      const value =
-        typeof data[key] === 'boolean' ? data[key].toString() : data[key];
+      const value = typeof data[key] === 'boolean' ? data[key].toString() : data[key];
       await prisma.Setting.update({
         where: {
           settingKey: key,

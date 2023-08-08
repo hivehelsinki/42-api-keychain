@@ -10,15 +10,10 @@ const routeContextSchema = z.object({
 
 const keyPatchSchema = z.object({
   id: z.number(),
-  client_secret: z
-    .string()
-    .min(64, { message: 'Secret must be at least 64 characters long' }),
+  client_secret: z.string().min(64, { message: 'Secret must be at least 64 characters long' }),
 });
 
-export async function PATCH(
-  req: Request,
-  context: z.infer<typeof routeContextSchema>
-) {
+export async function PATCH(req: Request, context: z.infer<typeof routeContextSchema>) {
   const user = await getCurrentUser();
 
   if (!user) {
@@ -57,10 +52,7 @@ export async function PATCH(
   }
 }
 
-export async function DELETE(
-  req: Request,
-  context: z.infer<typeof routeContextSchema>
-) {
+export async function DELETE(req: Request, context: z.infer<typeof routeContextSchema>) {
   const user = await getCurrentUser();
 
   if (!user) {

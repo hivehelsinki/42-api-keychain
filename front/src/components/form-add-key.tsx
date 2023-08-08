@@ -7,28 +7,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useSWRConfig } from 'swr';
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
 
 const formSchema = z.object({
   id: z.number(),
-  client_id: z
-    .string()
-    .trim()
-    .min(64, { message: 'UID must be at least 64 characters long' }),
-  client_secret: z
-    .string()
-    .trim()
-    .min(64, { message: 'Secret must be at least 64 characters long' }),
+  client_id: z.string().trim().min(64, { message: 'UID must be at least 64 characters long' }),
+  client_secret: z.string().trim().min(64, { message: 'Secret must be at least 64 characters long' }),
   secret_valid_until: z.string().optional(),
   name: z.string().optional(),
 });
@@ -98,13 +85,9 @@ const FormAddKey = () => {
               shouldValidate: true,
             });
             form.setValue('name', keyInfo.appName, { shouldValidate: true });
-            form.setValue(
-              'secret_valid_until',
-              new Date(keyInfo.secret_valid_until * 1000).toISOString(),
-              {
-                shouldValidate: true,
-              }
-            );
+            form.setValue('secret_valid_until', new Date(keyInfo.secret_valid_until * 1000).toISOString(), {
+              shouldValidate: true,
+            });
           } catch (e) {
             console.error(e);
             setIsValid(false);
@@ -119,10 +102,7 @@ const FormAddKey = () => {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex w-full flex-col gap-2"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full flex-col gap-2">
         <FormField
           control={form.control}
           name="client_id"
@@ -163,9 +143,7 @@ const FormAddKey = () => {
         {isValid === false && (
           <div className="mt-3 flex items-center gap-2 bg-red-100 py-4 pl-4 text-sm dark:bg-red-500">
             <Icons.close className="h-4 w-4 text-red-600/80 dark:text-gray-200" />
-            <p className="dark:text-gray-200">
-              {errorMessageByStatus[httpCode] || 'Something went wrong'}
-            </p>
+            <p className="dark:text-gray-200">{errorMessageByStatus[httpCode] || 'Something went wrong'}</p>
           </div>
         )}
 

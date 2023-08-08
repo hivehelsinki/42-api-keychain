@@ -14,20 +14,11 @@ export const metadata = {
   description: 'Manage smoothly your 42 API applications.',
 };
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const user: User | null = await getCurrentUser();
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          'font-sans antialiased dark:bg-gray-900',
-          fontSans.variable
-        )}
-      >
+      <body className={cn('font-sans antialiased dark:bg-gray-900', fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar user={user} />
           {children}

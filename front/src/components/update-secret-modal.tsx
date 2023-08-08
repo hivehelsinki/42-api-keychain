@@ -9,21 +9,13 @@ import { Label } from './ui/label';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 
 import CardKeyProps from '@/types/card-key';
 
 const formSchema = z.object({
   id: z.number(),
-  client_secret: z
-    .string()
-    .min(64, { message: 'Secret must be at least 64 characters long' }),
+  client_secret: z.string().min(64, { message: 'Secret must be at least 64 characters long' }),
 });
 
 interface modalUpdateSecretProps {
@@ -32,11 +24,7 @@ interface modalUpdateSecretProps {
   data: CardKeyProps;
 }
 
-const UpdateSecretModal: FC<modalUpdateSecretProps> = ({
-  open,
-  onOpenChange,
-  data,
-}) => {
+const UpdateSecretModal: FC<modalUpdateSecretProps> = ({ open, onOpenChange, data }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -66,8 +54,7 @@ const UpdateSecretModal: FC<modalUpdateSecretProps> = ({
             new secret for {data.name}
           </Label>
           <p className="my-2 text-sm leading-7 text-muted-foreground">
-            Make changes to your app secret here. Click save when you&apos;re
-            done.
+            Make changes to your app secret here. Click save when you&apos;re done.
           </p>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="col-span-3">

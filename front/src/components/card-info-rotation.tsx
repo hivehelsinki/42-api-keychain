@@ -1,11 +1,6 @@
 import { FC } from 'react';
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import moment from 'moment';
 import { Icons } from '@/components/icons';
 import { tv, type VariantProps } from 'tailwind-variants';
@@ -25,25 +20,15 @@ const cardInfoRotationVariants = tv({
   },
 });
 
-interface cardInfoRotationProps
-  extends VariantProps<typeof cardInfoRotationVariants> {}
+interface cardInfoRotationProps extends VariantProps<typeof cardInfoRotationVariants> {}
 
-const CardInfoRotation: FC<cardInfoRotationProps> = ({
-  datum,
-  className,
-  variant,
-}) => {
+const CardInfoRotation: FC<cardInfoRotationProps> = ({ datum, className, variant }) => {
   return (
     <div className={cn(cardInfoRotationVariants({ variant, className }))}>
       <Icons.clock strokeWidth={1.5} className="h-4 w-4" />{' '}
       <TooltipProvider>
         <Tooltip>
-          <TooltipTrigger>
-            {moment(
-              datum.secretValidUntil,
-              'YYYY-MM-DDThh:mm:ss.000Z'
-            ).fromNow()}
-          </TooltipTrigger>
+          <TooltipTrigger>{moment(datum.secretValidUntil, 'YYYY-MM-DDThh:mm:ss.000Z').fromNow()}</TooltipTrigger>
           <TooltipContent side={'right'} sideOffset={10}>
             <p>{moment(datum.secret_valid_until).format('LLL')}</p>
           </TooltipContent>
