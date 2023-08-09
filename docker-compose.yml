@@ -9,11 +9,11 @@ services:
   #   depends_on:
   #     - db
 
-  # back:
-  #   build: back/
-  #   container_name: keychain_back
-  #   networks:
-  #     - keychain_back
+  back:
+    build: back/
+    container_name: keychain_back
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
 
   db:
     image: postgres:9.6
