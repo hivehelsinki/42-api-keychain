@@ -10,8 +10,8 @@ interface pageProps {}
 
 const page: FC<pageProps> = ({}) => {
   return (
-    <main className="container mt-10">
-      <section className="px-4 pt-5">
+    <main className="container mt-8">
+      <section>
         <div className="mx-auto max-w-screen-xl gap-8 px-4 py-8 sm:py-16 md:grid md:grid-cols-3 lg:px-6">
           <div className="col-span-2 ">
             <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">
