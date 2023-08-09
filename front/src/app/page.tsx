@@ -126,7 +126,8 @@ const page: FC<pageProps> = ({}) => {
           <article>
             <h2 className="text-lg font-semibold leading-7">Do I get notification when an app is about to expire?</h2>
             <p>
-              Yes! You will receive a notification 7 days, 14 and 30 days before the expiration via Slack and email.
+              Yes! You will receive a notification 24 hours, 7 days, and 14 days before the expiration via Slack and
+              email.
             </p>
           </article>
           <article>

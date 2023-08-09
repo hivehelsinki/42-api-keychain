@@ -25,8 +25,8 @@ Moreover, this app addresses another common challenge: the ownership of keys by 
 ## Features
 
 - [x] Send Slack notifications when an app is not valid.
-- [ ] Send Slack notifications when an app is about to expire.
-- [ ] Update expiration date if it changed.
+- [x] Send Slack notifications when an app is about to expire (24 hours, 7 days, 14 days).
+- [x] Update the saved expiration date if it changes.
 - [ ] Allows to send notifications on Discord instead of Slack
 
 ## Requirements
