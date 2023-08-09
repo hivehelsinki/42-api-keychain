@@ -1,0 +1,29 @@
+version: "3.5"
+
+services:
+  # web:
+  #   build: front/
+  #   container_name: keychain_front
+  #   ports:
+  #     - "4001:4001"
+  #   depends_on:
+  #     - db
+
+  # back:
+  #   build: back/
+  #   container_name: keychain_back
+  #   networks:
+  #     - keychain_back
+
+  db:
+    image: postgres:9.6
+    container_name: keychain_db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - keychain_db:/var/lib/postgresql/data
+
+volumes:
+  keychain_db:
