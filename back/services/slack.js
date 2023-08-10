@@ -25,7 +25,7 @@ async function send(message) {
   try {
     await webhook.send(message);
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 }
 

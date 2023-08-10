@@ -1,6 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const slackService = require("../services/slack");
 const fortyTwoService = require("../services/fortytwo");
+const logger = require("../lib/logger");
 
 async function updateRotation(key, date) {
   const prisma = new PrismaClient();
@@ -12,7 +13,7 @@ async function updateRotation(key, date) {
       secretValidUntil: date,
     },
   });
-  console.log(
+  logger.info(
     `${key.name} secret_valid_until has been updated from ${key.secretValidUntil} to ${date}`
   );
 }
@@ -22,7 +23,7 @@ async function processKey(key) {
   const res = await fortyTwoService.check(key.clientId, key.clientSecret);
 
   if (!res) {
-    console.error(
+    logger.error(
       `Failed to fetch a token for the key: name=${key.name} id=${key.id}`
     );
     slackService.error(key);
@@ -38,7 +39,6 @@ async function processKey(key) {
   const days = parseInt(timeDiff / (1000 * 60 * 60 * 24));
   const hours = parseInt(timeDiff / (1000 * 60 * 60));
 
-  console.log(key.name, days, hours);
   if (days === 14 || days === 7) {
     slackService.reminder(key, `${days} days`);
     return;
@@ -50,14 +50,14 @@ async function processKey(key) {
 }
 
 async function CheckKeys() {
-  console.log("running key validity check...");
+  logger.info("running key validity check...");
   const prisma = new PrismaClient();
   const keys = await prisma.Key.findMany();
 
   for (const key of keys) {
     await processKey(key);
   }
-  console.log(`${keys.length} keys checked`);
+  logger.info(`${keys.length} keys checked`);
 }
 
 module.exports = {
