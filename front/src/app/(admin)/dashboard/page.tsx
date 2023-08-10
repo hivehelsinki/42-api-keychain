@@ -1,23 +1,26 @@
 'use client';
 
 import React, { FC, useState } from 'react';
-
 import useSWR from 'swr';
 
 import { CardKeys } from '@/components/card-keys';
 import { Input } from '@/components/ui/input';
 import { Icons } from '@/components/icons';
-
-import CardKeyProps from '@/types/card-key';
 import { Label } from '@/components/ui/label';
 import Header from '@/components/header';
 
+import CardKeyProps from '@/types/card-key';
+
 interface pageProps {}
+
+const fetcher = async (...args: Parameters<typeof fetch>) => {
+  const res = await fetch(...args);
+  return (await res.json()) as CardKeyProps[];
+};
 
 const Page: FC<pageProps> = ({}) => {
   const [search, setSearch] = useState<string>('');
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error } = useSWR('/api/keys', fetcher);
+  const { data, error } = useSWR<CardKeyProps[]>('/api/keys', fetcher);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
