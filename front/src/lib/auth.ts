@@ -1,8 +1,8 @@
 import NextAuth from 'next-auth';
+import type { NextAuthOptions } from 'next-auth';
 import FortyTwoProvider from 'next-auth/providers/42-school';
-import type { FortyTwoProfile } from 'next-auth/providers/42-school';
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   secret: process.env.SECRET,
   providers: [
     FortyTwoProvider({
@@ -15,7 +15,7 @@ export const authOptions = {
     maxAge: 30 * 24 * 60 * 60, // 30 days hours
   },
   callbacks: {
-    async signIn({ profile, user }: { profile: FortyTwoProfile; user: any }) {
+    signIn({ profile, user }) {
       if (!profile || !user) {
         return false;
       }
@@ -31,27 +31,27 @@ export const authOptions = {
 
       return user;
     },
-    async jwt({ token, profile }: { token: any; profile: FortyTwoProfile }) {
+    jwt({ token, profile }) {
       if (profile) {
         token.user_id = profile.id;
         token.login = profile.login;
-        token.image_url = profile.image.link;
+        token.image_url = profile.image?.link;
         token.admin = profile['staff?'];
       }
 
       return token;
     },
-    async session({ session, token }: { session: any; token: any }) {
+    session({ session, token }) {
       delete session.user;
-      session.login = token.login;
-      session.user_id = token.user_id;
-      session.image_url = token.image_url;
-      session.admin = token.admin;
+      session.login = token.login as string;
+      session.user_id = token.user_id as number;
+      session.image_url = token.image_url as string;
+      session.admin = token.admin as boolean;
 
       return session;
     },
     callbacks: {
-      async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
+      async redirect({ url, baseUrl }) {
         if (url.startsWith('/')) return `${baseUrl}${url}`;
         else if (new URL(url).origin === baseUrl) return url;
         return baseUrl;
