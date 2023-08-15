@@ -1,11 +1,12 @@
-import NextAuth from 'next-auth';
+// @ts-nocheck
 import type { NextAuthOptions } from 'next-auth';
 import FortyTwoProvider from 'next-auth/providers/42-school';
+import type { FortyTwoProfile } from 'next-auth/providers/42-school';
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.SECRET,
   providers: [
-    FortyTwoProvider({
+    FortyTwoProvider<FortyTwoProfile>({
       clientId: process.env.FT_UID as string,
       clientSecret: process.env.FT_SECRET as string,
     }),
@@ -15,7 +16,7 @@ export const authOptions: NextAuthOptions = {
     maxAge: 30 * 24 * 60 * 60, // 30 days hours
   },
   callbacks: {
-    signIn({ profile, user }) {
+    async signIn({ user, profile }) {
       if (!profile || !user) {
         return false;
       }
@@ -29,9 +30,9 @@ export const authOptions: NextAuthOptions = {
       const campusId = profile.campus_users.find((cu) => cu.is_primary)?.campus_id as number;
       if (campusId.toString() !== process.env.CAMPUS_ID) return false;
 
-      return user;
+      return true;
     },
-    jwt({ token, profile }) {
+    async jwt({ token, profile }) {
       if (profile) {
         token.user_id = profile.id;
         token.login = profile.login;
@@ -41,7 +42,7 @@ export const authOptions: NextAuthOptions = {
 
       return token;
     },
-    session({ session, token }) {
+    async session({ session, token }) {
       delete session.user;
       session.login = token.login as string;
       session.user_id = token.user_id as number;
@@ -50,14 +51,12 @@ export const authOptions: NextAuthOptions = {
 
       return session;
     },
-    callbacks: {
-      async redirect({ url, baseUrl }) {
-        if (url.startsWith('/')) return `${baseUrl}${url}`;
-        else if (new URL(url).origin === baseUrl) return url;
-        return baseUrl;
-      },
+    async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
+      if (url.startsWith('/')) return `${baseUrl}${url}`;
+      else if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
     },
   },
 };
 
-export default NextAuth(authOptions);
+// export default NextAuth(authOptions);

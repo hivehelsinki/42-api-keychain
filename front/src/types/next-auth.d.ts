@@ -10,4 +10,8 @@ declare module 'next-auth' {
     image_url: string;
     admin: boolean;
   }
+
+  export interface AdapterUser extends AdapterUser {
+    staff?: boolean;
+  }
 }
