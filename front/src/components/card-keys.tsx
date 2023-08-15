@@ -138,7 +138,7 @@ interface cardKeysProps {
 
 const CardKeys: FC<cardKeysProps> = ({ data, className }) => {
   return (
-    <div className={cn('grid min-h-max grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3', className)}>
+    <div className={cn('grid min-h-max grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3', className)}>
       {data.map((datum: CardKeyProps) => (
         <Key datum={datum} key={datum.id} />
       ))}
