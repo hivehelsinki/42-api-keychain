@@ -20,7 +20,7 @@ COPY . .
 
 ENV NODE_ENV production
 
-RUN yarn build
+RUN yarn build && npx prisma generate
 
 FROM base AS runner
 

@@ -1,4 +1,3 @@
-import type { Key } from '@prisma/client';
 import * as z from 'zod';
 
 import { getCurrentUser } from '@/lib/session';
@@ -20,7 +19,7 @@ export async function GET() {
       return new Response(null, { status: 403 });
     }
 
-    const keys: Key[] | null = await prisma.Key.findMany({
+    const keys = await prisma.Key.findMany({
       select: {
         id: true,
         name: true,
@@ -49,7 +48,7 @@ export async function POST(req: Request) {
     const data = await req.json();
     const body = keySchema.parse(data);
 
-    const key: Key | null = await prisma.Key.create({
+    const key = await prisma.Key.create({
       data: {
         id: body.id,
         name: body.name,
