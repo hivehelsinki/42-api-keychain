@@ -5,8 +5,8 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./ 
-RUN \  
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+RUN \
     if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
     elif [ -f package-lock.json ]; then npm ci; \
     elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
@@ -20,7 +20,10 @@ COPY . .
 
 ENV NODE_ENV production
 
-RUN yarn build && npx prisma generate
+RUN yarn prisma generate && yarn build
+
+
+
 
 FROM base AS runner
 
