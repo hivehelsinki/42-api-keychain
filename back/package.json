@@ -5,18 +5,19 @@
   "main": "index.js",
   "scripts": {
     "start": "npx prisma generate && npx prisma db push && node index.js",
+    "docker:start": "sh wait.sh && npx prisma generate && npx prisma db push && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jordane Gengo",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^5.1.0",
     "@slack/webhook": "^6.1.0",
     "dotenv": "^16.3.1",
     "node-cron": "^3.0.2",
     "winston": "^3.10.0"
   },
   "devDependencies": {
+    "@prisma/client": "^5.1.1",
     "prisma": "^5.1.0"
   }
 }

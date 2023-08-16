@@ -39,4 +39,4 @@ COPY --from=builder /app/public ./public
 COPY --chown=nextjs:nodejs --from=builder /app/ ./
 USER nextjs
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "docker:start"]

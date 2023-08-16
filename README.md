@@ -39,10 +39,10 @@ This app is developed to run with the 42 OAuth. You will first need to create a 
 
 **Instructions**
 
-1. Create a new API application on the [42 intranet](https://profile.intra.42.fr/oauth/applications/new)
+1. Generate a new API application on the [42 intranet](https://profile.intra.42.fr/oauth/applications/new)
 2. In the field Redirect URI add: http://localhost:4001/api/auth/callback/42-school
-3. In the scopes select "Access the user public data" and submit.
-4. Save the credentials you will need them later.
+3. From the available scopes, choose "Access the user public data" and then proceed to submit.
+4. Save the credentials, you will need them later.
 
 <br/><br/>
 

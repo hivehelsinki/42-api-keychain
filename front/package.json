@@ -6,11 +6,11 @@
     "dev": "next dev -p 4001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "docker:start": "sh wait.sh && next start"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",
-    "@prisma/client": "^5.0.0",
     "@radix-ui/react-alert-dialog": "^1.0.4",
     "@radix-ui/react-avatar": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.4",
@@ -46,6 +46,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@prisma/client": "^5.1.1",
     "eslint-config-prettier": "^8.8.0",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",

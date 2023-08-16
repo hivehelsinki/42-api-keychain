@@ -9,4 +9,4 @@ RUN npm ci --omit=dev --quiet
 
 COPY . .
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "docker:start"]
