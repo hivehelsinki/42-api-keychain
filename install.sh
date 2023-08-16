@@ -32,7 +32,7 @@ setup() {
 
 
 if [ -f "$env_file" ]; then
-	read -r -p "Starting the install.sh will erase your current .env file. Are you sure you want to continue? [y/N] " response
+	read -r -p "WARNING! This will remove your current .env file. Are you sure you want to continue? [y/N] " response
 
 	if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 	then
