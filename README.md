@@ -22,8 +22,15 @@ Moreover, this app addresses another common challenge: the ownership of keys by 
 
 ![screen dashboard dark](.github/docs/screen00.png?raw=true "Dashboard dark")
 
+_Dashboard dark theme_
+
+<br>
+
 ![screen dashboard light](.github/docs/screen01.png?raw=true "Dashboard light")
 
+_Dashboard light theme_
+
+<br>
 </div>
 
 ## Features
