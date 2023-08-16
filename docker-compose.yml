@@ -5,7 +5,9 @@ services:
     build: front/
     container_name: keychain_front
     env_file:
-      - front/.env
+      - .env
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
     ports:
       - "4001:3000"
     depends_on:

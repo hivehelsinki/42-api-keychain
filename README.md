@@ -14,11 +14,15 @@
 
 Since July 2022, 42 implemented a rotation of API application secrets, enhancing security. However, this enhancement also poses a potential pitfall for your services. To ensure streamlined management of your applications, we introduce this monitoring and alerting tool. By adding your keys, you'll receive notifications and reports regarding key expiration or malfunction.
 
-Moreover, this app addresses another common challenge: the ownership of keys by individual team members. By consolidating all your team's keys in one accessible platform, you can avoid the surprise of an imminent key expiration while a team member is on vacation.
+Moreover, this app addresses another common challenge: the ownership of keys by individual team members. By consolidating all your team's keys in one accessible platform, you can avoid the surprise of an imminent key expiration while a team member is on vacation, for example.
 
 **Screenshots:**
 
 <div align='center'>
+
+![screen dashboard dark](.github/docs/screen00.png?raw=true "Dashboard dark")
+
+![screen dashboard light](.github/docs/screen01.png?raw=true "Dashboard light")
 
 </div>
 
@@ -57,7 +61,20 @@ cd keychain
 npm run dev
 ```
 
-Now you can access you application on [localhost:3000](http://localhost:4001)
+Now you can access you application on [localhost:4001](http://localhost:4001)
+
+<br/><br/>
+
+## Running with Docker
+
+<br/><br/>
+
+## FAQ
+
+**I'm a student and I want to use Keychain, how does that work?**
+
+Please note that if you intend to run this application as a student, you'll need to edit the file `front/src/lib/auth.ts`. In this file, you should replace the section responsible for verifying the user's staff status with a check based on your
+login credentials.
 
 <br/><br/>
 
