@@ -101,21 +101,9 @@ docker compose up --build
 
 The keys are checked every day at 10am. To adjust this schedule, you can modify the time or frequency within the `back/tasks/scheduled-check.js` file. However, I strongly recommend against changing the frequency. The code in the backend is not optimally structured for altering the frequency, and doing so could potentially lead to additional notifications or even missed notifications.
 
-**The app API's secret rotated, how to update the secret for this service**
+**The Keychain's secret rotated, how can I update the secret?**
 
-To update the API secret for the app, follow these steps:
-
-1. Open the `.env` file
-2. Locate and replace the FT_SECRET entry with the new one.
-3. Save the changes to the `.env` file
-
-After updating the secret in the .env file, you'll need to reload the container with the new configuration. To do this, run the following command in your terminal:
-
-```
-docker-compose down && docker-compose up -d
-```
-
-This command will take down the existing container and then start it again with the updated secret.
+To update the API secret for the app, edit the .env file and replace the existing FT_SECRET entry with the new secret, and then reload the container using the command docker-compose down && docker-compose up -d to apply the changes.
 
 **I'm a student and I want to use Keychain, how does that work?**
 
