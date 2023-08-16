@@ -15,12 +15,10 @@ const Navbar: FC<navbarProps> = ({ user }) => {
   return (
     <nav className="supports-backdrop-blur:bg-background/60 sticky top-0  flex h-14 w-full border-b bg-background/95 text-gray-950 backdrop-blur dark:border-b-gray-600 dark:bg-gray-800 dark:text-gray-100">
       <div className="container flex justify-between">
-        <div className="flex items-center gap-2 text-gray-950">
-          <a href="/">
-            <Icons.logo className="h-4 w-auto dark:fill-gray-100" />
-          </a>
+        <Link href="/" className="flex items-center gap-2 text-gray-950">
+          <Icons.logo className="h-4 w-auto dark:fill-gray-100" />
           <span className="hidden text-lg font-bold tracking-tight dark:text-gray-200 md:inline-block">Keychain</span>
-        </div>
+        </Link>
         <div id="menu" className="flex items-center gap-3 md:gap-5">
           <LoginToggle user={user} />
           <div className="flex space-x-2">
