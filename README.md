@@ -90,6 +90,10 @@ docker compose up --build
 
 ## FAQ
 
+**How often it checks the keys and how to change it?**
+
+The keys are checked every day at 10am. To adjust this schedule, you can modify the time or frequency within the `back/tasks/scheduled-check.js` file. However, I strongly recommend against changing the frequency. The code in the backend is not optimally structured for altering the frequency, and doing so could potentially lead to additional notifications or even missed notifications.
+
 **I'm a student and I want to use Keychain, how does that work?**
 
 Please note that if you intend to run this application as a student, you'll need to edit the file `front/src/lib/auth.ts`. In this file, you should replace the section responsible for verifying the user's staff status with a check based on your
