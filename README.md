@@ -67,6 +67,25 @@ Now you can access you application on [localhost:4001](http://localhost:4001)
 
 ## Running with Docker
 
+Clone the repository locally
+
+```sh
+git clone git@github.com:hivehelsinki/42-api-keychain keychain
+cd keychain
+```
+
+Run the helper script to setup your .env file and follow the instructions
+
+```
+./install.sh
+```
+
+Run the containers
+
+```
+docker compose up --build
+```
+
 <br/><br/>
 
 ## FAQ
