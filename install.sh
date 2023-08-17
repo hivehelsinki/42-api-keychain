@@ -37,9 +37,10 @@ if [ -f "$env_file" ]; then
 
 	if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 	then
-		setup
+		rm $env_file	
 	else
 		exit 0;
 	fi
 fi
 
+setup
