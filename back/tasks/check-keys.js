@@ -19,7 +19,6 @@ async function updateRotation(key, date) {
 }
 
 async function processKey(key) {
-  const prisma = new PrismaClient();
   const res = await fortyTwoService.check(key.clientId, key.clientSecret);
 
   if (!res) {
