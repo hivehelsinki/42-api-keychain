@@ -28,7 +28,9 @@ export const authOptions: NextAuthOptions = {
 
       // check user is from your campus
       const campusId = profile.campus_users.find((cu) => cu.is_primary)?.campus_id as number;
-      if (campusId.toString() !== process.env.CAMPUS_ID) return false;
+      if (campusId.toString() !== process.env.CAMPUS_ID) {
+        return false;
+      }
 
       return true;
     },
