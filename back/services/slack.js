@@ -1,5 +1,6 @@
 const { IncomingWebhook } = require("@slack/webhook");
 const { PrismaClient } = require("@prisma/client");
+const logger = require("../lib/logger");
 
 async function getSettings() {
   const prisma = new PrismaClient();
