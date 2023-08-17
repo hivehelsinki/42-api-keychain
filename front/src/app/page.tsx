@@ -126,35 +126,32 @@ const page: FC<pageProps> = ({}) => {
             </p>
           </article>
           <article>
-            <h2 className="text-lg font-semibold leading-7">What is lorem ipsum?</h2>
+            <h2 className="text-lg font-semibold leading-7">How often it checks the keys and how to change it?</h2>
             <p>
-              Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex, quisquam repudiandae?
-              Deleniti repellat porro ad sapiente eum quis sint laborum eveniet et excepturi accusamus dolor molestiae,
-              mollitia voluptatum culpa? Aperiam!
+              The keys are checked every day at 10am. To adjust this schedule, you can modify the time or frequency
+              within the <code>back/tasks/scheduled-check.js</code> file. However, I strongly recommend against changing
+              the frequency. The code in the backend is not optimally structured for altering the frequency, and doing
+              so could potentially lead to additional notifications or even missed notifications.
             </p>
           </article>
           <article>
-            <h2 className="text-lg font-semibold leading-7">What is lorem ipsum?</h2>
+            <h2 className="text-lg font-semibold leading-7">
+              The Keychain&apos;s secret rotated, how can I update the secret?
+            </h2>
             <p>
-              Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex, quisquam repudiandae?
-              Deleniti repellat porro ad sapiente eum quis sint laborum eveniet et excepturi accusamus dolor molestiae,
-              mollitia voluptatum culpa? Aperiam!
+              To update the API secret for the app, edit the .env file and replace the existing <code>FT_SECRET</code>{' '}
+              entry with the new secret, and then reload the container using the command docker-compose down &&
+              docker-compose up -d to apply the changes.
             </p>
           </article>
           <article>
-            <h2 className="text-lg font-semibold leading-7">What is lorem ipsum?</h2>
+            <h2 className="text-lg font-semibold leading-7">
+              I&apos;m a student and I want to use Keychain, how does that work?
+            </h2>
             <p>
-              Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex, quisquam repudiandae?
-              Deleniti repellat porro ad sapiente eum quis sint laborum eveniet et excepturi accusamus dolor molestiae,
-              mollitia voluptatum culpa? Aperiam!
-            </p>
-          </article>
-          <article>
-            <h2 className="text-lg font-semibold leading-7">What is lorem ipsum?</h2>
-            <p>
-              Lorem ipsum is Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex, quisquam repudiandae?
-              Deleniti repellat porro ad sapiente eum quis sint laborum eveniet et excepturi accusamus dolor molestiae,
-              mollitia voluptatum culpa? Aperiam!
+              Please note that if you intend to run this application as a student, you&apos;ll need to edit the file
+              <code>front/src/lib/auth.ts</code>. In this file, you should replace the section responsible for verifying
+              the user&apos;s staff status with a check based on your login credentials.
             </p>
           </article>
         </div>

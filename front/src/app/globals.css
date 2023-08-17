@@ -72,6 +72,10 @@
   * {
     @apply border-border;
   }
+
+  code {
+    @apply rounded bg-amber-100 px-1 dark:bg-amber-900;
+  }
   body {
     @apply bg-background text-foreground;
   }
