@@ -12,7 +12,9 @@ ask() {
 
 randomize() {
 	rand=`openssl rand -hex 20`
-	echo "$1='$rand'" >> $env_file
+	for arg in "$@"; do
+		echo "$arg='$rand'" >> $env_file
+	done
 }
 
 setup() {
@@ -23,9 +25,8 @@ setup() {
 	echo "POSTGRES_DB='keychain'" >> $env_file
 	echo "POSTGRES_USER='keychain'" >> $env_file
 	randomize POSTGRES_PASSWORD
-	randomize SECRET
 	ask NEXTAUTH_URL "What will be the URL of the website e.g: https://keychain.hive.fi (in dev: http://localhost:4001)"
-	randomize NEXTAUTH_SECRET
+	randomize SECRET NEXTAUTH_SECRET
 	echo ""
 	echo "Thank you! your $env_file is now setup"
 }

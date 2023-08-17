@@ -5,6 +5,7 @@ while ! nc -z db 5432 ; do
 done
 
 echo "[+] Successfully reached database"
+sleep 1
 
 exit 0;
 

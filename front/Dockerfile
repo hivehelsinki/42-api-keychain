@@ -1,5 +1,6 @@
 FROM node:18-alpine AS base
 
+
 FROM base AS deps
 
 RUN apk add --no-cache libc6-compat
@@ -21,8 +22,6 @@ COPY . .
 ENV NODE_ENV production
 
 RUN yarn prisma generate && yarn build
-
-
 
 
 FROM base AS runner
