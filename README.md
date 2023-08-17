@@ -118,6 +118,8 @@ Run the containers
 docker compose up --build
 ```
 
+Now you can access you application on [localhost:4001](http://localhost:4001)
+
 <br/><br/>
 
 ## FAQ
