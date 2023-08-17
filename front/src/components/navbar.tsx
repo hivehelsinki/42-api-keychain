@@ -22,7 +22,7 @@ const Navbar: FC<navbarProps> = ({ user }) => {
         <div id="menu" className="flex items-center gap-3 md:gap-5">
           <LoginToggle user={user} />
           <div className="flex space-x-2">
-            <div className="w-[1px] bg-gray-300/90 dark:bg-gray-600"></div>
+            <div className="w-[1px] bg-gray-300/90 dark:bg-gray-600" />
             <ModeToggle />
             <Link
               href="https://github.com/hivehelsinki/42-api-keychain"

@@ -22,8 +22,8 @@ export interface PingProps extends VariantProps<typeof pingVariants> {}
 const Ping: FC<PingProps> = ({ className, variant }) => {
   return (
     <div>
-      <span className={cn(`animate-ping ${pingVariants({ variant, className })}`)}></span>
-      <span className={pingVariants({ variant, className })}></span>
+      <span className={cn(`animate-ping ${pingVariants({ variant, className })}`)} />
+      <span className={pingVariants({ variant, className })} />
     </div>
   );
 };

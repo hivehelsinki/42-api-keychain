@@ -14,7 +14,7 @@ export function ModeToggle() {
   }, []);
 
   if (!mounted) {
-    return <div className="h-9 w-9 px-0 py-2 text-sm font-medium transition-colors"></div>;
+    return <div className="h-9 w-9 px-0 py-2 text-sm font-medium transition-colors" />;
   }
 
   const handleClick = () => {
