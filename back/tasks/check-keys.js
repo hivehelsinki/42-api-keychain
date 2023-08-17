@@ -44,7 +44,6 @@ async function processKey(key) {
   }
   if (hours >= 0 && hours <= 24) {
     slackService.reminder(key, `${hours} hours`);
-    return;
   }
 }
 
