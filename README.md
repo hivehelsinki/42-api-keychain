@@ -55,6 +55,10 @@ This app is developed to run with the 42 OAuth. You will first need to create a 
 
 ## Getting Started
 
+> _We recommend using the Docker setup as it's easier and more straightforward._
+
+> _Also, please note that you will need a running PostgreSQL instance to run the app._
+
 Clone the repository locally
 
 ```sh
@@ -62,7 +66,27 @@ git clone git@github.com:hivehelsinki/42-api-keychain keychain
 cd keychain
 ```
 
-[...] #TODO
+Copy and fill in the information in `front/.env` to run the frontend app.
+
+```sh
+cp front/.env.sample front/.env
+vim .env
+```
+
+Copy and fill in the information in `back/.env` to run the backend app.
+
+```sh
+cp back/.env.sample back/.env
+vim .env
+```
+
+Install the dependencies, navigate to the root repository and execute the following command:
+
+```sh
+npm run install
+```
+
+To run the app, navigate to the root of the repository and execute the following command:
 
 ```sh
 npm run dev
