@@ -82,7 +82,7 @@ const Page: FC<pageProps> = ({}) => {
               ? data.filter(
                   (app: CardKeyProps) =>
                     app.name.toLowerCase().includes(search.toLocaleLowerCase()) ||
-                    app.clientId.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+                    app.clientId.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
                 )
               : data
           }
