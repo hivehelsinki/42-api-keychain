@@ -14,7 +14,7 @@ async function updateRotation(key, date) {
     },
   });
   logger.info(
-    `${key.name} secret_valid_until has been updated from ${key.secretValidUntil} to ${date}`,
+    `${key.name} secret_valid_until has been updated from ${key.secretValidUntil} to ${date}`
   );
 }
 
@@ -23,14 +23,14 @@ async function processKey(key) {
 
   if (!res) {
     logger.error(
-      `Failed to fetch a token for the key: name=${key.name} id=${key.id}`,
+      `Failed to fetch a token for the key: name=${key.name} id=${key.id}`
     );
     slackService.error(key);
     return;
   }
 
   const tokenDate = new Date(res.secret_valid_until * 1000);
-  if (tokenDate.getTime() != key.secretValidUntil.getTime()) {
+  if (tokenDate.getTime() !== key.secretValidUntil.getTime()) {
     await updateRotation(key, tokenDate);
   }
 

@@ -81,13 +81,13 @@ cp back/.env.sample back/.env
 vim .env
 ```
 
-Install the dependencies, navigate to the root repository and execute the following command:
+Install the dependencies, navigate to the root directory and execute the following command:
 
 ```sh
 npm run install
 ```
 
-To run the app, navigate to the root of the repository and execute the following command:
+To run the app, navigate to the root directory and execute the following command:
 
 ```sh
 npm run dev
