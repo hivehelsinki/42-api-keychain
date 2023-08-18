@@ -56,7 +56,7 @@ const Page: FC<pageProps> = ({}) => {
           <Label className="font-bold">Search</Label>
           <Input placeholder="Search by name or client id" autoFocus onChange={handleSearch} />
 
-          <div className="mt-5 inline-flex items-center gap-2">
+          <div className="mt-5 inline-flex items-center justify-center gap-2">
             <Icons.spinner className="h-4 w-4 animate-spin " />
             Loading
           </div>
