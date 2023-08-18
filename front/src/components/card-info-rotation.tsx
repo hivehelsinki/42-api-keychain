@@ -28,7 +28,9 @@ const CardInfoRotation: FC<cardInfoRotationProps> = ({ datum, className, variant
       <Icons.clock strokeWidth={1.5} className="h-4 w-4" />{' '}
       <TooltipProvider>
         <Tooltip>
-          <TooltipTrigger>{moment(datum.secretValidUntil, 'YYYY-MM-DDThh:mm:ss.000Z').fromNow()}</TooltipTrigger>
+          <TooltipTrigger className="cursor-default">
+            {moment(datum.secretValidUntil, 'YYYY-MM-DDThh:mm:ss.000Z').fromNow()}
+          </TooltipTrigger>
           <TooltipContent side={'right'} sideOffset={10}>
             <p>{moment(datum.secret_valid_until).format('LLL')}</p>
           </TooltipContent>
