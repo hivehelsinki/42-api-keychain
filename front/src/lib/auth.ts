@@ -16,7 +16,7 @@ export const authOptions: NextAuthOptions = {
     maxAge: 30 * 24 * 60 * 60, // 30 days hours
   },
   callbacks: {
-    async signIn({ user, profile }) {
+    signIn({ user, profile }) {
       if (!profile || !user) {
         return false;
       }
@@ -28,13 +28,9 @@ export const authOptions: NextAuthOptions = {
 
       // check user is from your campus
       const campusId = profile.campus_users.find((cu) => cu.is_primary)?.campus_id as number;
-      if (campusId.toString() !== process.env.CAMPUS_ID) {
-        return false;
-      }
-
-      return true;
+      return campusId.toString() === process.env.CAMPUS_ID;
     },
-    async jwt({ token, profile }) {
+    jwt({ token, profile }) {
       if (profile) {
         token.user_id = profile.id;
         token.login = profile.login;
@@ -44,7 +40,7 @@ export const authOptions: NextAuthOptions = {
 
       return token;
     },
-    async session({ session, token }) {
+    session({ session, token }) {
       delete session.user;
       session.login = token.login as string;
       session.user_id = token.user_id as number;
@@ -53,7 +49,7 @@ export const authOptions: NextAuthOptions = {
 
       return session;
     },
-    async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
+    redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
       if (url.startsWith('/')) return `${baseUrl}${url}`;
       else if (new URL(url).origin === baseUrl) return url;
       return baseUrl;
