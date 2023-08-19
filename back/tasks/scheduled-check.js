@@ -1,9 +1,9 @@
 const cron = require("node-cron");
-const { CheckKeys } = require("./check-keys");
+const { checkKeys } = require("./check-keys");
 
 module.exports = {
   schedule: () => {
-    CheckKeys();
-    cron.schedule("0 10 */1 * *", CheckKeys); // every day at 10:00
+    checkKeys();
+    cron.schedule("0 10 */1 * *", checkKeys); // every day at 10:00
   },
 };

@@ -3,6 +3,10 @@ const slackService = require("../services/slack");
 const fortyTwoService = require("../services/fortytwo");
 const logger = require("../lib/logger");
 
+const REMINDER_DAYS_1 = 14;
+const REMINDER_DAYS_2 = 7;
+const REMINDER_HOURS = 24;
+
 async function updateRotation(key, date) {
   const prisma = new PrismaClient();
   await prisma.Key.update({
@@ -38,26 +42,32 @@ async function processKey(key) {
   const days = parseInt(timeDiff / (1000 * 60 * 60 * 24));
   const hours = parseInt(timeDiff / (1000 * 60 * 60));
 
-  if (days === 14 || days === 7) {
+  if (days === REMINDER_DAYS_1 || days === REMINDER_DAYS_2) {
     slackService.reminder(key, `${days} days`);
     return;
   }
-  if (hours >= 0 && hours <= 24) {
+  if (hours >= 0 && hours <= REMINDER_HOURS) {
     slackService.reminder(key, `${hours} hours`);
   }
 }
 
-async function CheckKeys() {
+async function checkKeys() {
   logger.info("running key validity check...");
   const prisma = new PrismaClient();
-  const keys = await prisma.Key.findMany();
+  try {
+    const keys = await prisma.Key.findMany();
 
-  for (const key of keys) {
-    await processKey(key);
+    for (const key of keys) {
+      await processKey(key);
+    }
+    logger.info(`${keys.length} keys checked`);
+  } catch (error) {
+    logger.error(`Error checking keys: ${error.message}`);
+  } finally {
+    await prisma.$disconnect();
   }
-  logger.info(`${keys.length} keys checked`);
 }
 
 module.exports = {
-  CheckKeys,
+  checkKeys,
 };
