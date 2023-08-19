@@ -1,5 +1,5 @@
-const scheduledCheck = require("./tasks/scheduled-check");
+const scheduled = require("./tasks/scheduled");
 const populateDatabase = require("./tasks/populate-database");
 
-scheduledCheck.schedule();
+scheduled.exec();
 populateDatabase.exec();
