@@ -3,6 +3,8 @@ const { PrismaClient } = require("@prisma/client");
 const defaultSettings = [
   { key: "slack_enabled", value: "false" },
   { key: "slack_webhook_url", value: "" },
+  { key: "discord_enabled", value: "false" },
+  { key: "discord_webhook_url", value: "" },
 ];
 
 async function populateDatabase() {
