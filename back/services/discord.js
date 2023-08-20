@@ -30,7 +30,7 @@ async function send(message) {
   }
 }
 
-async function error(app) {
+function error(app) {
   const message = {
     embeds: [
       {
@@ -50,7 +50,7 @@ async function error(app) {
   send(message);
 }
 
-async function reminder(app, time) {
+function reminder(app, time) {
   const message = {
     embeds: [
       {
