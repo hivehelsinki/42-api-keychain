@@ -148,7 +148,7 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
               <div className="mt-5 flex flex-col">
                 <FormLabel className="font-bold uppercase">Discord Webhook</FormLabel>
                 <p className="my-2 leading-7 text-muted-foreground">Your webhook url to send notification to Discord</p>
-                <Input {...field} placeholder="https://hooks.slack.com/services/..." />
+                <Input {...field} placeholder="https://discord.com/api/webhooks/..." />
                 <FormMessage />
               </div>
             )}
