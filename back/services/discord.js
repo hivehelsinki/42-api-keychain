@@ -25,8 +25,8 @@ async function send(message) {
 
   try {
     await axios.post(URI, message);
-  } catch (error) {
-    logger.error(error);
+  } catch (err) {
+    logger.error(err);
   }
 }
 
