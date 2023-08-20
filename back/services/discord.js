@@ -35,9 +35,9 @@ async function error(app) {
     embeds: [
       {
         title: `Error with ${app.name.toUpperCase()}`,
-        description: `We encountered an issue while attempting to generate a token for <https://profile.intra.42.fr/oauth/applications/${
+        description: `We encountered an issue while attempting to generate a token for [${app.name.toUpperCase()}](https://profile.intra.42.fr/oauth/applications/${
           app.id
-        }|${app.name.toUpperCase()}>, which is owned by ${
+        }), which is owned by ${
           app.ownedBy
         }. To troubleshoot this problem, consider the following hints:\n\n \
   ·   Verify if the credentials on the keychain app are still valid and up-to-date.\n \
@@ -55,7 +55,7 @@ async function reminder(app, time) {
     embeds: [
       {
         title: "Incoming expiration",
-        description: `<https://profile.intra.42.fr/oauth/applications/${app.id}|${app.name}>, owned by ${app.ownedBy}, is set to \`expire in ${time}\`. We strongly recommend renewing it promptly to prevent any disruption. Kindly update the new secret not only on your service but also within the Keychain app to ensure uninterrupted functionality.`,
+        description: `[${app.name}](https://profile.intra.42.fr/oauth/applications/${app.id}), owned by ${app.ownedBy}, is set to \`expire in ${time}\`. We strongly recommend renewing it promptly to prevent any disruption. Kindly update the new secret not only on your service but also within the Keychain app to ensure uninterrupted functionality.`,
         color: 0xf5e10c,
       },
     ],
