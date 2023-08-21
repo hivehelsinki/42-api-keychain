@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
 import { LoginButton } from '@/components/auth/login-button';
 
-const page: FC = ({}) => {
+const page: FC = () => {
   return (
     <main className="container mt-8">
       <section>

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { FormAddKey } from '@/components/form-add-key';
 
-const page: FC = ({}) => {
+const page: FC = () => {
   return (
     <main className="container mt-4">
       <section className="flex max-w-[700px] flex-col gap-5">

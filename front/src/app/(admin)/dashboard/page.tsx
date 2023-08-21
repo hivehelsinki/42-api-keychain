@@ -16,7 +16,7 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
   return (await res.json()) as CardKeyProps[];
 };
 
-const Page: FC = ({}) => {
+const Page: FC = () => {
   const [search, setSearch] = useState<string>('');
   const { data, error } = useSWR<CardKeyProps[]>('/api/keys', fetcher);
 
