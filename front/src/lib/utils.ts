@@ -8,10 +8,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function dateVariant(date: string) {
-  const a = moment(date, 'YYYY-MM-DD');
-  const b = moment();
+  const formatDate = moment(date, 'YYYY-MM-DD');
+  const formatNow = moment();
 
-  const diff = a.diff(b, 'days');
+  const diff = formatDate.diff(formatNow, 'days');
   if (diff < 7) return 'danger';
   if (diff < 30) return 'warning';
   else return 'default';
