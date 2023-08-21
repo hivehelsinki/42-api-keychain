@@ -13,9 +13,7 @@ import { Icons } from './icons';
 import { DropdownMenuGroup } from '@radix-ui/react-dropdown-menu';
 import { signOut } from 'next-auth/react';
 
-interface menuProps {}
-
-const menu: FC<menuProps> = ({}) => {
+const menu: FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
