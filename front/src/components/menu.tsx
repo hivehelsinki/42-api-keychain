@@ -37,7 +37,7 @@ const menu: FC<menuProps> = ({}) => {
 
           <DropdownMenuItem>
             <Icons.logout className="mr-2 h-4 w-4" strokeWidth={1.4} />
-            <a onClick={() => signOut()}>Sign out</a>
+            <button onClick={() => signOut()}>Sign out</button>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
