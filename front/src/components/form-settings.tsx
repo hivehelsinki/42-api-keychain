@@ -37,8 +37,7 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
   return (await res.json()) as ApiResp;
 };
 
-interface formSettingsProps {}
-const FormSettings: FC<formSettingsProps> = ({}) => {
+const FormSettings: FC = ({}) => {
   const { toast } = useToast();
   const { data, error, isLoading } = useSWR<ApiResp>('/api/settings', fetcher);
 

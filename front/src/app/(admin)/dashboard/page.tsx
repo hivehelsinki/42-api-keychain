@@ -11,14 +11,12 @@ import Header from '@/components/header';
 
 import CardKeyProps from '@/types/card-key';
 
-interface pageProps {}
-
 const fetcher = async (...args: Parameters<typeof fetch>) => {
   const res = await fetch(...args);
   return (await res.json()) as CardKeyProps[];
 };
 
-const Page: FC<pageProps> = ({}) => {
+const Page: FC = ({}) => {
   const [search, setSearch] = useState<string>('');
   const { data, error } = useSWR<CardKeyProps[]>('/api/keys', fetcher);
 
