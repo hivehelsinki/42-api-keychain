@@ -1,17 +1,17 @@
 'use client';
 
+import { FC } from 'react';
+import { signOut } from 'next-auth/react';
+import { Button } from '@/components/ui/button';
+import { Icons } from '@/components/icons';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuGroup,
 } from '@/components/ui/dropdown-menu';
-import { FC } from 'react';
-import { Button } from './ui/button';
-import { Icons } from './icons';
-import { DropdownMenuGroup } from '@radix-ui/react-dropdown-menu';
-import { signOut } from 'next-auth/react';
 
 const menu: FC = () => {
   return (
