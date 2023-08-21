@@ -41,8 +41,8 @@ async function processKey(key) {
   }
 
   const timeDiff = tokenDate - new Date();
-  const days = parseInt(timeDiff / (1000 * 60 * 60 * 24));
-  const hours = parseInt(timeDiff / (1000 * 60 * 60));
+  const days = parseInt(timeDiff / (1000 * 60 * 60 * 24), 10);
+  const hours = parseInt(timeDiff / (1000 * 60 * 60), 10);
 
   if (days === REMINDER_DAYS_1 || days === REMINDER_DAYS_2) {
     slackService.reminder(key, `${days} days`);
