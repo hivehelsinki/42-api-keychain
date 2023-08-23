@@ -1,5 +1,5 @@
 'use client';
-import { FC } from 'react';
+
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,7 @@ const errorMessages: { [key: string]: string } = {
   Configuration: 'There is a problem with the configuration of your application. Please notify the administrator.',
 };
 
-const page: FC = () => {
+const Error = () => {
   const searchParams = useSearchParams();
   const error = searchParams ? searchParams.get('error') : null;
 
@@ -33,4 +33,4 @@ const page: FC = () => {
   );
 };
 
-export default page;
+export default Error;
