@@ -1,7 +1,10 @@
 version = 1
 
+exclude_patterns = ["front/src/components/ui/**"]
+
 [[analyzers]]
 name = "javascript"
 
-[[transformers]]
-name = "prettier"
+  [analyzers.meta]
+  plugins = ["react"]
+  environment = ["nodejs"]

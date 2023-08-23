@@ -1,21 +1,19 @@
 'use client';
 
+import { FC } from 'react';
+import { signOut } from 'next-auth/react';
+import { Button } from '@/components/ui/button';
+import { Icons } from '@/components/icons';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuGroup,
 } from '@/components/ui/dropdown-menu';
-import { FC } from 'react';
-import { Button } from './ui/button';
-import { Icons } from './icons';
-import { DropdownMenuGroup } from '@radix-ui/react-dropdown-menu';
-import { signOut } from 'next-auth/react';
 
-interface menuProps {}
-
-const menu: FC<menuProps> = ({}) => {
+const menu: FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -37,7 +35,7 @@ const menu: FC<menuProps> = ({}) => {
 
           <DropdownMenuItem>
             <Icons.logout className="mr-2 h-4 w-4" strokeWidth={1.4} />
-            <a onClick={() => signOut()}>Sign out</a>
+            <button onClick={() => signOut()}>Sign out</button>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

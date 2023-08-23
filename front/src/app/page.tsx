@@ -6,9 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
 import { LoginButton } from '@/components/auth/login-button';
 
-interface pageProps {}
-
-const page: FC<pageProps> = ({}) => {
+const page: FC = () => {
   return (
     <main className="container mt-8">
       <section>

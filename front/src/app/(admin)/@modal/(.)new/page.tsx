@@ -3,9 +3,7 @@ import { FC } from 'react';
 import Modal from '@/components/modal';
 import { FormAddKey } from '@/components/form-add-key';
 
-interface pageProps {}
-
-const page: FC<pageProps> = ({}) => {
+const page: FC = () => {
   return (
     <Modal>
       <section className="flex flex-col gap-5">

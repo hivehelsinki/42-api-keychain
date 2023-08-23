@@ -18,10 +18,16 @@ const formSchema = z
   .object({
     slack_enabled: z.boolean(),
     slack_webhook_url: z.string().optional(),
+    discord_enabled: z.boolean(),
+    discord_webhook_url: z.string().optional(),
   })
   .refine((sch) => sch.slack_enabled === false || sch.slack_webhook_url !== '', {
     path: ['slack_webhook_url'],
     message: 'Slack webhook url is required when slack notification is enabled',
+  })
+  .refine((sch) => sch.discord_enabled === false || sch.discord_webhook_url !== '', {
+    path: ['discord_webhook_url'],
+    message: 'Discord webhook url is required when discord notification is enabled',
   });
 
 type ApiResp = z.infer<typeof formSchema>;
@@ -31,8 +37,7 @@ const fetcher = async (...args: Parameters<typeof fetch>) => {
   return (await res.json()) as ApiResp;
 };
 
-interface formSettingsProps {}
-const FormSettings: FC<formSettingsProps> = ({}) => {
+const FormSettings: FC = () => {
   const { toast } = useToast();
   const { data, error, isLoading } = useSWR<ApiResp>('/api/settings', fetcher);
 
@@ -109,10 +114,40 @@ const FormSettings: FC<formSettingsProps> = ({}) => {
             control={form.control}
             name="slack_webhook_url"
             render={({ field }) => (
-              <div className="mt-10 flex flex-col">
+              <div className="mt-5 flex flex-col">
                 <FormLabel className="font-bold uppercase">Slack Webhook</FormLabel>
                 <p className="my-2 leading-7 text-muted-foreground">Your webhook url to send notification to Slack</p>
                 <Input {...field} placeholder="https://hooks.slack.com/services/..." />
+                <FormMessage />
+              </div>
+            )}
+          />
+        )}
+
+        <FormField
+          control={form.control}
+          name="discord_enabled"
+          render={({ field }) => (
+            <div className="mt-7 flex flex-col">
+              <FormLabel className="font-bold uppercase">Discord notification</FormLabel>
+              <p className="my-2 leading-7 text-muted-foreground">
+                Receive notification on Discord when an app is about to be expired
+              </p>
+              <Switch checked={field.value} onCheckedChange={field.onChange} />
+              <FormMessage />
+            </div>
+          )}
+        />
+
+        {form.watch('discord_enabled') && (
+          <FormField
+            control={form.control}
+            name="discord_webhook_url"
+            render={({ field }) => (
+              <div className="mt-5 flex flex-col">
+                <FormLabel className="font-bold uppercase">Discord Webhook</FormLabel>
+                <p className="my-2 leading-7 text-muted-foreground">Your webhook url to send notification to Discord</p>
+                <Input {...field} placeholder="https://discord.com/api/webhooks/..." />
                 <FormMessage />
               </div>
             )}

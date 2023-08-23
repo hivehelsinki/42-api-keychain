@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const slackService = require("../services/slack");
+const discordService = require("../services/discord");
 const fortyTwoService = require("../services/fortytwo");
 const logger = require("../lib/logger");
 
@@ -30,6 +31,7 @@ async function processKey(key) {
       `Failed to fetch a token for the key: name=${key.name} id=${key.id}`
     );
     slackService.error(key);
+    discordService.error(key);
     return;
   }
 
@@ -39,15 +41,17 @@ async function processKey(key) {
   }
 
   const timeDiff = tokenDate - new Date();
-  const days = parseInt(timeDiff / (1000 * 60 * 60 * 24));
-  const hours = parseInt(timeDiff / (1000 * 60 * 60));
+  const days = parseInt(timeDiff / (1000 * 60 * 60 * 24), 10);
+  const hours = parseInt(timeDiff / (1000 * 60 * 60), 10);
 
   if (days === REMINDER_DAYS_1 || days === REMINDER_DAYS_2) {
     slackService.reminder(key, `${days} days`);
+    discordService.reminder(key, `${days} days`);
     return;
   }
   if (hours >= 0 && hours <= REMINDER_HOURS) {
     slackService.reminder(key, `${hours} hours`);
+    discordService.reminder(key, `${hours} hours`);
   }
 }
 

@@ -11,14 +11,12 @@ import Header from '@/components/header';
 
 import CardKeyProps from '@/types/card-key';
 
-interface pageProps {}
-
 const fetcher = async (...args: Parameters<typeof fetch>) => {
   const res = await fetch(...args);
   return (await res.json()) as CardKeyProps[];
 };
 
-const Page: FC<pageProps> = ({}) => {
+const Page: FC = () => {
   const [search, setSearch] = useState<string>('');
   const { data, error } = useSWR<CardKeyProps[]>('/api/keys', fetcher);
 
@@ -36,7 +34,7 @@ const Page: FC<pageProps> = ({}) => {
 
         <section className="mt-5 flex flex-col gap-3 md:mt-10">
           <Label className="font-bold">Search</Label>
-          <Input placeholder="Search by name or client id" autoFocus onChange={handleSearch} />
+          <Input placeholder="Search by name or client id" onChange={handleSearch} />
 
           <p className="mt-5">Failed to connect with the server</p>
         </section>
@@ -54,7 +52,7 @@ const Page: FC<pageProps> = ({}) => {
 
         <section className="mt-5 flex flex-col gap-3 md:mt-10">
           <Label className="font-bold">Search</Label>
-          <Input placeholder="Search by name or client id" autoFocus onChange={handleSearch} />
+          <Input placeholder="Search by name or client id" onChange={handleSearch} />
 
           <div className="mt-5 inline-flex items-center justify-center gap-2">
             <Icons.spinner className="h-4 w-4 animate-spin " />
@@ -73,7 +71,7 @@ const Page: FC<pageProps> = ({}) => {
 
       <section className="mt-5 flex flex-col gap-3 md:mt-10">
         <Label className="font-bold">Search</Label>
-        <Input placeholder="Search by name or client id" autoFocus onChange={handleSearch} />
+        <Input placeholder="Search by name or client id" onChange={handleSearch} />
 
         <CardKeys
           className="mt-5"

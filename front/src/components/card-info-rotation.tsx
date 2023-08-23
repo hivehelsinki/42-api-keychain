@@ -20,9 +20,7 @@ const cardInfoRotationVariants = tv({
   },
 });
 
-interface cardInfoRotationProps extends VariantProps<typeof cardInfoRotationVariants> {}
-
-const CardInfoRotation: FC<cardInfoRotationProps> = ({ datum, className, variant }) => {
+const CardInfoRotation: FC<VariantProps<typeof cardInfoRotationVariants>> = ({ datum, className, variant }) => {
   return (
     <div className={cn(cardInfoRotationVariants({ variant, className }))}>
       <Icons.clock strokeWidth={1.5} className="h-4 w-4" />{' '}

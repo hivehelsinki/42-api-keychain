@@ -25,12 +25,12 @@ async function send(message) {
   const webhook = new IncomingWebhook(URI);
   try {
     await webhook.send(message);
-  } catch (error) {
-    logger.error(error);
+  } catch (err) {
+    logger.error(err);
   }
 }
 
-async function error(app) {
+function error(app) {
   const message = {
     attachments: [
       {
@@ -51,7 +51,7 @@ async function error(app) {
   send(message);
 }
 
-async function reminder(app, time) {
+function reminder(app, time) {
   const message = {
     attachments: [
       {
