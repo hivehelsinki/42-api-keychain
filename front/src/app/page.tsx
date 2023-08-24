@@ -20,7 +20,7 @@ const page: FC = () => {
               hassle-free control.
             </div>
             <div className="flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10">
-              <LoginButton>Get started</LoginButton>
+              <LoginButton>Sign in</LoginButton>
               <Button variant="outline">
                 <Link
                   href="https://github.com/hivehelsinki/42-api-keychain"

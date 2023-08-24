@@ -24,13 +24,6 @@ const Navbar: FC<navbarProps> = ({ user }) => {
           <div className="flex space-x-2">
             <div className="w-[1px] bg-gray-300/90 dark:bg-gray-600" />
             <ModeToggle />
-            <Link
-              href="https://github.com/hivehelsinki/42-api-keychain"
-              target="_blank"
-              className="flex h-9 w-9 items-center justify-center rounded-md px-0 py-2 text-sm font-medium transition-colors hover:bg-accent"
-            >
-              <Icons.gitHub className="aspect-square h-5 text-neutral-500 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-200" />
-            </Link>
           </div>
         </div>
       </div>
