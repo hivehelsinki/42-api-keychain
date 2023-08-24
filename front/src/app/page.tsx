@@ -76,7 +76,7 @@ const page: FC = () => {
             </h2>
             <p className="mb-6 text-center font-light text-gray-500 dark:text-gray-400 md:text-left md:text-lg">
               Enhance your app management with Keychain&apos;s advanced monitoring solution. Receive real-time alerts,
-              staying ahead by 24 hours, 7 days, and 30 days before app expiration. Keychain ensures smooth workflow by
+              staying ahead by 24 hours, 7 days, and 14 days before app expiration. Keychain ensures smooth workflow by
               providing timely validity checks and prompt unresponsive app notifications. Say goodbye to surprises and
               maintain efficiency with Keychain.
             </p>
