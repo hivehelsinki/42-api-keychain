@@ -17,7 +17,7 @@ const menu: FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="flex h-9 w-9 items-center justify-center rounded-md bg-background/95 px-0 py-2 text-sm font-medium text-gray-950 transition-colors hover:bg-accent dark:bg-gray-800">
+        <Button className="flex h-9 w-9 items-center justify-center rounded-md bg-background/95 px-0 py-2 text-sm font-medium text-gray-950 transition-colors hover:bg-accent dark:bg-gray-900 dark:hover:bg-accent">
           <Icons.menu className="h-5" strokeWidth={1.4} />
         </Button>
       </DropdownMenuTrigger>
