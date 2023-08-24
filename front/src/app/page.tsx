@@ -13,7 +13,7 @@ const page: FC = () => {
         <div className="mx-auto max-w-screen-xl gap-8 px-4 py-8 sm:py-16 md:grid md:grid-cols-3 lg:px-6">
           <div className="col-span-2 ">
             <h1 className="mb-4 text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]">
-              Manage smoothly your 42 API applications.
+              Smoothly manage your 42 API applications.
             </h1>
             <div className="text-lg text-muted-foreground sm:text-xl">
               Experience seamless management of your 42 API Keys with Hive Keychain - the ultimate solution designed for
