@@ -11,7 +11,7 @@ import { getCurrentUser } from '@/lib/session';
 import User from '@/types/user';
 
 export const metadata = {
-  title: 'API Keychain',
+  title: 'Hive Keychain',
   description: 'Manage smoothly your 42 API applications.',
 };
 
