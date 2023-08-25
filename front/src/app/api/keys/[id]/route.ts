@@ -10,6 +10,7 @@ const routeContextSchema = z.object({
 
 const keyPatchSchema = z.object({
   id: z.number(),
+  secret_valid_until: z.string(),
   client_secret: z.string().min(64, { message: 'Secret must be at least 64 characters long' }),
 });
 
@@ -37,6 +38,7 @@ export async function PATCH(req: Request, context: z.infer<typeof routeContextSc
       },
       data: {
         ...data[0],
+        secretValidUntil: body.secret_valid_until,
         clientSecret: body.client_secret,
       },
     });

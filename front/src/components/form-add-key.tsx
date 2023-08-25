@@ -51,8 +51,12 @@ const FormAddKey = () => {
     });
 
     if (!res?.ok) {
-      console.log('Something went wrong');
-      // TODO: add toast
+      if (res.status === 409) {
+        form.setError('client_id', {
+          type: 'manual',
+          message: 'Key already exist in database',
+        });
+      }
     } else {
       router.refresh();
       router.back();

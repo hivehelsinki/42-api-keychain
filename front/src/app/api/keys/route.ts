@@ -48,6 +48,18 @@ export async function POST(req: Request) {
     const data = await req.json();
     const body = keySchema.parse(data);
 
+    const check = await prisma.Key.findMany({
+      where: {
+        clientId: body.client_id,
+      },
+    });
+
+    if (check.length > 0) {
+      return new Response(null, {
+        status: 409,
+      });
+    }
+
     const key = await prisma.Key.create({
       data: {
         id: body.id,

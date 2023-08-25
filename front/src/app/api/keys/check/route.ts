@@ -10,17 +10,17 @@ export async function POST(req: Request) {
     return new Response(null, { status: 403 });
   }
 
-  const key = await prisma.Key.findMany({
-    where: {
-      clientId: client_id,
-    },
-  });
+  // const key = await prisma.Key.findMany({
+  //   where: {
+  //     clientId: client_id,
+  //   },
+  // });
 
-  if (key.length > 0) {
-    return new Response(null, {
-      status: 409,
-    });
-  }
+  // if (key.length > 0) {
+  //   return new Response(null, {
+  //     status: 409,
+  //   });
+  // }
 
   const res = await fetchToken(client_id, client_secret);
 
