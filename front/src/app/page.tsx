@@ -66,9 +66,9 @@ const page: FC = () => {
           <Image
             src="/notification.png"
             alt="notification illustration"
-            width={130}
-            height={130}
-            className="col-start-5 row-start-1 mx-auto -translate-y-3"
+            width={110}
+            height={110}
+            className="col-start-5 row-start-1 mx-auto w-auto translate-y-3"
           />
           <div className="col-span-4 col-start-1 row-start-1 mt-4 md:mt-0">
             <h2 className="mb-4 text-center text-2xl font-bold leading-tight tracking-tighter md:text-left lg:leading-[1.1]">
