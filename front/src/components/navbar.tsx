@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 import { LoginToggle } from '@/components/auth/login-toggle';
 import { Icons } from '@/components/icons';
-import { ModeToggle } from '@/components/moddle-toggle';
+import { ModeToggle } from '@/components/mode-toggle';
 
 import User from '@/types/user';
 
