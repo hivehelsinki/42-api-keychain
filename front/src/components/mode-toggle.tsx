@@ -1,15 +1,15 @@
 'use client';
 
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 
 import { Icons } from '@/components/icons';
 
 export function ModeToggle() {
-  const [mounted, setMounted] = React.useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
 
-  React.useEffect(() => {
+  useEffect(() => {
     setMounted(true);
   }, []);
 
