@@ -55,7 +55,7 @@ const FormSettings: FC = () => {
   // handler for form submit
   const onSubmit = async (values: ApiResp) => {
     try {
-      await fetch('/api/settings', {
+      const res = await fetch('/api/settings', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -63,10 +63,17 @@ const FormSettings: FC = () => {
         body: JSON.stringify(values),
       });
 
-      toast({
-        title: 'Settings updated',
-        description: 'Your settings have been updated successfully.',
-      });
+      if (res.status === 200) {
+        toast({
+          title: 'Settings updated',
+          description: 'Your settings have been updated successfully.',
+        });
+      } else {
+        toast({
+          variant: 'destructive',
+          description: 'Failed to update.',
+        });
+      }
     } catch (error) {
       console.log(error);
     }
