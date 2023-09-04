@@ -38,7 +38,7 @@ _Dashboard light theme_
 - [x] Send Slack notifications when an app is not valid.
 - [x] Send Slack notifications when an app is about to expire (24 hours, 7 days, 14 days).
 - [x] Update the saved expiration date if it changes.
-- [ ] Allows to send notifications via Discord
+- [x] Allows to send notifications via Discord
 - [ ] Allows to send notifications via email
 
 ## Requirements
