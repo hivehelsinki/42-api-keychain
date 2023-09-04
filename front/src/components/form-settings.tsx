@@ -14,6 +14,28 @@ import { Label } from '@/components/ui/label';
 import { Form, FormField, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/components/ui/use-toast';
 
+const fetchWebhookStatus = async (url: string, service: string) => {
+  try {
+    const response = await fetch('/api/test_webhook', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ url, service }),
+    });
+    return response.status === 204 || response.status === 200;
+  } catch (error) {
+    return false;
+  }
+};
+
+const validateWebhook = async (enabled: boolean, url: string | undefined, serviceName: string) => {
+  if (enabled && url) {
+    return await fetchWebhookStatus(url, serviceName);
+  }
+  return true;
+};
+
 const formSchema = z
   .object({
     slack_enabled: z.boolean(),
@@ -28,6 +50,14 @@ const formSchema = z
   .refine((sch) => sch.discord_enabled === false || sch.discord_webhook_url !== '', {
     path: ['discord_webhook_url'],
     message: 'Discord webhook url is required when discord notification is enabled',
+  })
+  .refine(async (sch) => validateWebhook(sch.discord_enabled, sch.discord_webhook_url, 'discord'), {
+    path: ['discord_webhook_url'],
+    message: 'Discord webhook url is not valid',
+  })
+  .refine(async (sch) => validateWebhook(sch.slack_enabled, sch.slack_webhook_url, 'slack'), {
+    path: ['slack_webhook_url'],
+    message: 'Slack webhook url is not valid',
   });
 
 type ApiResp = z.infer<typeof formSchema>;
