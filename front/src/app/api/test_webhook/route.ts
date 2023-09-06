@@ -6,7 +6,7 @@ const postSchema = z.object({
   service: z.string(),
 });
 
-async function sendRequest(url, payload) {
+async function sendRequest(url: string, payload: string) {
   const response = await fetch(url, {
     method: 'POST',
     headers: {
