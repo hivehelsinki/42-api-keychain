@@ -3,6 +3,7 @@ import * as z from 'zod';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useSWRConfig } from 'swr';
 
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Label } from './ui/label';
@@ -36,6 +37,8 @@ const UpdateSecretModal: FC<modalUpdateSecretProps> = ({ open, onOpenChange, dat
   const [isValid, setIsValid] = React.useState<undefined | boolean>(undefined);
   const [keyName, setKeyName] = React.useState<string>('');
   const [httpCode, setHttpCode] = React.useState<number>(0);
+
+  const { mutate } = useSWRConfig();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -97,6 +100,7 @@ const UpdateSecretModal: FC<modalUpdateSecretProps> = ({ open, onOpenChange, dat
       console.log('Something went wrong');
     } else {
       onOpenChange(false);
+      mutate('/api/keys');
     }
   }
 
