@@ -57,7 +57,7 @@ function reminder(app, time) {
       {
         fallback: "Keychain - Incoming expiration",
         color: "#f5e10c",
-        text: `<https://profile.intra.42.fr/oauth/applications/${app.id}|${app.name}>, owned by ${app.ownedBy}, is set to \`expire in ${time}\`. We strongly recommend renewing it promptly to prevent any disruption. Kindly update the new secret not only on your service but also within the Keychain app to ensure uninterrupted functionality.
+        text: `<https://profile.intra.42.fr/oauth/applications/${app.id}|${app.name}>, owned by ${app.ownedBy}, is set to \`expire in less than ${time}\`. We strongly recommend renewing it promptly to prevent any disruption. Kindly update the new secret not only on your service but also within the Keychain app to ensure uninterrupted functionality.
         `,
       },
     ],

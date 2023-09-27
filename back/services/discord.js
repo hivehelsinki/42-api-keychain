@@ -55,7 +55,7 @@ function reminder(app, time) {
     embeds: [
       {
         title: "Incoming expiration",
-        description: `[${app.name}](https://profile.intra.42.fr/oauth/applications/${app.id}), owned by ${app.ownedBy}, is set to \`expire in ${time}\`. We strongly recommend renewing it promptly to prevent any disruption. Kindly update the new secret not only on your service but also within the Keychain app to ensure uninterrupted functionality.`,
+        description: `[${app.name}](https://profile.intra.42.fr/oauth/applications/${app.id}), owned by ${app.ownedBy}, is set to \`expire in less than ${time}\`. We strongly recommend renewing it promptly to prevent any disruption. Kindly update the new secret not only on your service but also within the Keychain app to ensure uninterrupted functionality.`,
         color: 0xf5e10c,
       },
     ],
