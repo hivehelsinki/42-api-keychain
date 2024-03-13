@@ -137,6 +137,11 @@ To update the API secret for the app, edit the .env file and replace the existin
 Please note that if you intend to run this application as a student, you'll need to edit the file `front/src/lib/auth.ts`. In this file, you should replace the section responsible for verifying the user's staff status with a check based on your
 login credentials.
 
+**I updated my secret but it keeps showing the old expiration, what's wrong?**
+
+1. Are you sure you are using the new secret and not the old one?
+2. If your new secret is valid but didn't rotate yet on the intranet it will keep displaying the old secret expiration. You need to go to the intranet page of your API app and click "Change now".
+
 <br/><br/>
 
 ## GDPR
