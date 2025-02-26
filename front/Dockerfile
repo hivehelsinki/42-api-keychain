@@ -1,9 +1,10 @@
-FROM node:18-alpine AS base
+FROM node:23-alpine AS base
 
 
 FROM base AS deps
 
 RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache openssl
 WORKDIR /app
 
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
