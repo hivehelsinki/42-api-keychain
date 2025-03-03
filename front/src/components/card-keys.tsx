@@ -12,6 +12,7 @@ import CardInfoRotation from '@/components/card-info-rotation';
 import UpdateSecretModal from '@/components/update-secret-modal';
 
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 import {
   DropdownMenu,
@@ -131,19 +132,128 @@ const Key: FC<keyProps> = ({ datum, ...props }) => {
   );
 };
 
+const KeyRow: FC<keyProps> = ({ datum }) => {
+  const { mutate } = useSWRConfig();
+  const [showDeleteAlert, setShowDeleteAlert] = React.useState<boolean>(false);
+  const [showUpdateDialog, setShowUpdateDialog] = React.useState<boolean>(false);
+  const [isDeleteLoading, setIsDeleteLoading] = React.useState<boolean>(false);
+
+  return (
+    <TableRow className="group">
+      <TableCell>
+        <div className="relative flex items-center gap-2">
+          <span className="font-bold uppercase">{datum.name}</span>
+          <Ping className="absolute -left-3 top-1.5" variant={dateVariant(datum.secretValidUntil)} />
+        </div>
+      </TableCell>
+      <TableCell>
+        <div className="flex items-center gap-2">{datum.ownedBy}</div>
+      </TableCell>
+      <TableCell>
+        <CardInfoRotation datum={datum} variant={dateVariant(datum.secretValidUntil)} />
+      </TableCell>
+      <TableCell className="text-right">
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Button variant="ghost" size="icon">
+              <Icons.more className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem onSelect={() => setShowUpdateDialog(true)}>Update secret</DropdownMenuItem>
+            <DropdownMenuItem
+              className="text-destructive focus:text-destructive"
+              onSelect={() => setShowDeleteAlert(true)}
+            >
+              Remove
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <UpdateSecretModal open={showUpdateDialog} onOpenChange={setShowUpdateDialog} data={datum} />
+
+        <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you sure you want to delete this app?</AlertDialogTitle>
+              <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                onClick={async (event) => {
+                  event.preventDefault();
+                  setIsDeleteLoading(true);
+
+                  const deleted = await deleteApp(datum.id);
+
+                  if (deleted) {
+                    setIsDeleteLoading(false);
+                    setShowDeleteAlert(false);
+                    mutate('/api/keys');
+                  }
+                }}
+                className="bg-destructive/80 focus:ring-destructive"
+              >
+                {isDeleteLoading ? (
+                  <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  <Icons.trash className="mr-2 h-4 w-4" />
+                )}
+                <span>Delete</span>
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </TableCell>
+    </TableRow>
+  );
+};
+
 interface cardKeysProps {
   data: CardKeyProps[];
   className: string;
+  viewMode: 'grid' | 'list';
 }
 
-const CardKeys: FC<cardKeysProps> = ({ data, className }) => {
+const CardKeys: FC<cardKeysProps> = ({ data, className, viewMode }) => {
+  if (viewMode === 'list') {
+    return (
+      <div className={className}>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>App name</TableHead>
+              <TableHead>Owner</TableHead>
+              <TableHead>Expiration</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {data.map((datum: CardKeyProps) => (
+              <KeyRow datum={datum} key={datum.id} />
+            ))}
+          </TableBody>
+        </Table>
+        <Link href="/new" className="mt-4 block">
+          <Button className="w-full border-dashed dark:border-gray-600" variant="outline">
+            <span className="inline-flex items-center gap-2 transition-colors duration-200 ease-in-out">
+              <Icons.plus className="h-4 w-4" />
+              Add a new key
+            </span>
+          </Button>
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div className={cn('grid min-h-max grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3', className)}>
       {data.map((datum: CardKeyProps) => (
         <Key datum={datum} key={datum.id} />
       ))}
       <Link href="/new">
-        <Button className="h-full w-full border-dashed  dark:border-gray-600" variant="outline">
+        <Button className="h-full w-full border-dashed dark:border-gray-600" variant="outline">
           <span className="inline-flex min-h-[65px] items-center gap-2 transition-colors duration-200 ease-in-out">
             <Icons.plus className="h-4 w-4" />
             Add a new key
