@@ -142,8 +142,8 @@ const KeyRow: FC<keyProps> = ({ datum }) => {
     <TableRow className="group">
       <TableCell>
         <div className="relative flex items-center gap-2">
-          <span className="font-bold uppercase">{datum.name}</span>
-          <Ping className="absolute -left-3 top-1.5" variant={dateVariant(datum.secretValidUntil)} />
+          <span className="ml-3.5 font-bold uppercase">{datum.name}</span>
+          <Ping className="absolute -left-1 top-1.5" variant={dateVariant(datum.secretValidUntil)} />
         </div>
       </TableCell>
       <TableCell>
