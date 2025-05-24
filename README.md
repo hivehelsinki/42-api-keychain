@@ -16,7 +16,7 @@ Since July 2022, 42 implemented a rotation of API application secrets, enhancing
 
 Moreover, this app addresses another common challenge: the ownership of keys by individual team members. By consolidating all your team's keys in one accessible platform, you can avoid the surprise of an imminent key expiration while a team member is on vacation, for example.
 
-**Screenshots:**
+<br>
 
 <div align='center'>
 
