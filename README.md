@@ -142,6 +142,6 @@ login credentials.
 
 <br/><br/>
 
-## GDPR
+> [!IMPORTANT]<br> **GDPR**: The application doesn't store any information that falls under GDPR regulations.
 
-The application doesn't store any information that falls under GDPR regulations.
+
