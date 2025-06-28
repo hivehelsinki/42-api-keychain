@@ -1,14 +1,13 @@
-<p align="center">
-    <a href="https://www.hive.fi/" target="_blank">
-        <img src="https://github.com/hivehelsinki/.github/blob/main/assets/logo.png?raw=true" width="128" alt="Hive logo" />
-    </a>
-</p>
+<div align="center">
+  <img src="https://github.com/hivehelsinki/.github/blob/main/assets/logo.png?raw=true" width="128" alt="Hive logo" />
+  <h1 align="center">Hive Keychain</h1>
+</div>
 
-<p align="center">
-  <sub>Created by <a href="https://github.com/titus">Jordane Gengo (titus)</a></sub>
-</p>
+<div align="center">
+  <sub>Created by <a href="https://github.com/jgengo">Jordane Gengo (titus)</a></sub>
+</div>
 
-## About Hive Keychain
+<br /><br />
 
 `Hive Keychain` has been crafted for schools within the 42network, but its benefits extend to students developing tools with the 42API.
 
@@ -16,21 +15,17 @@ Since July 2022, 42 implemented a rotation of API application secrets, enhancing
 
 Moreover, this app addresses another common challenge: the ownership of keys by individual team members. By consolidating all your team's keys in one accessible platform, you can avoid the surprise of an imminent key expiration while a team member is on vacation, for example.
 
-<br>
+<br />
 
 <div align='center'>
 
 ![screen dashboard dark](.github/docs/screen00.png?raw=true "Dashboard dark")
 
-_Dashboard dark theme_
-
-<br>
+<br />
 
 ![screen dashboard light](.github/docs/screen01.png?raw=true "Dashboard light")
 
-_Dashboard light theme_
-
-<br>
+<br />
 </div>
 
 ## Features
