@@ -51,9 +51,7 @@ This app is developed to run with the 42 OAuth. You will first need to create a 
 
 ## Getting Started
 
-> _We recommend using the Docker setup as it's easier and more straightforward._
-
-> _Also, please note that you will need a running PostgreSQL instance to run the app._
+> [!NOTE]<br> We recommend using the Docker setup as it's easier and more straightforward.<br> You will need a running PostgreSQL instance to run the app.
 
 Clone the repository locally
 
@@ -139,6 +137,6 @@ login credentials.
 
 <br/><br/>
 
-## GDPR
+> [!IMPORTANT]<br> **GDPR**: The application doesn't store any information that falls under GDPR regulations.
 
-The application doesn't store any information that falls under GDPR regulations.
+
